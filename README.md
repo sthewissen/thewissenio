@@ -1,2 +1,2 @@
-# thewissenio
+# Thewissen.io
 Personal website, yay!
