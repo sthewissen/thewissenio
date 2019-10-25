@@ -1,0 +1,30 @@
+{
+  "files": {
+    "include": "src/**/*.scss"
+  },
+
+  "options": {
+    "formatter": "stylish",
+    "merge-default-rules": false
+  },
+
+  "rules": {
+    "attribute-quotes": [2, {"include": true}],
+    "bem-depth": 2,
+    "brace-style": 2,
+    "class-name-format": [2, {"convention": "hyphenatedbem"}],
+    "empty-line-between-blocks": 2,
+    "extends-before-declarations": 2,
+    "hex-length": 2,
+    "hex-notation": 2,
+    "no-duplicate-properties": 2,
+    "no-empty-rulesets": 2,
+    "no-invalid-hex": 2,
+    "no-misspelled-properties": 2,
+    "no-vendor-prefixes": 2,
+    "one-declaration-per-line": 2,
+    "quotes": [2, {"style": "double"}],
+    "url-quotes": 1,
+    "zero-unit": 2
+  }
+}

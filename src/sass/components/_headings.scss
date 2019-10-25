@@ -1,0 +1,23 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+}
+
+h1 {
+  font: {
+    size: 6rem;
+    weight: $font-bold;
+    family: $font-nunito-sans;
+  }
+}
+h2 {
+  font: {
+    size: 5rem;
+    weight: $font-bold;
+    family: $font-nunito-sans;
+  }
+}

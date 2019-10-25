@@ -1,0 +1,40 @@
+.section {
+    padding: 5rem 0;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+
+    &__title {
+        color: #383838;
+        margin-bottom: 2rem;
+    }
+
+    &__description {
+        color: #989898;
+        font: {
+            size: 1.4rem;
+        }
+        line-height: 1.4;
+        margin-bottom: 3.5rem;
+    }
+
+    &__title,
+    &__description {
+       text-align: center;
+    }
+
+    &--blogs,
+    &--projects {
+        &:before {
+            content: "";
+            background: {
+                color: #38bfa4;
+            }
+            width: 10rem;
+            height: .3rem;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 5rem;
+        }
+    }
+}

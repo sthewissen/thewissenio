@@ -1,0 +1,31 @@
+.content {
+    margin: 0 0 8rem 0;
+
+    &:last-of-type {
+        margin: 0;
+    }
+
+    p {
+        margin: 2rem 0 0 0;
+        line-height: 1.6;
+        font: {
+            size: 2.1rem;
+        }
+        color: rgba(0,0,0,.4);
+
+        &:last-of-type {
+            margin: 2rem 0 4rem 0;;
+        }
+    }
+
+    &--white {
+        p {
+            color: rgba(255,255,255,.8);
+        }
+    }
+
+    &--border-between {
+        margin: 0 0 4rem 0;
+        border-bottom: .2rem solid rgba(255,255,255,.1);
+    }
+}

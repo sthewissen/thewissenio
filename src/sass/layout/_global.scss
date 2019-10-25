@@ -1,0 +1,16 @@
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+}
+  
+body {
+   background: $color-white;
+   font: {
+       family: $font-roboto;
+       weight: $font-normal;
+   }
+}

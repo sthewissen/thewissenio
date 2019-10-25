@@ -1,0 +1,53 @@
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #383838;
+    color: #c9c7c5;
+    padding: 2.5rem 0;
+    flex-direction: column;
+
+
+    &__social {
+        display: flex;
+        flex-direction: row;
+
+        @media screen and (max-width: $viewport-sm) {
+            margin-top: 2rem;
+        }
+    }
+
+    &__social-link {
+        padding: 0 .8rem;
+    }
+
+    &__social-logo {
+        color: #c9c7c5;
+        font-size: 1.6rem;
+
+        &:hover {
+            transform: scale(1.15);
+            transition: transform 0.25s ease-in-out;
+         }
+    }
+
+    &__copyright {
+        font: {
+            size: 1.4rem;
+        }
+    }
+
+    &__wrapper {
+        width: 100%;
+        align-items: center;
+    }
+
+    a {
+        color: $color-white;
+        text-decoration: none;
+
+        &:hover {
+           opacity: 0.8;
+        }
+    }
+}
