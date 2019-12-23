@@ -9,8 +9,10 @@ html {
   
 body {
    background: $color-white;
+   color: $color-gray;
+   letter-spacing: 0.04em;
    font: {
-       family: $font-roboto;
-       weight: $font-normal;
+       family: $font-poppins;
+       weight: $font-thin;
    }
 }

@@ -4,7 +4,9 @@
     }
 
     &__item {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2.5rem;    
+        padding-left: .5rem;
+        padding-right: .5rem;
     }
 
     &__header {
@@ -30,7 +32,15 @@
         font: {
             size: 1.2rem;
         }
-        color: #989898;
+        color: $color-gray;
+
+        a {
+            color: $color-gray;
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 
     &__content {
@@ -51,6 +61,7 @@
         font: {
             size: 2.2rem;
         }
+        line-height: 1.5;
         margin: 1.4rem 0;
     }
 
@@ -59,8 +70,8 @@
         font: {
             size: 1.4rem;
         }
-        line-height: 1.4;
-        color: #989898;
+        line-height: 1.5;
+        color: $color-gray;
     }
 
     &__link {
@@ -70,7 +81,7 @@
             color: #1cba9b;
         }
         font: {
-            size: 1.4rem;
+            size: 1.2rem;
         }
         padding: 1rem 2rem;
         display: block;

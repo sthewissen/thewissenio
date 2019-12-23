@@ -33,7 +33,7 @@
 
     &__copyright {
         font: {
-            size: 1.4rem;
+            size: 1.2rem;
         }
     }
 
@@ -48,6 +48,29 @@
 
         &:hover {
            opacity: 0.8;
+        }
+    }
+
+    &__items{
+        display: flex;
+        align-items: center;
+    }
+
+    &__credits {
+        display: flex;
+        flex-direction: row;
+        margin-left: 1rem;
+
+        @media screen and (max-width: $viewport-sm) {
+            margin-top: 2rem;
+        }
+
+        img {
+            height: 5rem;
+        }
+
+        li{
+            padding: 0 .5rem;
         }
     }
 }

@@ -8,16 +8,25 @@ h6 {
 }
 
 h1 {
+  color: $color-dark-gray;
   font: {
     size: 6rem;
     weight: $font-bold;
-    family: $font-nunito-sans;
+    family: $font-arvo;
   }
 }
 h2 {
+  color: $color-dark-gray;
   font: {
     size: 5rem;
     weight: $font-bold;
-    family: $font-nunito-sans;
+    family: $font-arvo;
+  }
+}
+h3{
+  color: $color-dark-gray;
+  font: {
+    weight: $font-regular;
+    family: $font-arvo;
   }
 }

@@ -10,11 +10,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const createVariants = require('parallel-webpack').createVariants;
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const { removeEmpty, propIf, propIfNot } = require('webpack-config-utils');
+const { removeEmpty, propIf } = require('webpack-config-utils');
 
 let baseOptions = {
 	env: process.env.NODE_ENV
@@ -39,7 +38,7 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 
 	output: {
 		path: path.resolve(__dirname, `dist/`),
-		filename: 'js/[name].js?v=[chunkhash]'
+		filename: 'js/[name].js?v=[chunkhash]',
 	},
 
 	module: {
@@ -56,10 +55,10 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 			exclude: /node_modules/,
 			loaders: ['happypack/loader?id=css']
 		}, {
-			test: /\.scss$/,
+			test: /\.scss$/, 
 			exclude: /node_modules/,
 			use: ExtractTextPlugin.extract({
-				use: ['happypack/loader?id=scss']
+				use: ['happypack/loader?id=scss'],
 			})
 		}]
 	},
@@ -93,7 +92,7 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 			id: 'scss',
 			verbose: options.env === 'development',
 			loaders: [
-				'css-loader',
+				{loader: 'css-loader', options: {url: false}},
 				'postcss-loader',
 				'sass-loader',
 			]
@@ -114,14 +113,35 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 		}),
 
 		new ExtractTextPlugin({
-			filename: 'css/[name].css?v=[chunkhash]',
+			filename: 'style.css?v=[chunkhash]',
 			disable: false,
 			allChunks: true
 		}),
 
+		// Copy static files
 		new CopyWebpackPlugin([{
 			from: 'images',
-			to: 'images'
+			to: 'img'
+		}]),
+
+		new CopyWebpackPlugin([{
+			from: 'theme_assets',
+			to: ''
+		}]),
+
+		new CopyWebpackPlugin([{
+			from: 'scripts/lib',
+			to: 'js/lib'
+		}]),
+
+		new CopyWebpackPlugin([{
+			from: 'scripts/custom',
+			to: 'js'
+		}]),
+
+		new CopyWebpackPlugin([{
+			from: 'static',
+			to: 'static'
 		}]),
 
 		new webpack.DefinePlugin({
@@ -129,8 +149,17 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 			'process.env.THEME': JSON.stringify(options.theme)
 		}),
 
+		// Add banner
 		new webpack.BannerPlugin({
-			banner: `Copyright © ${(new Date()).getFullYear()} Yvo Linssen - [chunkhash]`,
+			banner: `
+						Theme Name: Thewissen.io
+						Theme URI: https://thewissen.io
+						Description: The brand-new Thewissen.io theme!
+						Version: 1.0.0
+						Author: Yvo Linssen, Steven Thewissen
+						Author URI: http://yvolinssen.nl/
+						Tags: HTML5, CSS3
+					`,
 			exclude: /(vendor|runtime).js/
 		}),
 
