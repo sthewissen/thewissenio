@@ -63,6 +63,15 @@
         }
         line-height: 1.5;
         margin: 1.4rem 0;
+
+        & a {
+          color: $color-dark-gray;
+          text-decoration: none;
+      
+          &:hover{
+            text-decoration: underline;
+          }
+        }
     }
 
     &__intro {

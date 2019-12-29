@@ -18,9 +18,9 @@
 								<li class="footer__social-link"><a href="https://account.xbox.com/profile?gamertag=devnl" target="_blank"><i class="footer__social-logo fab fa-xbox"></i></a></li>
 							</ul>
 							<ul class="footer__credits">
-								<li><img src="<?php echo get_template_directory_uri(); ?>/img/mvp.png" /></li>
-								<li><img src="<?php echo get_template_directory_uri(); ?>/img/planetxamarin.png" /></li>
-								<li><img src="<?php echo get_template_directory_uri(); ?>/img/snppts.png" /></li>
+								<li><a href="https://mvp.microsoft.com/en-us/PublicProfile/5003274?fullName=Steven%20Thewissen" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/mvp.png" /></a></li>
+								<li><a href="https://www.planetxamarin.com/authors" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/planetxamarin.png" /></a></li>
+								<li><a href="https://www.snppts.dev" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/snppts.png" /></a></li>
 							</ul>
 						</div>
 					</div>

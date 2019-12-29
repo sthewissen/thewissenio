@@ -110,8 +110,8 @@ function thewissenio_conditional_scripts()
 // Load Thewissen.io styles
 function thewissenio_styles()
 {
-    wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
-    wp_enqueue_style('normalize'); // Enqueue it!
+    // wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
+    // wp_enqueue_style('normalize'); // Enqueue it!
 
     wp_register_style('thewissenio', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('thewissenio'); // Enqueue it!
