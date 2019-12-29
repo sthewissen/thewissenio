@@ -16,19 +16,3 @@ body {
        weight: $font-thin;
    }
 }
-
-a.special {
-    transition: background-size .4s ease;
-    background: linear-gradient(to bottom, transparent 62%, #cce5e0 0) center center/0% 75% no-repeat;
-    cursor: pointer;
-    text-decoration: none;
-
-    &:hover {
-        background-size: 100% 100%;
-        text-decoration: none;
-    }
-    
-    &:active {
-        background-size: 80% 100%;
-    }
-}

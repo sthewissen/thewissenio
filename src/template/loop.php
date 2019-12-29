@@ -16,7 +16,10 @@
 				</p>
 			</article>
 			<footer class="blog-block__links">
-				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="blog-block__link"><?php _e( 'Read more...', 'thewissenio' ); ?></a>
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="more-link">
+					<span><?php _e( 'Read more...', 'thewissenio' ); ?></span>
+					<i class="arrow"></i>
+				</a>
 			</footer>
 		</div>
 	</div>
