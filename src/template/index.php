@@ -15,15 +15,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 header__flex">
                         <div class="header__avatar"></div>
-                        
                         <div class="header__intro">
-                            A Xamarin developer, Microsoft MVP and author from the Netherlands with a knack for all things graphical.
-                            nulla quam ut diam. Phasellus nibh tellus, feugiat consequat ligula at, ullamcorper scelerisque diam. Cras vitae dignissim erat. Ut vitae dui vitae sapien porttitor tempus at ac odio. Aliquam vel pellentesque mi. Ut ac vestibulum dolor, et porta ex. Mauris pretium nibh turpis, id dignissim est consectetur sed.
+                            <span class="header__intro__pronounciation" onclick="playAudio('<?php echo get_template_directory_uri(); ?>/static/sounds/sthewissen.mp3')">
+                                <i id="play" class="fas fa-volume-up"></i> /ˈSTIːVƏN TEIːWISːSƐN/
+                            </span>
+                            A software developer from the Netherlands focusing on Xamarin development, crafting fancy UIs, 
+                            tinkering in Azure DevOps and developing REST APIs. I started working with Xamarin in 2014 and have been in 
+                            love with it ever since.
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                        <div class="header__intro">
-                            nulla quam ut diam. Phasellus nibh tellus, feugiat consequat ligula at, ullamcorper scelerisque diam. Cras vitae dignissim erat. Ut vitae dui vitae sapien porttitor tempus at ac odio. Aliquam vel pellentesque mi. Ut ac vestibulum dolor, et porta ex. Mauris pretium nibh turpis, id dignissim est consectetur sed. Maecenas metus tortor, vestibulum eleifend lectus vel, aliquam blandit ante.
+                        <div class="header__intro__secondpart">
+                            When I'm not coding you can find me writing blogs, tweeting, playing soccer, or just having 
+                            some fun and the occasional drink with my friends. If you bring cookies, chocolate and/or a nice beer we can quickly
+                            become best friends. 
                         </div>
                     </div>
                 </div>

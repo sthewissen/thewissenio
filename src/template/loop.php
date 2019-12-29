@@ -10,7 +10,7 @@
 			<article class="blog-block__content">
 				<span class="blog-block__date"><?php the_date(); ?> <?php the_time(); ?></span>
 
-				<h3 class="blog-block__title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+				<h3 class="blog-block__title"><a class="special" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 				<p class="blog-block__intro">
 					<?php thewio_excerpt('thewio_index'); // Build your custom callback length in functions.php ?>
 				</p>

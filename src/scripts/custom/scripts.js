@@ -15,7 +15,10 @@
             'Photoshop tinkerer',
             'Bloke that wrote a book',
             'Xbox & Switch gamer',
-            'Music lyrics sponge'
+            'Music lyrics sponge',
+            'Five a side player',
+            'Rock concert goer',
+            'Aspiring guitarist'
         ];
 		
 		// DOM ready, take it away
