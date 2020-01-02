@@ -1,0 +1,17 @@
+.overview {
+    &__title {
+        &:after {
+            content: "";
+            background: {
+                color: $color-accent;
+            }
+            width: 10rem;
+            height: .3rem;
+            display: block;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        margin-bottom: 3rem;
+    }
+}

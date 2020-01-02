@@ -10,11 +10,11 @@
 				<div class="single-post__tags">
 					<?php the_tags( '<ul class="single-post__tags-list"><li>', '</li><li>', '</li></ul>' ); ?>
 				</div>		
-			</div>	
 
-			<h1 class="single-post__title">
-				<?php the_title(); ?>
-			</h1>
+				<h1 class="single-post__title">
+					<?php the_title(); ?>
+				</h1>
+			</div>
 
 			<div class="single-post__meta">
 				<div class="single-post__meta__author"><?php the_author_posts_link(); ?></div>
