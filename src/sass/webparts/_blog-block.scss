@@ -3,6 +3,11 @@
         width: 100%;
     }
 
+    &__more
+    {
+        margin: 8rem 0 25rem 0;
+    }
+
     &__item {
         margin-bottom: 2.5rem;    
         padding-left: .5rem;
@@ -10,7 +15,8 @@
     }
 
     &__header {
-        height: 25rem;
+        border-radius: .5rem;
+        height: 19rem;
         width: 100%;
         background: {
             color: #eee;
@@ -20,35 +26,21 @@
         position: relative;
     }
 
-    &__category {
-        background: {
-            color: #fff;
-        }
-        padding: .8rem 1.8rem;
-        position: absolute;
-        bottom: 0;
-        left: 2.5rem;
-        text-transform: uppercase;
-        font: {
-            size: 1.2rem;
-        }
-        color: $color-gray;
-
-        a {
-            color: $color-gray;
-        }
-    }
-
     &__content {
         padding: 2.5rem 0 1.5rem 0;
     }
 
     &__date {
-        color: #1cba9b;
+        color: $color-accent;
+        letter-spacing: .2rem;
         text-transform: uppercase;
         font: {
-            size: 1.3rem;
+            size: 1.2rem;
             weight: $font-thin;
+        }
+
+        a {
+            color: $color-accent;
         }
     }
 
@@ -78,7 +70,7 @@
         text-decoration: none;
         color: #fff;
         background: {
-            color: #1cba9b;
+            color: $color-accent;
         }
         font: {
             size: 1.2rem;
@@ -91,8 +83,17 @@
         &:hover {
             text-decoration: none;
             background: {
-                color: #19a589;
+                color: $color-accent;
             }
+        }
+    }
+
+    &__more-link {
+        color: $color-accent;
+        text-transform: uppercase;
+        font: {
+            size: 1.4rem;
+            font-weight: $font-medium;
         }
     }
 }

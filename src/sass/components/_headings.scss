@@ -10,23 +10,26 @@ h6 {
 h1 {
   color: $color-dark-gray;
   font: {
-    size: 6rem;
+    size: 4.8rem;
     weight: $font-bold;
-    family: $font-arvo;
+    family: $font-poppins;
   }
 }
+
 h2 {
   color: $color-dark-gray;
   font: {
-    size: 4rem;
+    size: 3.6rem;
     weight: $font-bold;
-    family: $font-arvo;
+    family: $font-poppins;
   }
 }
+
 h3{
   color: $color-dark-gray;
   font: {
-    weight: $font-regular;
-    family: $font-arvo;
+    size: 2.2rem;
+    weight: $font-bold;
+    family: $font-poppins;
   }
 }

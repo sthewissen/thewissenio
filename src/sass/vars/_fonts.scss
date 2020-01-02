@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Arvo:400,500,600,700,800|Poppins:300,400,500|Cousine:700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700|Cousine:700');
 
-$font-arvo: 'Arvo', sans-serif;
 $font-poppins: 'Poppins', sans-serif;
 $font-cousine: 'Cousine', sans-serif;
 
 //Font weights
 $font-thin: 300;
 $font-normal: 400;
-$font-regular: 500;
-$font-medium: 600;
+$font-regular: 400;
+$font-medium: 500;
+$font-demibold: 600;
+$font-semibold: 600;
 $font-bold: 700;
 $font-extrabold: 800;
 $font-black: 900;

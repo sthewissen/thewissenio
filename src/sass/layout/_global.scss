@@ -10,9 +10,9 @@ html {
 body {
    background: $color-white;
    color: $color-gray;
-   letter-spacing: 0.04em;
    font: {
        family: $font-poppins;
-       weight: $font-thin;
+       weight: $font-regular;
    }
+   line-height: 1.8;
 }

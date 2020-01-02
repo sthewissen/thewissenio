@@ -1,3 +1,20 @@
 .button {
+    background-color: $color-accent;
+    color: $color-white;
+    -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    border-radius: .5em;
+    font: {
+        family: $font-poppins;
+        size: 1.6rem;
+        weight: $font-bold;
+    }
+    padding: 1.3rem 4rem;
 
+    &:hover{
+        background-color: $color-accent-dark;
+        transition: background-color 0.25s ease-in-out;
+        text-decoration: none;
+    }
 }

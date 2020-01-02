@@ -50,9 +50,7 @@
     }
 
     &__title {
-        color: #383838;
         font: {
-            weight: $font-bold;
             size: 6rem;
         }
         margin: 1.5rem 0 3.5rem 0;
@@ -61,13 +59,33 @@
     }
 
     &__subtitle {
-        color: #1cba9b;
+        color: $color-accent;
         text-transform: uppercase;
         line-height: 1.6;
         font: {
             family: $font-poppins;
-            weight: $font-regular;
+            size: 1.6rem;
+            weight: $font-medium;
         }
         letter-spacing: .4rem;
+    }
+
+    &__wave:hover{
+        animation-name: wave-animation;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        transform-origin: 70% 70%;
+        display: inline-block;
+        cursor: none;
+    }
+        
+    @keyframes wave-animation {
+        0% { transform: rotate(  0.0deg); }
+        10% { transform: rotate(-10.0deg); }
+        20% { transform: rotate( 12.0deg); }
+        30% { transform: rotate(-10.0deg); }
+        40% { transform: rotate(  9.0deg); }
+        50% { transform: rotate(  0.0deg); }
+        100% { transform: rotate(  0.0deg); }
     }
 }

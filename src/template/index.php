@@ -5,7 +5,7 @@
             <div class="wrap">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h3 class="header__subtitle">Hi! I'm Steven Thewissen 👋</h3>
+                        <h3 class="header__subtitle">Hi! I'm Steven Thewissen <span class="header__wave">👋</span></h3>
                         <h1 class="header__title">
                             <span id="typewriter"></span>
                             <span class="header__title__static"><br/>from the Netherlands</span>
@@ -50,16 +50,17 @@
 
         <div class="blog-block__grid">
             <div class="wrap">
-                <div class="row">
-                    
-                <?php get_template_part('loop'); ?>
-
+                <div class="row">                    
+                    <?php get_template_part('loop'); ?>
+                </div>
+                <div class="row center-lg blog-block__more">
+                    <a href="" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section section--projects">
+    <!-- <section class="section section--projects">
         <div class="section__header">
             <div class="wrap">
                 <div class="row center-lg">
@@ -70,7 +71,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script src='<?php echo get_template_directory_uri(); ?>/js/lib/typewriter.js'></script>
 
