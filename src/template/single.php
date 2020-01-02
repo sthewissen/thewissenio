@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-	<section class="section section__single">
-        <div class="wrap">
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
+	<section class="section section__single">
+        <div class="wrap">
 		<article id="post-<?php the_ID(); ?>" <?php post_class('single-post__wrapper'); ?>>
 		
 			<div class="row center-lg">
@@ -48,6 +48,17 @@
 			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 			
 		</article>
+        </div>
+	
+	</section>
+	
+	<?php 
+		thewissenio_related_posts(array(
+		'taxonomy' => 'post_tag',
+		'limit' => 3
+		));
+	?>
+
 	<?php endwhile; ?>
 
 	<?php else: ?>
@@ -60,8 +71,7 @@
 
 	<?php endif; ?>
 
-        </div>
-	
-	</section>
+
+	<p>
 
 <?php get_footer(); ?>
