@@ -54,7 +54,7 @@
                     <?php get_template_part('loop'); ?>
                 </div>
                 <div class="row center-lg blog-block__more">
-                    <a href="" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
+                    <a href="<?php echo home_url(); ?>/archive/page/2" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
         </div>

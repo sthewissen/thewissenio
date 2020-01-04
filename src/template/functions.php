@@ -258,7 +258,11 @@ function thewio_pagination()
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
+        'total' => $wp_query->max_num_pages,
+        'before_page_number' => '<span>',
+        'after_page_number'  => '</span>',
+        'prev_text' => '<span>«</span>',
+        'next_text' => '<span>»</span>'
     ));
 }
 
