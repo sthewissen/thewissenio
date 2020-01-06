@@ -17,10 +17,23 @@
         }
         flex: 0 0 15rem;
         margin-right: 5.5rem;
+
+        @media screen and (max-width: $viewport-sm) 
+        {
+            margin-right: 0;
+            margin-bottom: 3rem;
+        }
     }
 
     &__flex {
         display: flex;
+
+        @media screen and (max-width: $viewport-sm) 
+        {
+            flex-direction: column;
+            align-items: center;
+        }
+
     }
 
     &__intro {
@@ -33,6 +46,11 @@
         display: flex;
         flex-direction: column;
 
+        @media screen and (max-width: $viewport-sm) 
+        {
+            margin-bottom: 0;
+        }
+
         &__pronounciation {
             color: $color-dark-gray;
             cursor: pointer;
@@ -40,6 +58,10 @@
             font-weight: $font-bold;
             line-height: 1.4rem;
             margin-bottom: 2rem;
+
+            @media screen and (max-width: $viewport-sm) {
+                text-align: center;
+            }
         }
 
         &__secondpart
@@ -56,6 +78,19 @@
         margin: 1.5rem 0 3.5rem 0;
         letter-spacing: .2rem;
         line-height: 1.3;
+
+        @media screen and (max-width: $viewport-sm) 
+        {
+            font: {
+                size: 2.8rem;
+            }
+        }
+
+        @media screen and (min-width: $viewport-sm) and (max-width: $viewport-md) {
+            font: {
+                size: 3.8rem;
+            }
+        }
     }
 
     &__subtitle {
@@ -68,6 +103,39 @@
             weight: $font-medium;
         }
         letter-spacing: .4rem;
+
+        @media screen and (max-width: $viewport-sm) 
+        {
+            font: {
+                size: 1.2rem;
+            }
+        }
+    }
+
+    &__social {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        @media screen and (max-width: $viewport-sm) {
+            margin-top: 2rem;
+            justify-content: center;
+        }
+    }
+
+    &__social-link {
+        padding: 0 .8rem;
+    }
+
+    &__social-logo {
+        color: $color-gray;
+        font-size: 1.6rem;
+
+        &:hover {
+            transform: scale(1.15);
+            transition: transform 0.25s ease-in-out;
+        }
     }
 
     &__wave:hover{
@@ -88,4 +156,10 @@
         50% { transform: rotate(  0.0deg); }
         100% { transform: rotate(  0.0deg); }
     }
+}
+
+.logo {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    width: 5rem;
 }

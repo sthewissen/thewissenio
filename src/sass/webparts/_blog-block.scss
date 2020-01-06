@@ -5,7 +5,7 @@
 
     &__more
     {
-        margin: 8rem 0 25rem 0;
+        margin: 8rem 0 10rem 0;
     }
 
     &__item {
@@ -24,6 +24,11 @@
             position: center;
         }
         position: relative;
+
+        & a {
+            display: block;
+            height: 100%;
+        }
     }
 
     &__content {

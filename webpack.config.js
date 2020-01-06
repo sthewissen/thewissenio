@@ -194,6 +194,7 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 		nodir: true
 	}).map(file => (
 		new HtmlWebpackPlugin({
+			chunksSortMode: 'dependency',
 			filename: file,
 			template: `template/${file}`,
 			inject: false,

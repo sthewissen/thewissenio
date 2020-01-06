@@ -11,6 +11,7 @@
     &__social {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
         @media screen and (max-width: $viewport-sm) {
             margin-top: 2rem;
@@ -67,7 +68,7 @@
 
     &__items{
         display: flex;
-        align-items: center;
+        justify-content: flex-end;
     }
 
     & li {

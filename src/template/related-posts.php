@@ -4,7 +4,7 @@
         <div class="section__header">
             <div class="wrap">
                 <div class="row center-lg">
-                    <div class="col-lg-7">
+                    <div class="col-lg-7 col-sm-12">
                         <h2 class="section__title"><?php _e( 'Related articles', 'thewissenio' ); ?></h2>
                     </div>
                 </div>

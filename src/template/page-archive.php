@@ -3,6 +3,9 @@
 <section class="section section__overview">
 	<div class="wrap">
 		<div class="row center-lg">
+			<?php include('logo.php'); ?>
+		</div>
+		<div class="row center-lg">
 			<h1 class="overview__title">
 				<?php _e( 'The Archives', 'thewissenio' ); echo single_tag_title('', false); ?>
 			</h1>
@@ -15,8 +18,10 @@
 						query_posts( array( 'posts_per_page' => 6, 'post_status' => 'publish', 'paged' => $paged ) ); 
 					?>
                     <?php get_template_part('loop'); ?>
-                </div>               
-				<?php get_template_part('pagination'); ?>
+                </div>            
+				<div class="row center-lg">   
+					<?php get_template_part('pagination'); ?>
+				</div>
             </div>
         </div>
 	</div>

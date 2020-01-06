@@ -4,7 +4,7 @@
         <div class="header__content">
             <div class="wrap">
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-10 col-sm-12">
                         <h3 class="header__subtitle">Hi! I'm Steven Thewissen <span class="header__wave">👋</span></h3>
                         <h1 class="header__title">
                             <span id="typewriter"></span>
@@ -32,6 +32,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="header__social">
+                            <li class="header__social-link"><a href="https://www.twitter.com/devnl" target="_blank"><i class="header__social-logo fab fa-twitter-square"></i></a></li>
+                            <li class="header__social-link"><a href="https://www.linkedin.com/in/steventhewissen/" target="_blank"><i class="header__social-logo fab fa-linkedin"></i></a></li>
+                            <li class="header__social-link"><a href="https://www.twitch.tv/steventhewissen" target="_blank"><i class="header__social-logo fab fa-twitch"></i></a></li>
+                            <li class="header__social-link"><a href="https://www.instagram.com/sthewissen/" target="_blank"><i class="header__social-logo fab fa-instagram"></i></a></li>
+                            <li class="header__social-link"><a href="https://github.com/sthewissen" target="_blank"><i class="header__social-logo fab fa-github"></i></a></li>
+                            <li class="header__social-link"><a href="https://untappd.com/user/devnl" target="_blank"><i class="header__social-logo fab fa-untappd"></i></a></li>
+                            <li class="header__social-link"><a href="https://account.xbox.com/profile?gamertag=devnl" target="_blank"><i class="header__social-logo fab fa-xbox"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -40,7 +53,7 @@
         <div class="section__header">
             <div class="wrap">
                 <div class="row center-lg">
-                    <div class="col-lg-7">
+                    <div class="col-lg-7 col-sm-12">
                         <h2 class="section__title">Latest blogs</h2>
                         <p class="section__description">I occasionally write about things that interest me or problems I've encountered during my development adventures. These are the chronicles of those experiences.</p>
                     </div>
@@ -72,8 +85,5 @@
             </div>
         </div>
     </section> -->
-
-    <script src='<?php echo get_template_directory_uri(); ?>/js/lib/typewriter.js'></script>
-
 
 <?php get_footer(); ?>

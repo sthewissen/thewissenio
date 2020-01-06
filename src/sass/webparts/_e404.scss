@@ -12,6 +12,11 @@
         & p, & h1, & h2, & h3 {
             margin-left: 5rem;
             margin-right: 5rem;
+
+            @media screen and (max-width: $viewport-sm) {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
         }
 
         & strong {

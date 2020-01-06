@@ -2,7 +2,7 @@
     <div class="blog-block__item">
         <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
             <header class="blog-block__header" style="background-image: url('<?php the_post_thumbnail_url('front-page'); // Declare pixel size you need inside the array ?>')">
-                
+                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"></a>
             </header>
         <?php endif; ?>
         <article class="blog-block__content">

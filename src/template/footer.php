@@ -16,7 +16,8 @@
 								<li class="footer__social-link"><a href="https://github.com/sthewissen" target="_blank"><i class="footer__social-logo fab fa-github"></i></a></li>
 								<li class="footer__social-link"><a href="https://untappd.com/user/devnl" target="_blank"><i class="footer__social-logo fab fa-untappd"></i></a></li>
 								<li class="footer__social-link"><a href="https://account.xbox.com/profile?gamertag=devnl" target="_blank"><i class="footer__social-logo fab fa-xbox"></i></a></li>
-							
+							</ul>
+							<ul class="footer__social">
 								<li class="footer__social-img"><a href="https://mvp.microsoft.com/en-us/PublicProfile/5003274?fullName=Steven%20Thewissen" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/mvp.png" /></a></li>
 								<li class="footer__social-img"><a href="https://www.planetxamarin.com/authors" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/planetxamarin.png" /></a></li>
 								<li class="footer__social-img"><a href="https://www.snppts.dev" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/snppts.png" /></a></li>
@@ -30,7 +31,10 @@
 
 		<?php wp_footer(); ?>
 
-		
+		<script src='<?php echo get_template_directory_uri(); ?>/js/lib/typewriter.js'></script>
+
+		<script src='<?php echo get_template_directory_uri(); ?>/js/lib/library-g.js'></script>
+		<script src='<?php echo get_template_directory_uri(); ?>/js/lib/Morph.js'></script>
 
 		<% for ( let chunkJs in htmlWebpackPlugin.files.chunks ) { %>
 		<% if ( htmlWebpackPlugin.files.chunks[chunkJs].entry != '') { %>

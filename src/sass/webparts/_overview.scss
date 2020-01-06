@@ -1,5 +1,14 @@
 .overview {
     &__title {
+
+        @media screen and (max-width: $viewport-sm) {
+            font: {
+                size: 3rem;
+            }
+            
+            margin: 0 4rem 3rem 4rem;
+        }
+
         &:after {
             content: "";
             background: {
@@ -12,6 +21,7 @@
             margin-top: 3rem;
         }
 
+        text-align: center;
         margin-bottom: 3rem;
     }
 }

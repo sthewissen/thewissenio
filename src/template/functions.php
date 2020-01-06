@@ -26,7 +26,7 @@ if (function_exists('add_theme_support'))
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
 
-    add_image_size('single-page', 850, 575, true); 
+    add_image_size('single-page', 850, 310, true); 
     add_image_size('front-page', 375, 190, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use

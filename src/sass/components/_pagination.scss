@@ -1,15 +1,20 @@
 .pagination {
     margin-top: 8rem;
     margin-bottom: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     
     & .page-numbers {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 5rem;
         width: 5rem;
         border-radius: 2.5rem;
         line-height: 2.5rem;
         text-align: center;
-        margin: 0 .6rem;
+        margin: 0 .6rem 1rem .6rem;
         -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
         -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
         box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
