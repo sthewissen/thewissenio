@@ -90,44 +90,84 @@ function thewissenio_related_posts($args = array()) {
     // default args
     $args = wp_parse_args($args, array(
         'post_id' => !empty($post) ? $post->ID : '',
-        'taxonomy' => 'category',
+        'taxonomy' => 'post_tag',
         'limit' => 3,
         'post_type' => !empty($post) ? $post->post_type : 'post',
         'orderby' => 'date',
         'order' => 'DESC'
     ));
 
-    // check taxonomy
-    if (!taxonomy_exists($args['taxonomy'])) {
-        return;
-    }
+    // // check taxonomy
+    // if (!taxonomy_exists($args['taxonomy'])) {
+    //     return;
+    // }
 
-    // post taxonomies
-    $taxonomies = wp_get_post_terms($args['post_id'], $args['taxonomy'], array('fields' => 'ids'));
+    // // post taxonomies
+    // $taxonomies = wp_get_post_terms($args['post_id'], $args['taxonomy'], array('fields' => 'ids'));
 
-    if (empty($taxonomies)) {
-        return;
-    }
+    // if (empty($taxonomies)) {
+    //     return;
+    // }
 
-    // query
-    $related_posts = get_posts(array(
-        'post__not_in' => (array) $args['post_id'],
-        'post_type' => $args['post_type'],
-        'tax_query' => array(
-            array(
-                'taxonomy' => $args['taxonomy'],
-                'field' => 'term_id',
-                'terms' => $taxonomies
-            ),
-        ),
-        'posts_per_page' => $args['limit'],
-        'orderby' => $args['orderby'],
-        'order' => $args['order']
-    ));
+    // // query
+    // $related_posts = get_posts(array(
+    //     'post__not_in' => (array) $args['post_id'],
+    //     'post_type' => $args['post_type'],
+    //     'tax_query' => array(
+    //         array(
+    //             'taxonomy' => $args['taxonomy'],
+    //             'field' => 'term_id',
+    //             'terms' => $taxonomies
+    //         ),
+    //     ),
+    //     'posts_per_page' => $args['limit'],
+    //     'orderby' => $args['orderby'],
+    //     'order' => $args['order']
+    // ));
 
-    include( locate_template('related-posts.php', false, false) );
+    $related_posts = exe_get_related_posts_by_common_terms($args['post_id'], $args['limit']);
+
+    include(locate_template('related-posts.php', false, false));
 
     wp_reset_postdata();
+}
+
+function exe_get_related_posts_by_common_terms( $post_id, $number_posts = 0, $taxonomy = 'post_tag', $post_type = 'post' ) {
+    global $wpdb;
+
+    $post_id = (int) $post_id;
+    $number_posts = (int) $number_posts;
+
+    $limit = $number_posts > 0 ? ' LIMIT ' . $number_posts : '';
+
+    $related_posts_records = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT tr.object_id, count( tr.term_taxonomy_id ) AS common_tax_count
+             FROM {$wpdb->term_relationships} AS tr
+             INNER JOIN {$wpdb->term_relationships} AS tr2 ON tr.term_taxonomy_id = tr2.term_taxonomy_id
+             INNER JOIN {$wpdb->term_taxonomy} as tt ON tt.term_taxonomy_id = tr2.term_taxonomy_id
+             INNER JOIN {$wpdb->posts} as p ON p.ID = tr.object_id
+             WHERE
+                tr2.object_id = %d
+                AND tt.taxonomy = %s
+                AND p.post_type = %s
+                AND p.post_status = 'publish'
+             GROUP BY tr.object_id
+             HAVING tr.object_id != %d
+             ORDER BY common_tax_count DESC" . $limit,
+            $post_id, $taxonomy, $post_type, $post_id
+        )
+    );
+
+    if ( count( $related_posts_records ) === 0 )
+        return false;
+
+    $related_posts = array();
+
+    foreach( $related_posts_records as $record )
+        $related_posts[] = (int)$record->object_id;
+
+    return $related_posts;
 }
 
 
