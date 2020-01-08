@@ -140,6 +140,11 @@ module.exports = createVariants(baseOptions, variants, (options) => ({
 		}]),
 
 		new CopyWebpackPlugin([{
+			from: 'lib',
+			to: 'lib'
+		}]),
+
+		new CopyWebpackPlugin([{
 			from: 'static',
 			to: 'static'
 		}]),

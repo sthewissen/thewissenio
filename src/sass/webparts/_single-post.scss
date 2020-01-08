@@ -49,13 +49,18 @@
         margin-bottom: 4.5rem;
     }
 
-    &__author{
-        border: .3rem solid $color-white;
-        border-radius: 2.5rem;
+    &__author {
+        & img {
+            border: .3rem solid $color-white;
+            border-radius: 2.5rem;
+            height: 5rem;
+            width: 5rem;
+        }
+
         position: absolute;
+        top: -2.5rem;
         height: 5rem;
         width: 5rem;
-        top: -2.5rem;
     }
 
     &__meta { 
@@ -100,13 +105,13 @@
     &__content {
         font: {
             weight: $font-regular;
-            size: 1.4rem;
+            size: 1.6rem;
         }
         line-height: 1.8;
         max-width: 85rem;
         width: 100%;
 
-        & p, & h1, & h2, & h3 {
+        & p, & h1, & h2, & h3, & h4 {
             margin-left: 5rem;
             margin-right: 5rem;
 
@@ -119,6 +124,10 @@
 
         & strong {
             font-weight: $font-bold;
+        }
+
+        & em {
+            font-style: italic;
         }
 
         & p{
@@ -141,7 +150,7 @@
             }
         }
 
-        & a {
+        & p a, & li a {
             background: linear-gradient(to bottom, transparent 62%, $color-accent-light 0) center 100% no-repeat;
             color: $color-dark-gray;
             cursor: pointer;
@@ -170,11 +179,49 @@
                 style: italic;
             }
             text-align: center;
+            margin-top: -3rem;
+            margin-bottom: 5rem;
+
+            @media screen and (max-width: $viewport-sm) {
+                margin-bottom: 3rem;
+                
+            }
         }
 
-        & h3, & img, & .gist {
+        & h3, & h4 {
             margin-bottom: 2.5rem;
-            margin-top: 2.5rem;
+            margin-top: 5rem;
+
+            @media screen and (max-width: $viewport-sm) {
+                margin-bottom: 1.5rem;
+                margin-top: 2.5rem;
+            }
+        }
+
+        & img, & .gist {
+            margin-bottom: 5rem;
+            margin-top: 5rem;
+
+            @media screen and (max-width: $viewport-sm) {
+                margin-bottom: 2.5rem;
+                margin-top: 2.5rem;
+            }
+
+
+        }
+
+        & .gist {
+
+            font: {
+                family: $font-poppins !important;
+                weight: 400 !important;
+            }
+
+            & .gist-meta a {
+                font: {
+                    weight: 500 !important;
+                }
+            }
         }
 
         & img {

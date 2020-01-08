@@ -36,16 +36,16 @@
     }
 
     &__date {
-        color: $color-accent;
+        color: $color-accent-dark;
         letter-spacing: .2rem;
         text-transform: uppercase;
         font: {
             size: 1.2rem;
-            weight: $font-thin;
+            weight: $font-medium;
         }
 
         a {
-            color: $color-accent;
+            color: $color-accent-dark;
         }
     }
 
@@ -73,7 +73,7 @@
 
     &__link {
         text-decoration: none;
-        color: #fff;
+        color: $color-white;
         background: {
             color: $color-accent;
         }
@@ -94,7 +94,7 @@
     }
 
     &__more-link {
-        color: $color-accent;
+        color: $color-accent-dark;
         text-transform: uppercase;
         font: {
             size: 1.4rem;

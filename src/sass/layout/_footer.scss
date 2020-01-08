@@ -12,13 +12,14 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin-left: 1em;
 
         @media screen and (max-width: $viewport-sm) {
             margin-top: 2rem;
         }
     }
 
-    &__social-link {
+    &__social-link a {
         padding: 0 .8rem;
     }
 

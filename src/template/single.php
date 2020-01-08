@@ -35,12 +35,10 @@
 				<div class="row center-lg single-post__image">
 					<?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
 						<?php the_post_thumbnail('single-page'); // Fullsize image for the single post ?>
-						<?php 
-							$args = array(
-								'class' => 'single-post__author'
-							);
-							echo get_avatar( get_the_author_meta( 'ID' ), 150, null, null, $args); 
-						?>
+
+						<div class="single-post__author">
+							<?php echo get_avatar(get_the_author_meta( 'ID'), 150); ?>
+						</div>
 					<?php endif; ?>
 				</div>
 

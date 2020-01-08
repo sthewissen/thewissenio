@@ -20,6 +20,8 @@
 		<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon-16x16.png">
 		<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/icons/manifest.json">
+		<link rel="preconnect" crossorigin="crossorigin" href="https://www.google-analytics.com">
+		<link rel="preconnect" crossorigin="crossorigin" href="https://github.githubassets.com">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/img/icons/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
@@ -42,8 +44,11 @@ function playAudio(url) {
         <% if (htmlWebpackPlugin.files.chunks[chunkCss].css != '') { %>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/<%= htmlWebpackPlugin.files.chunks[chunkCss].css %>">
         <% } %>
-        <% } %>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<% } %>
+		
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" crossorigin="anonymous" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" crossorigin="anonymous" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" crossorigin="anonymous" rel="stylesheet">
 	</head>
 	<body <?php body_class(); ?>>
 

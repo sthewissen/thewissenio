@@ -94,7 +94,7 @@
     }
 
     &__subtitle {
-        color: $color-accent;
+        color: $color-accent-dark;
         text-transform: uppercase;
         line-height: 1.6;
         font: {
@@ -124,7 +124,7 @@
         }
     }
 
-    &__social-link {
+    &__social-link a {
         padding: 0 .8rem;
     }
 

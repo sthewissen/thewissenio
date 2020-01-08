@@ -26,3 +26,12 @@ h3{
     family: $font-poppins;
   }
 }
+
+h4 {
+  color: $color-dark-gray;
+  font: {
+    size: 1.7rem;
+    weight: $font-bold;
+    family: $font-poppins;
+  }
+}
