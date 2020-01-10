@@ -222,6 +222,10 @@
                     weight: 500 !important;
                 }
             }
+
+            & .gist-data {
+                max-height: 30rem;
+            }
         }
 
         & img {
@@ -260,6 +264,40 @@
                     border: 0;
                 }
             }
+        }
+
+        & blockquote {
+            display: block;
+            border-width: 2px 0;
+            border-style: solid;
+            border-color: $color-light-gray;            
+            padding: 4.5rem 0rem 0.5rem;
+            margin: 5rem 2rem;
+            position: relative;
+            font-size: 1.2rem;
+          
+          &:before {
+            content: '\201C';
+            position: absolute;
+            top: 0em;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: $color-white;
+            width: 3rem;
+            height: 2rem;
+            font: {
+                size:6rem
+            }
+            color: $color-dark-gray;
+            text-align: center;
+          }
+          &:after {
+            content: "\2013 \2003" attr(cite);
+            display: block;
+            text-align: right;
+            font-size: 0.875em;
+            color: $color-accent;
+          }
         }
     }
 
