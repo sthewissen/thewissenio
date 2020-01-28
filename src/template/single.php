@@ -13,8 +13,8 @@
 					<div class="single-post__tags">
 						<?php the_tags( '<ul class="single-post__tags-list"><li>', '</li><li>', '</li></ul>' ); ?>
 					</div>				
-					</div>	
-					<div class="row center-lg">
+				</div>	
+				<div class="row center-lg">
 					<h1 class="single-post__title">
 						<?php the_title(); ?>
 					</h1>			

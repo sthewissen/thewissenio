@@ -22,13 +22,13 @@
                 height: 2.4rem;
                 line-height: 2.4rem;
                 margin: 0 .8rem 1rem .8rem;
-                padding: 0 1.3rem;
 
                 & a {
                     color: $color-accent;
                     text-decoration: none;
                     text-transform: uppercase;
-                    vertical-align: middle;
+                    display: block;
+                    padding: 0 1.3rem;
                 }
 
                 &:hover{
@@ -105,7 +105,7 @@
     &__content {
         font: {
             weight: $font-regular;
-            size: 1.6rem;
+            size: 1.7rem;
         }
         line-height: 1.8;
         max-width: 85rem;
@@ -154,7 +154,7 @@
             background: linear-gradient(to bottom, transparent 62%, $color-accent-light 0) center 100% no-repeat;
             color: $color-dark-gray;
             cursor: pointer;
-            font-weight: $font-medium;
+            font-weight: $font-semibold;
             text-decoration: none;
             overflow-wrap: break-word;
                     
@@ -211,17 +211,13 @@
         }
 
         & .gist {
-
-            font: {
-                family: $font-poppins !important;
-                weight: 400 !important;
-            }
-
             & .gist-meta a {
                 font: {
                     weight: 500 !important;
                 }
             }
+
+            & .blob-code-inner{ font-size: 1.2rem !important; }
 
             & .gist-data {
                 max-height: 30rem;
@@ -234,11 +230,14 @@
         }
 
         & code {
-            color: $color-gray;
+            color: $color-accent-dark;
             font: {
                 family: $font-cousine;
+                size: 1.3rem;
             }
-            padding: .5rem;
+            padding: .5rem .7rem;
+            background-color: $color-accent-light;
+            border-radius: 0.7rem;
         }
 
         & .twitter-tweet {

@@ -39,7 +39,7 @@
     &__intro {
         color: $color-gray;
         font: {
-            size: 1.4rem;
+            size: 1.6rem;
         }
         margin-bottom: 3.5rem;
         line-height: 1.8;
@@ -144,7 +144,7 @@
         animation-iteration-count: infinite;
         transform-origin: 70% 70%;
         display: inline-block;
-        cursor: none;
+        cursor: pointer;
     }
         
     @keyframes wave-animation {

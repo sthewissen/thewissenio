@@ -69,6 +69,13 @@
                 <div class="row center-lg blog-block__more">
                     <a href="<?php echo home_url(); ?>/archive/page/2" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
+                <div class="row center-lg">
+                    <div class="single-post__tags">
+                        <ul class="single-post__tags-list">
+                        <?php wp_list_categories(['taxonomy' => 'post_tag', 'title_li' => '']); ?>
+                        </ul>
+                    </div>				
+                </div>	
             </div>
         </div>
     </section>
