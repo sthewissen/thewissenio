@@ -1,6 +1,23 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<?php 
 
-	<?php get_template_part('loop-post'); ?>
+	$i = 1;
+
+	if (have_posts()): while (have_posts()) : the_post(); ?>
+
+	<?php 
+
+	// if ($i % 4 != 0 && $i % 5 != 0) 
+	// { 
+		get_template_part('loop-post');
+	// }
+	// else
+	// {
+	// 	get_template_part('loop-post-wide');
+	// }
+	
+	$i = $i + 1;
+
+	?>
 
 <?php endwhile; ?>
 

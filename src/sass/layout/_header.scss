@@ -55,6 +55,7 @@
             color: $color-dark-gray;
             cursor: pointer;
             font-family: $font-cousine;
+            font-size: 1.4rem;
             font-weight: $font-bold;
             line-height: 1.4rem;
             margin-bottom: 2rem;
@@ -145,6 +146,10 @@
         transform-origin: 70% 70%;
         display: inline-block;
         cursor: pointer;
+
+        a {
+            text-decoration: none;
+        }
     }
         
     @keyframes wave-animation {

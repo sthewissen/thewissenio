@@ -5,7 +5,7 @@
             <div class="wrap">
                 <div class="row">
                     <div class="col-lg-10 col-sm-12">
-                        <h3 class="header__subtitle">Hi! I'm Steven Thewissen <span class="header__wave">👋</span></h3>
+                        <h3 class="header__subtitle">Hi! I'm Steven Thewissen <span class="header__wave"><a href="https://youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">👋</a></span></h3>
                         <h1 class="header__title">
                             <span id="typewriter"></span>
                             <span class="header__title__static"><br/>from the Netherlands</span>
@@ -67,7 +67,7 @@
                     <?php get_template_part('loop'); ?>
                 </div>
                 <div class="row center-lg blog-block__more">
-                    <a href="<?php echo home_url(); ?>/archive/page/2" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
+                    <a href="<?php echo home_url(); ?>/archive" class="button"><?php _e( 'View older posts', 'thewissenio' ); ?> <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
                 <div class="row center-lg">
                     <div class="single-post__tags">

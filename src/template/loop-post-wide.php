@@ -1,4 +1,4 @@
-<div id="post-<?php the_ID(); ?>" class="blog-block__post col-lg-4 col-sm-12">
+<div id="post-<?php the_ID(); ?>" class="blog-block__post col-lg-6 col-sm-12">
     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="blog-block__item">
         <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
             <header class="blog-block__header" style="background-image: url('<?php the_post_thumbnail_url('front-page'); // Declare pixel size you need inside the array ?>')"></header>
@@ -21,7 +21,7 @@
             ?></span>
             <h3 class="blog-block__title"><?php the_title(); ?></h3>
             <p class="blog-block__intro">
-                <?php thewio_excerpt('thewio_index'); // Build your custom callback length in functions.php ?>
+                <?php thewio_excerpt('thewio_index_long'); ?>
             </p>
         </article>
         <footer class="blog-block__links">

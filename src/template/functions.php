@@ -310,9 +310,14 @@ function thewio_pagination()
 }
 
 // Custom Excerpts
-function thewio_index($length) // Create 20 Word Callback for Index page Excerpts, call using thewio_excerpt('thewio_index');
+function thewio_index($length) // Create 30 Word Callback for Index page Excerpts, call using thewio_excerpt('thewio_index');
 {
-    return 20;
+    return 28;
+}
+
+function thewio_index_long($length) // Create 20 Word Callback for Index page Excerpts, call using thewio_excerpt('thewio_index');
+{
+    return 50;
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using thewio_excerpt('thewio_custom_post');
@@ -326,20 +331,22 @@ function thewio_excerpt($length_callback = '', $more_callback = '')
 {
     global $post;
 
-    // if (function_exists($length_callback)) {
-    //     add_filter('excerpt_length', $length_callback);
-    // }
-
-    // if (function_exists($more_callback)) {
-    //     add_filter('excerpt_more', $more_callback);
-    // }
+    if (function_exists($length_callback)) {
+        add_filter('excerpt_length', $length_callback);
+    }
 
     $output = get_the_excerpt();
     $output = apply_filters('wptexturize', $output);
     $output = apply_filters('convert_chars', $output);
-    // $output = '<p>' . $output . '</p>';
+    
     echo $output;
 }
+
+function new_excerpt_more($more) {
+    return '...';
+}
+
+add_filter('excerpt_more', 'new_excerpt_more');
 
 // Custom View Article link to Post
 function thewio_blank_view_article($more)

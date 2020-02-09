@@ -14,8 +14,8 @@
             <div class="wrap">
                 <div class="row">  
 					<?php 
-						$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-						query_posts( array( 'posts_per_page' => 6, 'post_status' => 'publish', 'paged' => $paged ) ); 
+						//$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+						query_posts( array( 'post_status' => 'publish', 'posts_per_page' => -1)); //, 'posts_per_page' => 12, 'paged' => $paged ) ); 
 					?>
                     <?php get_template_part('loop'); ?>
                 </div>            
