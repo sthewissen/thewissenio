@@ -6,13 +6,13 @@
 
 	<?php 
 
-	// if ($i % 4 != 0 && $i % 5 != 0) 
+	// if ($i != 1 && $i != 2) 
 	// { 
-		get_template_part('loop-post');
+	// 	get_template_part('loop-post');
 	// }
 	// else
 	// {
-	// 	get_template_part('loop-post-wide');
+	 	get_template_part('loop-post-wide');
 	// }
 	
 	$i = $i + 1;

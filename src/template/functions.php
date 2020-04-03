@@ -30,7 +30,9 @@ if (function_exists('add_theme_support'))
     add_image_size('small', 120, '', true); // Small Thumbnail
 
     add_image_size('single-page', 850, 310, true); 
-    add_image_size('front-page', 375, 190, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('front-page', 375, 190, true);
+    add_image_size('front-page-wide', 560, 280, true); 
+    add_image_size('front-page-wide-md', 460, 200, true);  // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
@@ -317,7 +319,7 @@ function thewio_index($length) // Create 30 Word Callback for Index page Excerpt
 
 function thewio_index_long($length) // Create 20 Word Callback for Index page Excerpts, call using thewio_excerpt('thewio_index');
 {
-    return 50;
+    return 100;
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using thewio_excerpt('thewio_custom_post');

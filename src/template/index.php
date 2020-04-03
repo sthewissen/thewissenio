@@ -51,19 +51,19 @@
 
     <section class="section section--blogs">
         <div class="section__header">
-            <div class="wrap">
+            <!-- <div class="wrap">
                 <div class="row center-lg">
                     <div class="col-lg-7 col-sm-12">
                         <h2 class="section__title">Latest blogs</h2>
                         <p class="section__description">I occasionally write about things that interest me or problems I've encountered during my development adventures. These are the chronicles of those experiences.</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="blog-block__grid">
             <div class="wrap">
-                <div class="row">                    
+                <div class="row center-lg">                    
                     <?php get_template_part('loop'); ?>
                 </div>
                 <div class="row center-lg blog-block__more">
@@ -79,18 +79,5 @@
             </div>
         </div>
     </section>
-
-    <!-- <section class="section section--projects">
-        <div class="section__header">
-            <div class="wrap">
-                <div class="row center-lg">
-                    <div class="col-lg-6">
-                        <h2 class="section__title">Projects</h2>
-                        <p class="section__description">I love blogging, but I probably love coding even more. That's why I also work on open source projects and even wrote a book about Xamarin!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 <?php get_footer(); ?>

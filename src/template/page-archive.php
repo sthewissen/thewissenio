@@ -12,7 +12,7 @@
 		</div>
         <div class="blog-block__grid">
             <div class="wrap">
-                <div class="row">  
+                <div class="row center-lg">  
 					<?php 
 						//$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 						query_posts( array( 'post_status' => 'publish', 'posts_per_page' => -1)); //, 'posts_per_page' => 12, 'paged' => $paged ) ); 

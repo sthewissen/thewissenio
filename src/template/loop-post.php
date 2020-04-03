@@ -24,8 +24,5 @@
                 <?php thewio_excerpt('thewio_index'); // Build your custom callback length in functions.php ?>
             </p>
         </article>
-        <footer class="blog-block__links">
-            <span class="blog-block__more-link"><?php _e( 'Read more...', 'thewissenio' ); ?></span>
-        </footer>
     </a>
 </div>

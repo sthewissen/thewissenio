@@ -12,7 +12,7 @@
 		</div>
         <div class="blog-block__grid">
             <div class="wrap">
-                <div class="row">                    
+                <div class="row center-lg">                    
                     <?php get_template_part('loop'); ?>
                 </div>             
 				<div class="row center-lg">     
