@@ -24,7 +24,8 @@
                 'Music lyrics sponge',
                 'Five a side player',
                 'Rock concert goer',
-                'Aspiring guitarist'
+                'Aspiring guitarist',
+                'Public speaking dabbler'
             ];
 
             const instance = new Typewriter('#typewriter', {

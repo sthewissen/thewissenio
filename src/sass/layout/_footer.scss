@@ -28,22 +28,12 @@
         & img {
             height: 3rem;
             margin-right: .8rem;
-
-            &:hover {
-                transform: scale(1.15);
-                transition: transform 0.25s ease-in-out;
-            }
         }
     }
 
     &__social-logo {
         color: $color-light-gray;
         font-size: 1.6rem;
-
-        &:hover {
-            transform: scale(1.15);
-            transition: transform 0.25s ease-in-out;
-        }
     }
 
     &__copyright {
