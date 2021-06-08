@@ -1,0 +1,116 @@
+---
+layout: post
+status: publish
+published: true
+title: Generating your own custom icon font made easy
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 1755
+wordpress_url: https://www.thewissen.io/?p=1755
+date: '2020-03-26 21:40:52 +0100'
+date_gmt: '2020-03-26 20:40:52 +0100'
+categories:
+- Short
+tags:
+- ui
+- tools
+---
+<p><!-- wp:paragraph --></p>
+<p>Using an icon font in your app <a href="https://www.thewissen.io/using-custom-fonts-in-xamarin-forms/" target="_blank" rel="noreferrer noopener" aria-label="has been all the rage (opens in a new tab)">has been all the rage</a> for a while now, but what if the existing ones aren't to your liking? It's pretty easy to make your own if you have vector art available for them. Let's take a peek!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:more --><br />
+<!--more--><br />
+<!-- /wp:more --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Getting some icons</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>The first step is obviously to be in the possession of icons that you want to turn into a font. If you have some experience in vector-based drawing software like Illustrator you could try your hand at designing your own icons. Alternatively, if you have a designer on speed-dial you might already have some resources to start with. Or maybe you already found a set of SVG files on the internet that you want to turn into a custom font (you may want to check on their license though). </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>I will use the icon set below as a sample throughout this post as it is very relevant to the situation the world is in right now. You can get your own copy of this free icon set <a href="https://www.sketchappsources.com/free-source/4331-stop-virus-outline-icons-sketch-freebie-resource.html" target="_blank" rel="noreferrer noopener" aria-label="here (opens in a new tab)">here</a>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter"><img src="https://www.sketchappsources.com/resources/source-image/stop-virus-outline-icons-iconfinder-nandiny.png" alt="Find or create your icons."/><br />
+<figcaption>Step 1: Find or create your icons.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Select the icons you need</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Various tools exist to generate a font for you based on SVG files. I personally enjoy using <a rel="noreferrer noopener" aria-label="IcoMoon (opens in a new tab)" href="https://icomoon.io/app/" target="_blank">IcoMoon</a> a lot so it's the one I will be using in this post. It's free too! The first step is to import our icons, which is done through the big Import icons button at the top left of the screen. You should end up with an <strong>Untitled Set </strong>containing all of your icons.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1787,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img src="/images/posts/image-52-700x245.png" alt="Upload SVG files to IcoMoon." class="wp-image-1787"/><br />
+<figcaption>Step 2: Upload SVG files to IcoMoon.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>Your icons might not have a yellow border around them when you first import them. Using the selection option from the toolbox at the top you can select which icons are included in your font. This toolbox also contains tools to remove, re-order or edit icons. In my sample, I simply selected all of the icons.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Name your icon font</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>By default, your set of icons is called <strong>Untitled Set</strong>. Since that is not the fanciest font name you can come up with we have the option to change that. By clicking the hamburger menu next to our icon set and going to <strong>Properties </strong>we can specify some metadata for our font. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1788,"width":350,"height":352,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img src="/images/posts/image-53-700x703.png" alt="Name your font!" class="wp-image-1788" width="350" height="352"/><br />
+<figcaption>Step 3: Name your font!</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Generating an icon font </h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Our next step is to generate the actual font files which are only a few button clicks away! By clicking the <strong>Generate Font</strong> tab on the bottom we are presented with a view of all of our icons and which Unicode code they will occupy in the font. This screen also allows you to name your icons. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>We can click <strong>Preferences</strong> here to name our font as well. This will be the PostScript name, which you need when you're going to be using this font in a Xamarin app e.g. Click <strong>Download</strong> and your font is good to go!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Storing your configuration</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>If you want to come back to this font at a later stage to add new icons you will need to store its definition somewhere. Or perhaps if your team consists of multiple people that need to access it you want to put this definition into source control. Pop open the hamburger menu next to the icon set again and click on <strong>Download JSON</strong> which will create a JSON definition of your icons and their names and codes. Easy!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1789,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img src="/images/posts/image-54-700x347.png" alt="Download and store your icon font definition." class="wp-image-1789"/><br />
+<figcaption>Step 4: Download and store your icon font definition.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Bonus: Turning your icon font into C# code!</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>So now you have your font, but you want to use it in C#. Luckily, Andrei Nițescu has you covered! He has built <a href="https://andreinitescu.github.io/IconFont2Code/">this awesome tool</a> to turn your icon font into a strongly typed C# class! All you have to do is upload the font file you just downloaded from IcoMoon and it should generate a simple class for you.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>However, the IcoMoon download also contains a CSS file, which allows you to automatically generate correct constant names for your icons based on the names you specified earlier. Truly an awesome tool that you should check out!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1791,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img src="/images/posts/image-55-700x411.png" alt="" class="wp-image-1791"/></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Conclusion</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Creating a custom icon font isn't hard. Once you complete the steps a few times you should be able to (re)generate one in a matter of minutes. Unfortunately, not all SVG files are suited for this process. Some icons might have parts that seem transparent but are actually filled with white. This means that once converted to a font that icon becomes a single-colored blob. If that happens there's not much you can do except change the original SVG file or find a different icon.</p>
+<p><!-- /wp:paragraph --></p>

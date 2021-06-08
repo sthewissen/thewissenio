@@ -1,0 +1,283 @@
+---
+layout: post
+status: publish
+published: true
+title: Using Firebase Analytics in your Xamarin.Forms app
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 1528
+wordpress_url: https://www.thewissen.io/?p=1528
+date: '2020-01-08 22:13:09 +0100'
+date_gmt: '2020-01-08 21:13:09 +0100'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- analytics
+- appcenter
+---
+<p><!-- wp:paragraph --></p>
+<p>We all know and love Microsoft's <a rel="noreferrer noopener" aria-label="AppCenter (opens in a new tab)" href="https://www.appcenter.ms" target="_blank">AppCenter</a> offering when it comes to analytics and crash reporting for our mobile apps. But what if you're one of those people that are interested in even more in-depth usage statistics? Let's take a look at Firebase Analytics to satisfy our need for statistics!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:more --><br />
+<!--more--><br />
+<!-- /wp:more --></p>
+<p><!-- wp:paragraph --></p>
+<p>I've done posts about <a href="https://www.thewissen.io/crash-reporting-analytics-xamarin/" target="_blank" rel="noreferrer noopener" aria-label="analytics (opens in a new tab)">analytics</a> before, but they're pretty outdated at this point. Since this post is one of the bigger ones on here, I will add an index allowing you to quickly jump to the section you need. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><a href="#intro">Introducing Firebase</a></li>
+<li><a href="#prereq">Filling the Firebase prerequisites</a></li>
+<li><a href="#shared">Creating the shared code</a></li>
+<li><a href="#android">Setting up the Android app</a></li>
+<li><a href="#ios">Setting up the iOS app</a></li>
+<li><a href="#debug">Debugging your Firebase analytics</a></li>
+<li><a href="#needtoknow">Additional things you need to know</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="intro"></a>Introducing Firebase</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>If you've ever developed an app for Android you probably have seen this name pop up once or twice. Firebase&nbsp;is Google's mobile platform that helps developers with all sorts of support features which range from sending push notifications to analytics or performance monitoring. When it comes to analytics tracking it also Google's suggested approach for mobile apps since using the Google Analytics UA code for mobile apps is slowly being phased out.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="prereq"></a>Filling the Firebase prerequisites</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>For our mobile app to gather statistics we will first need to register it with Google. We do this by going to the <a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://console.firebase.google.com/" target="_blank">Firebase console</a> and logging in with our Google account. The app we'll be tracking is known as a <em>project</em>, so to make one we hit the <strong>Create project</strong> button.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1567,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img src="https://i0.wp.com/www.thewissen.io/wp-content/uploads/image-25.png?resize=700%2C458&amp;ssl=1" alt="Setting up Firebase." class="wp-image-1567"/><br />
+<figcaption>Adding a project is simple, simply click the button!</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>When creating the project we need to provide a name so provide it with one. I went for <strong>MyLittleProject</strong>. They don't ask for much else, so it should be fairly straightforward from here on out. Do ensure that you are also enabling Google Analytics for this project. The toggle should be enabled by default, so just leave it on. Clicking <strong>Continue</strong> will allow you to pick or create a Google Analytics account so do that as well. Wait while everything is being set up for you and you should end up in the project overview.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1572,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="https://i0.wp.com/www.thewissen.io/wp-content/uploads/image-29.png?resize=700%2C458&amp;ssl=1" alt="Setting up Firebase." class="wp-image-1572"/><br />
+<figcaption>The overview of the project we just created.</figcaption>
+</figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>This page already tells you what to do next, we need to create an iOS and/or Android app. To do so, click one of the buttons as shown in the screenshot above. After filling in some of the details such as our app name and identifier Google will start provisioning and configuring a Google Cloud project for you. When that's done you will be able to download a <code>google-services.json</code> file or a <code>GoogleService-Info.plist</code> file (depending on the platform) which we will need later on. Save it somewhere where you can find it later! The other steps in this wizard can be ignored as we will tackle those later as well.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1583,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="https://i1.wp.com/www.thewissen.io/wp-content/uploads/image-30.png?resize=700%2C458&amp;ssl=1" alt="Setting up Firebase." class="wp-image-1583"/><br />
+<figcaption>Downloading google-services.json is crucial here!</figcaption>
+</figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="shared"></a>Creating the shared code</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>With our prerequisites out of the way, we will continue by creating an interface in our shared project that will represent the actions we want to be able to perform. It can be rather simple since initially, we will only want to log events. I added a method to identify the user as well, which makes us able to easily track the user journey through our app.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/cd46dd005d867aab5ad131353f847566.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>With the interface in place, we can also start implementing this in our pages and/or page models. By using dependency injection or the built-in dependency service we can get an instance of this interface and call all the methods on it. I won't go into detail on how that works since there is <a rel="noreferrer noopener" aria-label="more than enough documentation (opens in a new tab)" href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/dependency-service/introduction" target="_blank">more than enough documentation</a> on that topic.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/7c0cf2c932afc45c3d94faf8a74ecb98.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="android"></a>Setting up the Android app</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>To get up and running on Android we first need to install a few NuGet packages. We will use Plugin.CurrentActivity to easily get the current app's context, so make sure you follow the setup for it as described <a href="https://github.com/jamesmontemagno/CurrentActivityPlugin" target="_blank" rel="noreferrer noopener" aria-label="on its GitHub (opens in a new tab)">on its GitHub</a>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><a rel="noreferrer noopener" aria-label="Xamarin.FireBase.Analytics (opens in a new tab)" href="https://www.nuget.org/packages/Xamarin.FireBase.Analytics" target="_blank">Xamarin.FireBase.Analytics</a></li>
+<li><a rel="noreferrer noopener" aria-label="Xamarin.FireBase.Analytics.Impl (opens in a new tab)" href="https://www.nuget.org/packages/Xamarin.FireBase.Analytics.Impl" target="_blank">Xamarin.FireBase.Analytics.Impl</a></li>
+<li><a rel="noreferrer noopener" aria-label="Plugin.CurrentActivity (opens in a new tab)" href="https://www.nuget.org/packages/Plugin.CurrentActivity" target="_blank">Plugin.CurrentActivity</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>Then, make sure to add the <code>INTERNET</code> permission in the Android manifest file. Also, add the <code>google-services.json</code> file that we downloaded earlier and put it in the root directory of the Android app. To tell the platform that this is a special kind of file we also need to set the build action to <code>GoogleServicesJson</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1586,"width":525,"height":308,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img src="https://i0.wp.com/www.thewissen.io/wp-content/uploads/image-32.png?resize=700%2C410&amp;ssl=1" alt="Set the build action for the google-services.json file." class="wp-image-1586" width="525" height="308"/><br />
+<figcaption>Set the build action for the google-services.json file.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>Now that we've done all the plumbing on the Android side we can start writing some more code. We need to build our Android-specific implementation for <code>IFirebaseAnalyticsService</code>, which looks like this:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/5646e92646e9e0492194d1b7bcc2ee12.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>As you can tell, I've wrapped most methods in a <code>DEBUG</code> compiler directive to ensure that they don't run when I'm debugging. We don't want our developing efforts to interfere with the actual analytics we're gathering in production. Other than that it mainly consists of wrapping methods from the NuGet packages we referenced and passing in the parameters we receive. We can also provide additional parameters to the <code>LogEvent</code> call to provide metadata to it.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="ios"></a>Setting up the iOS app</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Next up is our iOS app, for which we will also start by installing the necessary NuGet package. Yes, it's just the one :)</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><a rel="noreferrer noopener" aria-label="Xamarin.FireBase.iOS.Analytics (opens in a new tab)" href="https://www.nuget.org/packages/Xamarin.FireBase.iOS.Analytics" target="_blank">Xamarin.FireBase.iOS.Analytics</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>This is the point where we add the <code>GoogleService-Info.plist</code> file we downloaded earlier to the project. Ensure the build action is set to <code>BundleResource</code> so iOS knows what to do with it. Since this post is all about analytics it might be worth opening it up quickly and checking whether or not the <code>IS_ANALYTICS_ENABLED</code> is set to <code>true</code> to prevent any errors from occurring later.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1589,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="https://i1.wp.com/www.thewissen.io/wp-content/uploads/image-33.png?resize=700%2C287&amp;ssl=1" alt="Set the build action to BundleResource." class="wp-image-1589"/><br />
+<figcaption>Set the build action to BundleResource.</figcaption>
+</figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>One small additional step that we need to do to set up Firebase on iOS is to initialize it. We do this by adding a line of code to our <code>AppDelegate.cs</code> file. Make sure the line is added before the call to <code>base.FinishedLaunching</code> and you should be good to go.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/3d911f87012667d2ca5a520de4714a49.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>Next up is adding our iOS-specific implementation of the IFirebaseAnalyticsService interface. It's fairly similar to the one we did for Android with only minor differences to the methods we call and their parameters.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/d9a109c3d6ee3fcacff142b314be7a91.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>And that's it! Now it's time to put calls to the LogEvent method wherever you want to track something and you should be able to see your events slowly start dripping into Firebase Analytics. One way to check is by using the StreamView which gives a (semi-)live view of what's happening. However, in the next section, we will also take a look at DebugView which is optimized for debugging.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1591,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="https://i1.wp.com/www.thewissen.io/wp-content/uploads/image-34.png?resize=700%2C413&amp;ssl=1" alt="Using the StreamView on Firebase." class="wp-image-1591"/><br />
+<figcaption>Using the StreamView to see what is currently happening in your app.</figcaption>
+</figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong>Update:</strong> Dylan Berry shared a small piece of info with me regarding additional steps for iOS to get it all running. Check these out if you're running into issues!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-dnt="true"><p lang="en" dir="ltr">I have one piece of advice to add, when debugging in iOS, under Project Options > Run > Configurations > Default, set arguments to "-smth" and extra mlaunch arguments to "--argument=-FIRAnalyticsDebugEnabled" <a href="https://t.co/62v2KLLy2j">pic.twitter.com/62v2KLLy2j</a></p>
+<p>&mdash; Dylan Berry ?? (@dylbot9000) <a href="https://twitter.com/dylbot9000/status/1229132519024492550?ref_src=twsrc%5Etfw">February 16, 2020</a></p></blockquote>
+<p> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="debugging"></a>Debugging your Firebase analytics</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>When sending custom events, which is what you will probably start doing, you need to take into account that it might take a while for them to show. Google informs you of this on the <em>Dashboard</em> page by stating that you will see the first reports within 24 hours.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","width":360,"height":203,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img src="https://media.giphy.com/media/10PcMWwtZSYk2k/giphy.gif" alt="" width="360" height="203"/></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>Who's got time for that? Therefore Google offers a <em>DebugView</em> which has no such delay and is ideal for quickly testing whether or not your setup is actually working. To set it up you will need to do some work though.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>Setting up debugging on Android</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>This involves using the ADB console, which you can find in your Visual Studio for Mac under <strong>Tools > SDK Command Prompt</strong>. On Windows it should reside under <strong>Tools > Android > Android ADB Command Prompt</strong>. Put in the following commands to either enable or disable the DebugView:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>Enable: <code>adb shell setprop debug.firebase.analytics.app <YOUR PACKAGE NAME HERE></code></li>
+<li>Disable: <code>adb shell setprop debug.firebase.analytics.app .none.</code></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>When you run your app in debug mode, you should now see the events start coming in when you look at the DebugView on the Firebase console website. Don't forget to remove the <code>DEBUG</code> compiler directives when you do this though! </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>If it still doesn't work, we can gather verbose logging to see what's going on by executing the following commands in the ADB. You can leave this terminal window open after running the final command and you should see events pop up in it while navigating your app.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/afa4f0e82ac71aceb0d8ea69e372c3e4.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>Setting up debugging on iOS</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>First off, you need to make sure you're testing this on a physical device as the emulators no longer support it. To start using the DebugView on iOS you will need to provide an additional <strong>mtouch</strong> build argument in your iOS project. Go to its properties and add the following to enable/disable the DebugView:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>Enable: <code>--argument=-FIRDebugEnabled</code></li>
+<li>Disable: <code>--argument=-FIRDebugDisabled</code></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>When you've set it up it should look something like this:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1597,"width":700,"height":521,"sizeSlug":"large"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img src="https://i1.wp.com/www.thewissen.io/wp-content/uploads/image-35.png?resize=700%2C521&amp;ssl=1" alt="Enabling Firebase DebugView on iOS." class="wp-image-1597" width="700" height="521"/><br />
+<figcaption>Adding DebugView to your iOS project.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3><a name="needtoknow"></a>Additional things you need to know about</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>In closing, there are a few additional things we need to talk about or common problems you may encounter. I will quickly go over a few of them that I encountered, so you don't have to go through the same issues as I have.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>Other tools might've disabled analytics tracking</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Some tools like Microsoft AppCenter already includes Firebase but forcefully disable analytics tracking. You need to actively re-enable it by adding the following line to your <code>AndroidManifest.xml</code> file within the <code><application></code> tag:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><code><meta-data android:name="firebase_analytics_collection_deactivated" android:value="false" tools:replace="android:value"/></code></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>Missing google_app_id. Firebase Analytics disabled.</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>You probably have included the <code>google-services.json</code> file into your Android project, but the NuGet package is looking for an additional piece of information in the <code>Strings.xml</code> file in your Android resources. To fix this, add the following line to your <code>Strings.xml</code> file:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/8ade9e368eadcef453b120d1698204f6.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>You can find this ID in your <code>google-services.json</code> file, in which it is named <code>mobilesdk_app_id</code>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":1602,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="https://i0.wp.com/www.thewissen.io/wp-content/uploads/image-36.png?resize=700%2C145&amp;ssl=1" alt="Finding the Firebase app ID." class="wp-image-1602"/><br />
+<figcaption>Finding the missing app ID in google-services.json.</figcaption>
+</figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>Event ID restrictions</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>The last thing worth noting is that Google puts some restrictions on the ID of the custom events you're sending over. Here are just a few of the most important ones, but I'm sure I'll be missing some:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>A maximum of <strong>500</strong> custom events.</li>
+<li>Up to <strong>25</strong> custom event parameters per custom event.</li>
+<li>Up to <strong>50</strong> custom event parameters per project, of which only <strong>40 </strong>can be numeric and only 10 can be textual.</li>
+<li>Parameter names can be up to&nbsp;<strong>40</strong>&nbsp;characters long, alphanumeric, with underscores.</li>
+<li>Parameter names must <strong>start</strong> with an alphabetic character.</li>
+<li>You shouldn't use the <strong>reserved</strong> prefixes "firebase", "google_" and "ga_" as a parameter name.</li>
+<li>Parameter text values can be up to&nbsp;<strong>100</strong>&nbsp;characters long.</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>So yeah, there are definitely some restrictions in place here. Nevertheless, I hope this read was helpful for you and you can now start tracking your analytics using Firebase!</p>
+<p><!-- /wp:paragraph --></p>

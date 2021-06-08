@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Checking out Mobile Center
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 734
+wordpress_url: https://www.thewissen.io/?p=734
+date: '2017-08-22 10:25:22 +0200'
+date_gmt: '2017-08-22 08:25:22 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- appcenter
+- azure devops
+---
+<p>I've talked about <a href="https://www.thewissen.io/xamarin-devops-build-agent/" target="_blank" rel="noopener noreferrer">continuously building and deploying</a> your mobile apps using VSTS before. But there's a simpler alternative in the works at Microsoft; <strong>Mobile Center</strong>. So let's have a quick look at it!</p>
+<p><!--more--></p>
+<h3>Getting started with Mobile Center</h3>
+<p>If you're using VSTS it might seem like creating a build can get quite complicated fast. There are loads of tasks to choose from and tying the correct ones together isn't always as easy. <a href="https://mobile.azure.com" target="_blank" rel="noopener noreferrer">Mobile Center</a> has some built-in features that greatly simplify these configuration steps so even my son of 4 weeks old could do it. Ok, maybe not right now but give him some time. With this post I'd like to show you the possibilities of the product so you can decide if it suits your needs. I already touched on the Analytics features <a href="https://www.thewissen.io/crash-reporting-analytics-xamarin/" target="_blank" rel="noopener noreferrer">in a different post</a> so I won't be covering those again.</p>
+<h3>Building your app</h3>
+<p>As soon as you create an app definition in Mobile Center you need to set up a build. To do so you can connect to a few popular repositories such as Github, VSTS and Bitbucket. Either will do just fine and it's great to see that you're not being restricted to just VSTS. After picking a repository type (I picked Github) Mobile Center asks you to locate the project you want to build.</p>
+<p><a href="/images/posts/pickproject-1.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-747 size-full" src="/images/posts/pickproject-1.png" alt="Pick a project to build using Mobile Center" width="1484" height="610" /></a></p>
+<p>The whole process is pretty self-explanatory. Next up we pick a branch and we start configuring the actual build. I enjoy the wizard style setup of this which is great to get people new to this kind of stuff going within minutes. Select a branch and the following dialog will appear which requires you to set up just a few more things. All of these should not come as a surprise to you. Fill in the required fields and hit Save &amp; Build to see your first build in action!</p>
+<p><a href="/images/posts/configbuild.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-750 size-full" src="/images/posts/configbuild.png" alt="A basic build configuration in Mobile Center" width="1650" height="894" /></a></p>
+<p><a href="/images/posts/building.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-752 size-full" src="/images/posts/building.png" alt="Your app is building!" width="1661" height="460" /></a></p>
+<h3>Releasing your app</h3>
+<p>Mobile Center enables you to deploy your app to a variety of different destinations. One way to distribute your app uses distribution groups to separate your testers into logical groups. You can push a release to one or more of these distribution groups which will inform these users that a new version of the app is available. You can even use the Distribution SDK in your app to notify users of a new version right from within the app itself.</p>
+<p><a href="/images/posts/distribute.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-756 size-full" src="/images/posts/distribute.png" alt="Distribute to user groups" width="1918" height="429" /></a></p>
+<p>Another awesome feature (in theory) of Mobile Center is the possibility to deploy to either the App Store or an Intune Company Portal. This feature does not look completely finished yet. There are mentions of deploying to the AppStore but when you add a connection it is nowhere to be seen. The Google Play Store is also absent which leads me to believe this part is not as polished as the rest.</p>
+<h3>Conclusion</h3>
+<p>If setting up builds and releases using VSTS is too complicated for you and you're only looking for a platform that lets you continuously integrate and deploy your mobile apps then Mobile Center is great for you. When you require a bit more control and configuration options you are probably better off sticking with VSTS. However Mobile Center will replace products like Xamarin Insights and HockeyApp and it will gradually get more and more features. It also integrates with Xamarin Test Cloud. If you currently have everything you need set up in VSTS you're probably better off checking out again half a year from now. If you don't have anything set up yet, chances are you will get everything you need from Mobile Center so go check it out!</p>

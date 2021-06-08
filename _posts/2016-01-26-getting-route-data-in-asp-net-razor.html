@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: Getting route data in ASP.NET Razor
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 282
+wordpress_url: http://www.dvolve.org/?p=282
+date: '2016-01-26 23:11:45 +0100'
+date_gmt: '2016-01-26 22:11:45 +0100'
+categories:
+- Code
+tags:
+- ".net"
+---
+<p>When developing a web app using ASP.NET MVC you sometimes come across to make decisions based on the current page. A good example of this is when you're using Bootstrap and you want to add "active" classes to certain menu elements. You can find out where you are using the RouteData dictionary object. This contains the current area, action, controller among others.<!--more--> I personally use the extension method below to figure out where I am in my Razor pages. Some usage samples can also be found below.</p>
+<pre class="lang:html"><!-- Matches everything in the Dashboard controller, regardless of action or area --></pre>
+<p>&nbsp;</p>
+<ul>
+<ul>
+<li class="@(ViewContext.RouteData.Contains("><!-- Matches everything in the Dashboard controller, within the Admin area --></li>
+</ul>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li class="@(ViewContext.RouteData.Contains("><!-- Matches every Index action, regardless of controller or area --></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ul>
+<li class="@(ViewContext.RouteData.Contains("><!-- Can also chain them as needed since the method returns a boolean --> <!-- Matches every New and Edit action, regardless of controller or area --></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>And here's the gist of the actual extension:</p>
+<p><script src="https://gist.github.com/sthewissen/9efe2865978a0fe09581.js"></script></p>

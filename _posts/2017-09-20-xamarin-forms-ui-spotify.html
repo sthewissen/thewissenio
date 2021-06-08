@@ -1,0 +1,106 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Creating a good-looking Xamarin Forms UI: Spotify'
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 980
+wordpress_url: https://www.thewissen.io/?p=980
+date: '2017-09-20 12:14:14 +0200'
+date_gmt: '2017-09-20 10:14:14 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- ui
+---
+<p>It seems like people really like this kind of content, so I decided to keep it up for now. This is the third instalment in this series already and this time we're going to be taking a look at the&nbsp;<strong>Spotify</strong> UI!</p>
+<p><!--more--></p>
+<h3>Previous posts in this series</h3>
+<p>In case &nbsp;you missed it here are the links to the previous posts in this series:</p>
+<ol>
+<li><a href="https://www.thewissen.io/xamarin-forms-ui-twitter/">Creating a good-looking Xamarin Forms UI: Twitter</a></li>
+<li><a href="https://www.thewissen.io/xamarin-forms-ui-runkeeper/">Creating a good-looking Xamarin Forms UI: Runkeeper</a></li>
+<li>Creating a good-looking Xamarin Forms UI: Spotify (this post)</li>
+</ol>
+<h3>Crafting the Spotify UI in Xamarin Forms (iOS)</h3>
+<p>When looking at the main screen of the Spotify app on iOS there are a few notable things happening:</p>
+<ul>
+<li>Horizontal scroll views containing the album covers / playlist covers.</li>
+<li>A translucent navigation bar that blurs the content below it.</li>
+</ul>
+<p><a href="/images/posts/comparison-ios1-1.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-993 size-full" src="/images/posts/comparison-ios1-1.jpg" alt="Spotify UI - Startscreen in iOS comparison" width="1800" height="1499" /></a></p>
+<p><strong>The song/playlist/album scroller</strong></p>
+<p>The out of the box <code>ScrollView</code> in Xamarin Forms is not a bindable control. What we're looking to create is a control that we can bind data to and has the ability to be templated. While it doesn't take a whole lot of code to create this there is a ready-made solution out there in the form of <a href="https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms/Controls/TLScrollView.cs" target="_blank" rel="noopener noreferrer">Fabio Cozzolino's TLScrollView</a>. It only takes a few lines of XAML code to create the necessary template:</p>
+<p><script src="https://gist.github.com/sthewissen/2b346405839c4d5ca0081c7dd2b2e973.js"></script></p>
+<p><a href="/images/posts/translucent-1.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-998 size-full" src="/images/posts/translucent-1.jpg" alt="" width="900" height="500" /></a></p>
+<p><strong>Translucent navigation bar</strong></p>
+<p>The translucent <code>NavigationBar</code> takes a bit more effort and we fix that by using a custom renderer. We start by removing any background images and shadow images from the <code>NavigationBar</code> instance and set it to be translucent. When that is done we add an instance of a <code>UIVisualEffectView</code> to the back of our <code>NavigationBar</code>. This is a native <code>UIView</code> that can give one of a few effects to another <code>UIView</code>. In this case we use the <code>UIBlurEffect</code> which blurs whatever passes through our navigation bar.</p>
+<p><script src="https://gist.github.com/sthewissen/30e9b9a620157177fed880617def4a41.js"></script></p>
+<h3>Creating the player UI for iOS</h3>
+<p>Moving on to the audio player screen we once again see a few things of note:</p>
+<ul>
+<li>A blurred version of the album cover on the background</li>
+<li>A slider indicating song progress</li>
+<li>A custom title in the navigation bar with a hidden status bar</li>
+</ul>
+<p><a href="/images/posts/comparison-ios2.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1000 size-full" src="/images/posts/comparison-ios2.jpg" alt="Spotify UI - Player screen in iOS comparison" width="1800" height="1499" /></a></p>
+<p><strong>Blurred fullscreen background</strong></p>
+<p>To create the blurred background we only need one line of code because we can leverage something Xamarin calls <a href="https://developer.xamarin.com/guides/xamarin-forms/platform-features/platform-specifics/" target="_blank" rel="noopener noreferrer">platform specifics</a>. This is a collection of cross-platform implementations of platform specific functionalities. They're yet another great tool for cross-platform developers to use besides <em>Effects</em> and <em>Custom Renderers</em>. One of those platform specifics <a href="https://blog.xamarin.com/bringing-platform-specific-functionality-to-xamarin-forms-apps/" target="_blank" rel="noopener noreferrer">is a blur effect</a> which gets applied to the cover image that is contained in a fullscreen <code>AbsoluteLayout</code>.</p>
+<p><script src="https://gist.github.com/sthewissen/5333225fb02e6934b3b8f8e241799e82.js"></script></p>
+<p><strong>Audio progress slider</strong></p>
+<p>The audio progress slider is a custom version of the existing <code>Slider</code> control. It is bound to the song length and is fully functional in this app. As soon as you press the play button a dummy timer ticks each second and updates the slider. Even scrolling through your song works like a charm! The only thing it doesn't do is produce some actual sound. Its look and feel is entirely controlled by a custom renderer.</p>
+<p><script src="https://gist.github.com/sthewissen/68d42598c9ec2087f6b94e04e30ed913.js"></script></p>
+<p><strong>Custom title view</strong></p>
+<p>The custom title view is added by overriding the <code>WillMoveToParentViewController</code> method in the custom <code>PageRenderer</code>. From here we can access the <code>TitleView</code> of the navigation bar which we can add custom content to. By creating a custom implementation of <code>ContentPage</code> and adding a bindable <code>Subtitle</code> property we can set these titles from our shared code.</p>
+<p><script src="https://gist.github.com/sthewissen/e8ed793749d06fd68271f108948b31ee.js"></script></p>
+<h3>Crafting the Spotify UI in Xamarin Forms (Android)</h3>
+<p>It feels like I might be becoming a broken record that keeps on repeating itself but on Android things were a bit more difficult. I tried styling both the navigation bar and the tab bar to give them a custom font but it wasn't meant to be. The amount of effort it takes to pull this off doesn't weigh up to the benefits. So what did I do?</p>
+<ul>
+<li>Horizontal scroll views containing the album covers / playlist covers.</li>
+<li>A tab bar located at the bottom of the screen.</li>
+<li>A custom title view that is only visible on Android.</li>
+</ul>
+<p><a href="/images/posts/comparison-droid1.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1012 size-full" src="/images/posts/comparison-droid1.jpg" alt="The Spotify UI on Xamarin Forms" width="1800" height="1499" /></a></p>
+<p><strong>Horizontal scroll view with album covers</strong></p>
+<p>Since we already created a horizontal <code>ScrollView</code> for iOS we simply reuse it here for Android. The only thing we need is a custom renderer to disable the scrollbars and trigger our custom rendering.</p>
+<p><strong>Custom navigation bar</strong></p>
+<p>Like I said before in this post the Android navigation bar is a tough one to style when you want a custom font or alter the <code>TextView</code> in any way. Even when asking for help online the comment I got back most was "just create your own bar and hide the default one". That's exactly what I did. On Android I hid the <code>NavigationBar</code>&nbsp;and replaced it with a custom bar:</p>
+<p><script src="https://gist.github.com/sthewissen/fe0e6c35765d8b3aeef6888b4d0a0bba.js"></script></p>
+<p><strong>Functioning tab bar at the bottom of the screen</strong></p>
+<p>The out-of-the-box tab bar on Android sits at the top. There are numerous ways to implement a custom tab bar on the bottom but I went with a NuGet package called <a href="https://github.com/thrive-now/BottomNavigationBarXF" target="_blank" rel="noopener noreferrer">BottomNavigationBarXF</a>&nbsp;that is a simple drop-in custom <code>TabbedPage</code> that renders the bar at the bottom on Android and renders as a normal <code>TabbedPage</code> on iOS. Since I'm using FreshMvvm it took a bit more effort, but if you're using a simple <code>TabbedPage</code> it's a drop-in replacement.</p>
+<h3>Creating the player UI for Android</h3>
+<p>The player on Android has a lot of nuances that make it different from the iOS version. The numbers representing the current song time are situated next to the slider instead of above it. The navigation part also closely matches the iOS version which means that I immediately gave up trying to style the navigation bar on this screen as well and went for a custom bar instead.</p>
+<ul>
+<li>Blurred background image to match the iOS look</li>
+<li>Custom navigation bar containing the titles and buttons</li>
+</ul>
+<p><a href="/images/posts/comparison-droid2.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1017 size-full" src="/images/posts/comparison-droid2.jpg" alt="Spotify UI comparison" width="1800" height="1499" /></a></p>
+<p><strong>Blurred background image</strong></p>
+<p>When you look around online you will find a lot of solutions using <a href="https://developer.android.com/guide/topics/renderscript/compute.html" target="_blank" rel="noopener noreferrer">Renderscript</a>&nbsp;which is perfectly usable here as well. Adam Kemp has one up on <a href="https://github.com/TheRealAdamKemp/BlurredImageTest/blob/master/Droid/BlurredImageRenderer.cs" target="_blank" rel="noopener noreferrer">his Github</a> that inspired the solution I used here. The only caveat it has is that it only supports a maximum blur radius of 25. This is not enough for the effect we want to achieve here so a different solution was needed. What I ended up doing is resizing the actual image to become smaller losing a lot of detail in the process and then sizing it back up again. Applying the maximum blur amount to this far less detailed version of the image gave the desired effect!</p>
+<p><script src="https://gist.github.com/sthewissen/40ff784fd68fbb8e0651cd4d9953b70c.js"></script></p>
+<p><strong>Custom navigation bar</strong></p>
+<p>We once again hide the existing <code>NavigationBar</code> and replace it with our own copy. Nothing too fancy going on here, just a simple piece of XAML that is only visible on Android.</p>
+<p><script src="https://gist.github.com/sthewissen/eee9fe6e52971e6a81d8d1258b4e6b17.js"></script></p>
+<h3>Conclusion</h3>
+<p>This one actually proved quite a challenge especially the fact that navigation bars seem to be hard to style on both platforms. I struggled with this on the player screen where I couldn't seem to get that translucent navigation bar on iOS going. It took some time to figure out and I would be lying if I said that I didn't find the solution by some hit and miss programming. On Android I eventually just gave up and rolled my own wannabe navigation bars.</p>
+<p>I know these are not perfect copies but they aren't meant to be in the first place. This series is first and foremost still a testament to what you can achieve using the techniques that Xamarin Forms puts at your disposal and to show that you're only limited by either your imagination or the amount of effort you want to put into making your app look good. It takes some tinkering but I'm pretty sure that that's not different compared to building the app in either the native languages or the Xamarin.Android/iOS platforms.</p>
+<p>Since this is the third instalment in the series and I want to keep my content fresh I would like to pose the question if people still want to see this kind of content. Let me know in the comments or reach out to me on Twitter if you like this kind of stuff or if you have ideas about which app UI to tackle next.</p>
+<h3>Code &amp; tools</h3>
+<p>You can find the code here: <a href="https://github.com/sthewissen/KickassUI.Spotify" target="_blank" rel="noopener noreferrer">https://github.com/sthewissen/KickassUI.Spotify</a></p>
+<p>The following tools were used to create this app:</p>
+<ul>
+<li>FreshMvvm &ndash; Simple MVVM framework &ndash;&nbsp;<a href="https://github.com/rid00z/FreshMvvm" target="_blank" rel="noopener noreferrer">https://github.com/rid00z/FreshMvvm</a></li>
+<li>BottomNavigationBarXF - A bottom tabbar for Android - <a href="https://github.com/thrive-now/BottomNavigationBarXF" target="_blank" rel="noopener noreferrer">https://github.com/thrive-now/BottomNavigationBarXF</a></li>
+<li>Fody - Framework that the PropertyChanged Fody weaver is built on -&nbsp;<a href="https://github.com/Fody" target="_blank" rel="noopener noreferrer">https://github.com/Fody</a></li>
+<li>Fody PropertyChanged - Handles property changed events, ideal for MVVM -&nbsp;<a href="https://github.com/Fody/PropertyChanged" target="_blank" rel="noopener noreferrer">https://github.com/Fody/PropertyChanged</a></li>
+<li>LiveXAML &ndash; Live simulator updates for your XAML code &ndash;&nbsp;<a href="http://www.livexaml.com" target="_blank" rel="noopener noreferrer">http://www.livexaml.com</a></li>
+</ul>

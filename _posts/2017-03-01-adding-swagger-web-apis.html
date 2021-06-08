@@ -1,0 +1,59 @@
+---
+layout: post
+status: publish
+published: true
+title: Adding some Swagger to your Web APIs
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 445
+wordpress_url: http://www.dvolve.org/?p=445
+date: '2017-03-01 16:22:00 +0100'
+date_gmt: '2017-03-01 15:22:00 +0100'
+categories:
+- Code
+tags:
+- ".net"
+---
+<p>In a Web API project I recently started working on I found that testing it using a tool like Postman works pretty well, but having to type out all your test requests can become quite tedious. That's about the time&nbsp;Swagger and Swashbuckle came along to play!<!--more--></p>
+<p>Swagger is a JSON oriented description language for your REST web services. This specification has been standardised in the OpenAPI Specification (OAS). There are loads of tools being built upon the Swagger framework that use this description language and one of the easiest to start off with is Swagger-UI. This adds an endpoint to your application listing all the available operations in your API project and lets you test them directly from the same page. No more manual labor typing all your requests into a tool like Postman needed! Swashbuckle is ASP.NET version of this tooling and features a built in Swagger generator for ASP.NET Web API projects along with&nbsp;middleware to expose the generated Swagger as JSON endpoints and middleware to expose a Swagger-UI that's powered by those endpoints.</p>
+<h3>So how do I get this?</h3>
+<p>Quite simple actually, follow these steps :)</p>
+<ol>
+<li>Install the standard Nuget package (currently pre-release) into your ASP.NET Core application.
+<pre><code>Install-Package Swashbuckle.AspNetCore -Pre</code></pre>
+</li>
+<li>In the <em>ConfigureServices</em> method of <em>Startup.cs</em>, register the Swagger generator, defining one or more Swagger documents.
+<pre>services.AddMvc();
+
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Info { Title = "Unicorns API", Version = "v1" });
+});</pre>
+</li>
+<li>Ensure your API actions and non-route parameters are decorated with explicit "Http" and "From" bindings. <em>NOTE: If you omit the explicit parameter bindings, the generator will describe them as "query" params by default.</em>
+<pre class="">[HttpPost]
+public void Create([FromBody]Product product)
+...
+
+[HttpGet]
+public IEnumerable Search([FromQuery]string keywords)
+...</pre>
+</li>
+<li>In the <em>Configure</em> method, insert middleware to expose the generated Swagger as JSON endpoint(s)
+<pre>app.UseSwagger();</pre>
+</li>
+<li>Optionally insert the swagger-ui middleware if you want to expose interactive documentation, specifying the Swagger JSON endpoint(s) to power it from.
+<pre>app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Unicorns API v1");
+});</pre>
+</li>
+</ol>
+<p>Now you can restart your application and check out the auto-generated, interactive docs at "/swagger" and it should look something like the following!</p>
+<p><a href="/images/posts/swagger.png"><img class="img-responsive aligncenter wp-image-456" src="/images/posts/swagger-1024x599.png" alt="swagger" width="600" height="351" /></a></p>

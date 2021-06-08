@@ -1,0 +1,59 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Xamarin and DevOps: Deploying to HockeyApp'
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 709
+wordpress_url: https://www.thewissen.io/?p=709
+date: '2017-07-20 17:20:02 +0200'
+date_gmt: '2017-07-20 15:20:02 +0200'
+categories:
+- Code
+tags:
+- azure devops
+---
+<p>In the previous articles in this series we set up our CI builds and versioned our app. Now we need to be talking about distribution. This is a vital part of any DevOps pipeline. In this blogpost we will be deploying our app to the HockeyApp platform which means it can be distributed to testers and stakeholders alike!<br />
+<!--more--></p>
+<h3>Other articles in this series</h3>
+<p>Make sure to&nbsp;check out some of the other articles in this series!</p>
+<ol>
+<li><a href="https://www.thewissen.io/xamarin-devops-build-agent/">The build agent</a></li>
+<li><a href="https://www.thewissen.io/xamarin-devops-android-ci/">Setting up your Android CI</a></li>
+<li><a href="https://www.thewissen.io/xamarin-devops-ios-ci/">Setting up your iOS CI</a></li>
+<li><a href="https://www.thewissen.io/xamarin-devops-versioning/">Versioning your app</a></li>
+<li>Deploying to HockeyApp (this post)</li>
+</ol>
+<h3>Releasing your app into the wild</h3>
+<p>In a continuous integration scenario you will most likely want to continuously release as well. Gathering feedback from your testers quickly is essential in an Agile environment. As soon as you merge code into your master branch you want to be able to get it to your testers. This is what we'll be trying to achieve in this post using Microsoft's HockeyApp tooling. The first thing we need to do is create an account <a href="https://www.hockeyapp.net" target="_blank" rel="noopener noreferrer">over at HockeyApp</a>. When you've done that you can start making an awesome release pipeline!</p>
+<p>When you login to HockeyApp you will see a list of all the apps you've registered there. Let's start off by creating a new app which we will be automatically releasing. To do so hit the New App button and either upload a binary of your app (which you can get from your VSTS builds that we defined in previous steps) or hit <em>"Create the app manually"</em> to fill in the required fields.</p>
+<p><a href="/images/posts/uploadapp.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-713 size-full" src="/images/posts/uploadapp.png" alt="Upload your app to HockeyApp" width="548" height="355"></a></p>
+<p>After successfully adding an app you will be presented with the App overview screen. From here you can add users that can test your app. I won't go into much detail on this part because it's pretty self-explanatory. What I do want to point your attention towards is the <strong>App Id</strong> which you will need to copy. We are going to need that later when we create our build in VSTS.</p>
+<p><a href="/images/posts/myapp.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-716 size-semi-large" src="/images/posts/myapp-700x132.png" alt="Our newly created app" width="700" height="132"></a></p>
+<h3>Configuring the release in VSTS</h3>
+<p>Next up we're going to be moving over to VSTS. Navigate to your project and click the <strong>Releases</strong> tab. <strong>Create a new release definition</strong> and base it on the <strong>Empty definition template</strong>. There is no built-in HockeyApp template but since it's pretty easy to create the definition we don't need one either.</p>
+<p><a href="/images/posts/newrelease.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-719 size-semi-large" src="/images/posts/newrelease-519x570.png" alt="Creating a release definition in VSTS" width="519" height="570"></a></p>
+<p>After selecting the template VSTS asks you to select a <strong>Project</strong> and a <strong>Source Build Definition</strong>. We created a build definition for Android and iOS in previous posts in this series and can re-use those here. Also make sure that you check the <strong>Continuous deployment</strong> checkbox. This is the magic ticket to total integration of your CI and CD pipelines.</p>
+<p><a href="/images/posts/pickbuild.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-720 size-semi-large" src="/images/posts/pickbuild-515x570.png" alt="Pick a project and build" width="515" height="570"></a></p>
+<h3>Configuring HockeyApp in our release definition</h3>
+<p>When the definition is created you get an environment as well which you can rename to suit your needs which I renamed to <em>My Android CI</em> and <em>HockeyApp</em>. Click on the environment and you should be able to add tasks.</p>
+<p><a href="/images/posts/namebuild.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-721 size-semi-large" src="/images/posts/namebuild-700x245.png" alt="Name your build and environment" width="700" height="245"></a></p>
+<p>We're going to add 1 task. Click on the <strong>Add Tasks</strong> button and search for the <strong>HockeyApp</strong> task which should be in the <strong>Deploy</strong> category. Hit <strong>Add</strong> and once it's added click the <strong>Close</strong> button. Click on the task you just added to configure it.</p>
+<p><a href="/images/posts/addtask.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-723 size-semi-large" src="/images/posts/addtask-565x570.png" alt="Add the HockeyApp task" width="565" height="570"></a></p>
+<p>When configuring there are a few field that you are required to fill. Let's start with the <strong>App Id</strong> which should be the same App Id we copied over from HockeyApp in a previous step. To tell VSTS what files to send over to HockeyApp we also fill the <strong>Binary File Path</strong> field. For an Android build you can put <code>**/*.apk</code> in there which basically tells VSTS to look for any APK files coming out of your CI Build. For iOS you can set this to <code>**/*.ipa</code>. Also set the <strong>Symbols Path</strong> to <code>**/*.</code>dSYM for iOS if you want to publish these to HockeyApp.</p>
+<p><a href="/images/posts/taskfields.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-725 size-semi-large" src="/images/posts/taskfields-700x478.png" alt="Creating a HockeyApp task" width="700" height="478"></a></p>
+<p>Additionally you can define if your users need to be notified of a new release and if it's a mandatory release by checking the checkboxes. The <strong>Download Restrictions</strong> section enables you to target a specific audience. You can do this by defining <strong>Distribution Group</strong>s in HockeyApp. Set these values to only target a subset of users with a release.</p>
+<h3>Linking HockeyApp to VSTS</h3>
+<p>As you may have noticed I glanced over one field in the HockeyApp task definition. The HockeyApp connection field. You will need to connect your VSTS instance to your HockeyApp account so these two systems can exchange information. Hit the <strong>Add</strong> button behind the field and a popup will appear asking you to provide a <strong>Name</strong>, <strong>Server URL</strong> and <strong>API Token</strong>. The <strong>Server URL</strong> comes pre-filled and <strong>Name</strong> can basically be anything you want it to be.</p>
+<p><a href="/images/posts/addconnection.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-728 size-full" src="/images/posts/addconnection.png" alt="Connecting VSTS and HockeyApp" width="582" height="318"></a></p>
+<p>To create an API Token you can visit the <a href="https://rink.hockeyapp.net/manage/auth_tokens" target="_blank" rel="noopener noreferrer">API Tokens page in HockeyApp</a>. Here you can define a global token or one specific to your current app. After you've created your token you can copy it over to VSTS and save the connection. Don't forget to <strong>Save</strong> the VSTS release definition itself and you should be good to go. Time to queue a new build and watch the release magic happen!</p>
+<p><a href="/images/posts/createtoken.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-729 size-semi-large" src="/images/posts/createtoken-700x375.png" alt="Create an API Token" width="700" height="375"></a></p>
+<h3>Conclusion</h3>
+<p>This post scratched the surface of creating a release definition to deploy your app to HockeyApp. You can add additional triggers on specific branches of your project and there are a lot more tasks available to add to your definition if you also need to release additional infrastructure such as databases when the app is released. There is much more to discover but this should at the very least give you a working Continuous Deployment pipeline for your Xamarin app!</p>

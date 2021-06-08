@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: Uninstalling a stubborn Windows 8.1 app
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 91
+wordpress_url: http://www.dvolve.org/?p=91
+date: '2015-03-19 17:14:00 +0100'
+date_gmt: '2015-03-19 16:14:00 +0100'
+categories:
+- Code
+tags:
+- ".net"
+---
+<p>Today we came across the issue that one of our customers' IT specialists received a strange message while&nbsp;trying to install a new build of one of our apps.<!--more--></p>
+<p>He was installing the app on a Windows 8.1 tablet using side-loading, but the installer&nbsp;said&nbsp;that an app with the same ID was already installed. The user mentioned he had uninstalled the&nbsp;previous version(s) as he had done with 10+ other tablets but this particalur one was giving him a headache. The message itself wasn't&nbsp;really clear&nbsp;though. It just said that an app (identified by a guid, a version number and some additional mumbo jumbo) matching the app he&nbsp;was trying to install was&nbsp;already installed and would need to be uninstalled first. Seeing as how there was no trace of any remnants of the uninstall it was time for me to dive under the hood and see what was going on. Step one: start&nbsp;PowerShell (as an administrator).</p>
+<h3>Finding the troublesome app</h3>
+<p>Let's start by searching which app is giving us a headache. This is done by entering&nbsp;the <code>Get-AppxPackage</code> command. This gives you a list of all the apps that are currently installed. This is likely to be quite&nbsp;a long list. Somewhere in there you will find the an app with the same name as the app you want to uninstall. I guess finding it is the hardest part.</p>
+<p><img class="img-responsive alignnone size-full wp-image-92" src="/images/posts/get-package.jpg" alt="get-package" width="676" height="107" /></p>
+<p>To help locating an app in the huge list of installed apps you can filter said list using&nbsp;the command <code>Get-AppxPackage &ndash;Name *Some part of the name*</code>. This returns only apps matching your criteria. Powershell lists a lot of properties for each of the apps you have installed. The property you're after is <code>PackageFullName</code>&nbsp;which&nbsp;is the one that&nbsp;we will use to remove the package.</p>
+<h3>Removing the app forever</h3>
+<p>Now that you've identified the app you want to remove it's time to say your goodbyes. Type <code>Remove-AppxPackage</code> with the full package name that you found in the previous step. As a sample I used <code>Remove-AppxPackage Microsoft.ZuneMusic_2.6.672.0_x64__8wekyb3d8bbwe &ndash;confirm</code>, because well... Who needs something Zune related?</p>
+<p><a href="/images/posts/zuneapp1.jpg"><img class="img-responsive alignnone size-full wp-image-97" src="/images/posts/zuneapp1.jpg" alt="zuneapp" width="995" height="271" /></a></p>
+<p>Adding the&nbsp;confirm parameter means that you will be given a confirmation message to check&nbsp;if you're 100% sure you want to uninstall the app. Hitting the <code>Y</code> button will uninstall it and you can continue re-installing the newer version.</p>

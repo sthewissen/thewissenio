@@ -1,0 +1,127 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Creating a good-looking Xamarin Forms UI: Runkeeper'
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 855
+wordpress_url: https://www.thewissen.io/?p=855
+date: '2017-09-05 11:34:52 +0200'
+date_gmt: '2017-09-05 09:34:52 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- ui
+---
+<p>My previous post about creating a fancy Xamarin Forms UI was a whole lot of fun to do and I got some awesome feedback so it's time for another. Since running is one of my hobbies I see a whole lot of this app up close. It's both as simple in design as it is functional which makes it a great case for this; <strong>Runkeeper</strong>!</p>
+<p><!--more--><br />
+This is a rather long post, so here's an index for you to quickly jump to where you want to be.</p>
+<ol>
+<li><a href="#link1">Marrying Xamarin Forms UI and Runkeeper</a></li>
+<li><a href="#link2">The Start screen on iOS</a></li>
+<li><a href="#link3">The Me screen on iOS</a></li>
+<li><a href="#link4">The Start screen on Android</a></li>
+<li><a href="#link5">The Me screen on Android</a></li>
+<li><a href="#link6">How much time does it take?</a></li>
+<li><a href="#link7">Speeding up the process</a></li>
+<li><a href="#link8">Conclusion</a></li>
+</ol>
+<p><a name="link1"></a></p>
+<h3>Marrying Xamarin Forms UI and Runkeeper</h3>
+<p>I wrote about <a href="https://www.thewissen.io/kickass-ui-xamarin-forms-twitter/" target="_blank" rel="noopener noreferrer">creating a fancy UI in Xamarin Forms</a> before and already concluded that with a bit of effort you can pull off similar UI's to when you're creating a Xamarin.iOS or Xamarin.Android app. As always the code for this is on <a href="https://github.com/sthewissen/KickassUI.Runkeeper" target="_blank" rel="noopener noreferrer">my Github page</a> so let's get straight into it.</p>
+<blockquote><p><strong>Note:</strong> Runkeeper uses Museo Sans for their text but only the medium weight version of that font is free. Therefore in some places the font for this post will look bolder or less bold than the original.</p></blockquote>
+<p><a name="link2"></a></p>
+<h3>The Start screen on iOS</h3>
+<p>There's actually not a whole lot going on <em>at first sight</em>. Some buttons at the bottom, a map and a basic navigation bar/tab bar combination. To recreate it in Xamarin Forms shouldn't be too hard to pull off either. Using the <code>Xamarin.Forms.Maps</code> NuGet package we can create a cross-platform map and using the same font and iconography as Runkeeper does there is hardly any noticeable difference!</p>
+<p><a href="/images/posts/comparison-ios-1-1.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-910 size-full" src="/images/posts/comparison-ios-1-1.jpg" alt="Original vs. Xamarin Forms UI" width="1733" height="1541" /></a></p>
+<p>However there are a few notable things happening here. First off on iOS I implemented a custom renderer that does a few things to our tab bar control:</p>
+<ul>
+<li>It changes out the selected images in the tab bar for replacement images instead of simply tinting them.</li>
+<li>It sets a custom font for the tab bar titles.</li>
+<li>The tab bar titles are shifted up a few pixels to match the Runkeeper look.</li>
+</ul>
+<p><script src="https://gist.github.com/sthewissen/87b648dc9b23cc7fc9ff5e8308f20ce5.js"></script><br />
+A second custom renderer takes care of some navigation bar related things:</p>
+<ul>
+<li>When you have multiple toolbar items iOS puts them all on the right hand side of the bar. The custom renderer takes one of them and moves it to the left.</li>
+<li>Set the custom font for the header.</li>
+<li>Set a light statusbar to complement the blue navigation bar.</li>
+</ul>
+<p><script src="https://gist.github.com/sthewissen/2fca76a02c27430a011f41096e535c76.js"></script><br />
+The Runkeeper logo is only present on the <em>Start</em> tab and the <em>Start</em> tab also has&nbsp;a navigation bar with a different height when compared to all the other tabs. To get this behaviour I created a custom class inheriting from <code>ContentPage</code>. This is what our <em>Start</em> page will inherit from and is only there so we can target that page specifically in another custom renderer. In this renderer we do the following things:</p>
+<ul>
+<li>Add a <code>UIImageView</code> with our logo to the <code>TitleView</code> of <code>UINavigationItem</code>.</li>
+<li>Change the <code>Frame</code> for the existing <code>UINavigationBar</code>.</li>
+<li>Shift the title and icons up a bit because changing the height throws these off-center.</li>
+</ul>
+<p><script src="https://gist.github.com/sthewissen/40c59e81e4c2622aabbe5785ff76deb2.js"></script><br />
+<a name="link3"></a></p>
+<h3>The Me screen on iOS</h3>
+<p>The Runkeeper app obviously has some more screens besides the <em>Start</em> screen. That's why I also took a shot at the <em>Me</em> screen which also has some interesting parts to it. My tinkering eventually resulted in the following:</p>
+<p><a href="/images/posts/comparison-ios-2.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-915 size-full" src="/images/posts/comparison-ios-2.jpg" alt="Runkeeper as a Xamarin Forms UI" width="1733" height="1541" /></a></p>
+<p>So what moving parts do we see here?</p>
+<ul>
+<li>A button with a <code>BorderRadius</code> set to half its width to create a completely round button for the comment and settings button. This is a pretty simple built-in way to create a round button.</li>
+<li>An image using&nbsp;<a href="https://github.com/luberda-molinet/FFImageLoading" target="_blank" rel="noopener noreferrer">FFImageLoading</a> and its <code>Transformations</code> feature to create the rounded profile picture with the white border. When you're working with images this plugin is a must-have.</li>
+<li>A carousel view containing the stats which was implemented using the custom-built&nbsp;<a href="https://github.com/alexrainman/CarouselView" target="_blank" rel="noopener noreferrer">CarouselView control&nbsp;</a>for Xamarin Forms by Alexander Reyes.</li>
+<li>All the other stuff was created using simple layout controls like the <code>Grid</code> and the <code>StackLayout</code> in all sorts of configurations.</li>
+</ul>
+<p><a name="link4"></a></p>
+<h3>The Start screen on Android</h3>
+<p>I've said it before and I'll say it again here; I'm an iOS guy. &nbsp;Android confuses me with its plethora of XML files to style your app. I always start with iOS to get it exactly the way that I want it and then move on to Android. I was in for a shock when I first opened the Runkeeper app and saw that it was quite different from the iOS version. Here's what I ended up with:</p>
+<p><a href="/images/posts/comparison-droid-1.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-927 size-full" src="/images/posts/comparison-droid-1.jpg" alt="Runkeeper as a Xamarin Forms UI" width="1733" height="1541" /></a></p>
+<p>The first thing you'll notice is that the Android version has no tabs. Instead it has a master/detail setup going on. Another thing that you'll notice is that the map control is full screen with the buttons seemingly floating over it whereas in the iOS app these are separated. Here's what I did to get this looking similar:</p>
+<ul>
+<li>Changed the <code>Grid.RowSpan</code> for the map for Android only using the <code>OnPlatform</code> feature. Because the map now spans all the rows the map automatically becomes full screen.</li>
+<li>Removed the <em>Settings</em> button in code, because we don't need it.</li>
+<li>Instantiate a <code>MasterDetailPage</code> instead of a <code>TabbedPage</code> using OnPlatform in the <code>App.xaml.cs</code> file. The actual screens are the same for both platforms. This is no problem for Xamarin Forms!</li>
+</ul>
+<p>I also added a platform-specific <code>Margin</code> to the views containing the buttons so the map can be seen and the buttons seem to be floating on top of the map. Because almost half of the map is covered by our buttons the controls on the map (such as the user's location) need to shift up without disturbing the map itself. This is done through a custom renderer because the native <code>GoogleMap</code> has a <code>Padding</code> property that can be used for exactly this type of problem.</p>
+<p><script src="https://gist.github.com/sthewissen/7ef66cee05df67cc47fb8e6333bba4ef.js"></script></p>
+<p><a name="link5"></a></p>
+<h3>The Me screen on Android</h3>
+<p>This screen looks a bit more familiar to what we saw in the iOS version. However in my opinion the actual screen in Runkeeper's Android app looks <span style="text-decoration: underline;"><strong>worse</strong></span>&nbsp;(in my honest opinion) than what Xamarin Forms gives you straight "out of the box". What do I mean by that? Like I mentioned before I started with the iOS look and feel. Since Xamarin Forms UI is shared across platforms I already had a UI in place for Android when I was done with iOS. This UI looks better on Android (with minor tweaks) than the actual Runkeeper app does. See for yourself:</p>
+<p><a href="/images/posts/comparison-droid-2.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-943 size-full" src="/images/posts/comparison-droid-2.jpg" alt="Runkeeper as a Xamarin Forms UI" width="2524" height="1541" /></a></p>
+<p>Some things that were done to recreate this page:</p>
+<ul>
+<li>Use the MessagingCenter to tell our <code>MainActivity</code> to change the <code>ToolbarResource</code> to a toolbar version without the Runkeeper logo since the logo is only visible on the main page.</li>
+<li>Enabled an <code>elevation</code> property on our <code>Toolbar</code> resource to create the drop shadow below the toolbar which makes it look worse if you ask me.</li>
+<li>Added a # Friends label which isn't there in the iOS version for some reason.</li>
+<li>Messed around with some of the paddings, margins and font sizes to mimic the look-and-feel of the Android app.</li>
+</ul>
+<p>And perhaps it's also interesting to note what I didn't do:</p>
+<ul>
+<li>Change the font for the navigation toolbar. I have yet to find out how to pull that off in Android and it seems like the hoops you have to jump through to pull it off are complete madness. Know the answer? Submit a PR!</li>
+</ul>
+<p><a name="link6"></a></p>
+<h3>How much time does it take?</h3>
+<p>An argument for native development could be that it takes you more time to create something like this in a Xamarin Forms UI but this only took me about a morning to pull off. It's all a matter of experience and once you figure out how to do something you can re-use that piece of code in future apps. A custom renderer created to perform a specific task is easily re-usable across any future app you create.</p>
+<p>I still firmly believe that the most amount of time is spent in actually designing (placement of elements, colors, which fonts to use, iconography) the app. Whether you're creating the UI in Xamarin Forms or natively this is time you're going to have to spend anyway. Actually implementing the UI is not considerably faster or slower either way in my opinion.<br />
+<a name="link7"></a></p>
+<h3>Speeding up the process</h3>
+<p>There are things you can do to speed up your Xamarin Forms UI tinkering process. When you're constantly adjusting margins and paddings to nudge elements into place compiling and deploying takes a lot of time. There are tools out there like <a href="http://gorillaplayer.com">GorillaPlayer</a>, <a href="https://www.xamarin.com/live" target="_blank" rel="noopener noreferrer">Xamarin Live Player</a> or <a href="http://www.livexaml.com/" target="_blank" rel="noopener noreferrer">LiveXAML</a>&nbsp;that greatly simplify this workflow.</p>
+<p>For this post I tried LiveXAML and it does exactly what it says on the box. All you need to do is install <a href="https://marketplace.visualstudio.com/items?itemName=ionoy.XamarinFormsLive-18843" target="_blank" rel="noopener noreferrer">the extension</a>&nbsp;in Visual Studio and install <a href="https://www.nuget.org/packages/LiveXAML" target="_blank" rel="noopener noreferrer">the NuGet package</a> in your project.&nbsp;Whenever you save any XAML file, it automatically updates the running application. This is ideal to quickly tinker with things like paddings/margins and colors. However when you change things in C# code such as adding a custom renderer you will need to rebuild the app and redeploy to see your changes.<br />
+<a name="link8"></a></p>
+<h3>Conclusion</h3>
+<p>This was a really fun app to recreate and how spot on the result is kind of amazes me. The app uses a lot of default elements to create a really simple yet effective layout and that's where Xamarin Forms definitely shines. Another thing where Xamarin.Forms shines is its community of very useful tools and controls. Something like the <code>CarouselView</code> in this post is really simple to use and the fact that someone already went through the effort to create it for others to use is awesome.</p>
+<p>You can find the code here: <a href="https://github.com/sthewissen/KickassUI.Runkeeper" target="_blank" rel="noopener noreferrer">https://github.com/sthewissen/KickassUI.Runkeeper</a></p>
+<p>The following tools were used to create this app:</p>
+<ul>
+<li>FreshMvvm &ndash; Simple MVVM framework &ndash;&nbsp;<a href="https://github.com/rid00z/FreshMvvm" target="_blank" rel="noopener noreferrer">https://github.com/rid00z/FreshMvvm</a></li>
+<li>FFImageLoading &ndash; Caching and transforming images &ndash;&nbsp;<a href="https://github.com/luberda-molinet/FFImageLoading" target="_blank" rel="noopener noreferrer">https://github.com/luberda-molinet/FFImageLoading</a></li>
+<li>CarouselView &ndash; Carousel control for Xamarin Forms &ndash;&nbsp;<a href="https://github.com/alexrainman/CarouselView" target="_blank" rel="noopener noreferrer">https://github.com/alexrainman/CarouselView</a></li>
+<li>Xamarin Forms Maps &ndash; Maps control for Xamarin Forms &ndash;&nbsp;<a href="https://www.nuget.org/packages/Xamarin.Forms.Maps/" target="_blank" rel="noopener noreferrer">https://www.nuget.org/packages/Xamarin.Forms.Maps/</a></li>
+<li>Xam.Plugin.Geolocator - Geolocator to get our current position - <a href="https://github.com/jamesmontemagno/GeolocatorPlugin" target="_blank" rel="noopener noreferrer">https://github.com/jamesmontemagno/GeolocatorPlugin</a></li>
+<li>Xamarin Forms Toolkit - Some handy things, especially the MessagingService - <a href="https://github.com/jamesmontemagno/xamarin.forms-toolkit" target="_blank" rel="noopener noreferrer">https://github.com/jamesmontemagno/xamarin.forms-toolkit</a></li>
+<li>Corcav Behaviors - Some basic behaviors for ListView - <a href="https://github.com/corradocavalli/Corcav.Behaviors" target="_blank" rel="noopener noreferrer">https://github.com/corradocavalli/Corcav.Behaviors</a></li>
+<li>LiveXAML &ndash; Live simulator updates for your XAML code &ndash;&nbsp;<a href="http://www.livexaml.com" target="_blank" rel="noopener noreferrer">http://www.livexaml.com</a></li>
+</ul>

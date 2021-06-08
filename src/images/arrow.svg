@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8">
-  <defs>
-    <style>
-      .cls-1 { fill: #1cba9b; fill-rule: evenodd; }
-    </style>
-  </defs>
-  <path id="arrow" data-name="small arrow" class="cls-1" d="M0 0l5 4-5 4V0z"/>
-</svg>

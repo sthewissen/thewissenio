@@ -1,0 +1,70 @@
+---
+layout: post
+status: publish
+published: true
+title: 5 cool things announced at Microsoft Connect 2017
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 1088
+wordpress_url: https://www.thewissen.io/?p=1088
+date: '2017-11-17 13:35:48 +0100'
+date_gmt: '2017-11-17 12:35:48 +0100'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- azure devops
+---
+<p>Microsoft Connect 2017 has come and gone and a lot of new awesome stuff was announced across the board. I'm partial to mobile development using Xamarin and the whole Devops process using VSTS, so here&rsquo;s 5 things from the mobile/devops space that I thought were pretty cool!&nbsp;<!--more--></p>
+<p>In this post:</p>
+<ul>
+<li>Hosted macOS build agents in VSTS</li>
+<li>Xamarin Live Player</li>
+<li>.NET Embedding</li>
+<li>Visual Studio App Center</li>
+<li>Gated releases on VSTS</li>
+</ul>
+<h3>Hosted macOS build agents in VSTS</h3>
+<div>
+<p>I made <a href="https://www.thewissen.io/xamarin-devops-build-agent/" target="_blank" rel="noopener noreferrer">a blogpost on creating your own Mac build agent</a> for your mobile apps a while ago. It involves having a physical Mac machine somewhere in your network that acts as a build host for your VSTS continuous integration.</p>
+<p><a href="/images/posts/hostedagent.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1094 size-full" src="/images/posts/hostedagent.png" alt="The macOS hosted agent on VSTS" width="1674" height="172" /></a></p>
+<p>At Microsoft Connect it was announced that this is a thing of the past. You&rsquo;re now able to use a Mac build host located in the cloud at Microsoft. This means that no more additional hardware is needed to CI build your Mac apps and that is an awesome thing. It saves you a lot of effort and time installing Xamarin updates and keeping that additional Mac hardware up-to-date which is now all handled by Microsoft :)</p>
+<h3>Xamarin Live Player</h3>
+<p>The Xamarin Live Player is a tool that has been on my radar for a while now. It enables you to directly see changes you&rsquo;ve made in your XAML files in the running app on the device. It now also seems to support changes made in code and it seems to work in an instant without the need for constant waiting for compiling and deploying to the test device.</p>
+<p><a href="/images/posts/live-player-updated-bb6hxm8t.gif" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1096 size-full" src="/images/posts/live-player-updated-bb6hxm8t.gif" alt="The Xamarin Live Player" width="1280" height="720" /></a></p>
+<p>Every time I see it this tool gets better and better. For now though I&rsquo;m still using <a href="https://www.livexaml.com" target="_blank" rel="noopener noreferrer">LiveXAML</a> at least until the Live Player is a bit more stable. I&rsquo;ve tried it on multiple occasions but haven&rsquo;t been able to get it to work for me yet. Don't let my experience hold you back though! Be sure to give it a try because this has the potential to become one of the best Xamarin tools you'll be using on a day-to-day basis!</p>
+<h3>.NET Embedding</h3>
+<p>This is one of <a href="https://developer.xamarin.com/guides/cross-platform/dotnet-embedding/" target="_blank" rel="noopener noreferrer">the big ones</a>. In the near future we will be able to create a component using Xamarin and use that from Objective-C or Java code. You can even build the UI using Xamarin! The sample James showed detailed creating a custom component in Xamarin and integrating that in the Objective-C-based Kickstarter mobile app.</p>
+<p><a href="/images/posts/C_p26e9WAAAsG-J.jpg" target="_blank" rel="noopener noreferrer"><img class="aligncenter wp-image-1108 size-large" src="/images/posts/C_p26e9WAAAsG-J-1024x577.jpg" alt=".NET Embedding explained" width="525" height="296" /></a></p>
+<p>Xamarin announced a tool called the <a href="https://github.com/mono/Embeddinator-4000" target="_blank" rel="noopener noreferrer">Embeddinator-4000</a> earlier this year which is a big part of making this whole process possible. However as much as I think that this is awesome on a technical level I'm still unsure if I'll ever use it.</p>
+<h3>Let's elaborate on that a bit more...</h3>
+<p>I totally see the value of this when it comes to making the .NET platform more accessible from worlds that are not traditional .NET environments. After all that's what Xamarin has been doing as long as they're around. If you have a native iOS or Android app and want to gradually make the change to .NET this might really help you.</p>
+<p>On the other hand I do feel that it might re-introduce a concept that Xamarin has been fighting against for the last few years. They used to call it the "silo approach" to app development where you have an Objective-C codebase and a Java codebase which means you have two separate worlds you need to support. Xamarin sought to unite these two in .NET with the thought of creating a single codebase for both platforms but this feature feels more like they're adding .NET into the mix as a third flavour.</p>
+<p>As a developer that is all-in on using Xamarin with C# I will most likely never come across a situation where I have to use this feature.&nbsp;Let me state once more that I think that it's an <strong>awesome</strong> achievement to get this to work from a technical point of view but for now I remain skeptical on the practical situations you can apply this to. If anyone has some arguments in the matter that can sway my opinion I'd love to hear them :)</p>
+</div>
+<div>
+<h3>Visual Studio App Center</h3>
+<p>Microsoft toggled the switch, slapped a price tag on it and what used to be <a href="https://www.thewissen.io/checking-out-mobile-center/" target="_blank" rel="noopener noreferrer">Visual Studio Mobile Center</a>&nbsp;is officially out of preview! Don't look for Mobile Center anymore though because it is now known as Visual Studio App Center. It still offers you the same great functionality though:</p>
+<ul>
+<li>Crash reporting &amp; analytics</li>
+<li>Continuous integration builds</li>
+<li>Continuous deployment to groups of testers / store</li>
+<li>Automated testing using the device cloud</li>
+<li>Targeted push notifications</li>
+</ul>
+<p>All of the above functionalities are available for projects created in Swift, Objective-C, Java, Xamarin and React Native so you have a huge range of options to get started with mobile development!</p>
+<h3>Gated releases on VSTS</h3>
+<p><a href="https://docs.microsoft.com/en-us/vsts/build-release/concepts/definitions/release/approvals/gates" target="_blank" rel="noopener noreferrer">Gated releases</a> is a new feature in VSTS. This enables you to ensure that you're practicing safe releases on your software. By enabling gates you can have your release pipeline monitor data from Application Insights to determine whether or not to proceed with a release to the next environment. You can even run arbitrary code in the form of an Azure Function or a web API to determine whether a release is fit to be promoted.</p>
+<p><a href="/images/posts/gated-releases-01.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1103 size-full" src="/images/posts/gated-releases-01.png" alt="Gated releases in VSTS" width="697" height="655" /></a></p>
+<p>Additionally you can check forcreated work items to determine if a release is bug-free and can be released. If a work item matching your conditions is found the software won't be deployed any further which enables you to fix the issue before a your users get the new version. You set up these gates in the Pre-deployment conditions of an environment in VSTS' Release Management.</p>
+<h3>Microsoft Connect bonus item:&nbsp;Xamarin.Forms 2.5</h3>
+<p>Ok, I couldn't stop at just 5 items. I'm sorry. So here's one more bonus item to end this post with:&nbsp;Xamarin.Forms 2.5 is released. Besides the aforementioned .NET Embedding this release covers a few additional big things. One of these is layout compression and fast renderers. This feature enables you to optimise your layout for performance.&nbsp;Layout compression&nbsp;allows you to specify unnecessary nesting and allows Xamarin.Forms to&nbsp;opt-out of creating that layout view which in turn decreases the amount of layout passes needed to create the layout on the screen.</p>
+<p>Another new feature in Xamarin.Forms 2.5 is the XAML Standard which is now in preview. The Xamarin.Forms team is working together with the Windows team on defining a single XAML standard that enables XAML files that support it to be interchangeable. This means you can share your UI assets with any other XAML Standard compliant platform which gives you even more code-reuse!</p>
+</div>

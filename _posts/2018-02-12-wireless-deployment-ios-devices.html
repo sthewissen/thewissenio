@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: Wireless Deployment of Xamarin apps to your iOS devices
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 1133
+wordpress_url: https://www.thewissen.io/?p=1133
+date: '2018-02-12 21:30:11 +0100'
+date_gmt: '2018-02-12 20:30:11 +0100'
+categories:
+- Code
+tags:
+- xamarin
+- ios
+- tools
+---
+<p>If you're anything like me you probably have an iPhone cable near you at all times when working on a Xamarin app. It will probably look like it has seen better days but it still works doesn't it?</p>
+<p><!--more--></p>
+<p>Because of the frequent use my iPhone cables start to break at some point but I usually carry on like a trooper. Some scotch tape also helps to make some last-minute lifespan extensions. When the cable eventually breaks I'm usually screwed because I never thought to buy a new one.</p>
+<h3>Introducing Wireless Deployment</h3>
+<p>All of the above is now a thing of the past with the introduction of <strong>Wireless Deployment</strong> in Visual Studio for Mac. And the beauty of it is that it takes you no additional effort to configure in VS. It's currently only available in the Preview version (<a href="https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-mac-preview-relnotes#release-date-january-10-2018---visual-studio-2017-version-74-preview-2-740839">VS for Mac 7.4 Preview 2</a> and Xamarin iOS 11.8) and only takes a bit of configuration in Xcode. However you can use to debug with your feet up on your desk and no cables to worry about! Breakpoints will be hit and everything will work as if the device is connected through USB.</p>
+<p><a href="/images/posts/networkdebug.jpg" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-1137 size-full" title="Wireless debugging on iOS" src="/images/posts/networkdebug.jpg" alt="" width="1558" height="442" /></a></p>
+<p>How do you get it? Open Xcode and go up to <strong>Window > Devices and Simulators</strong>.&nbsp; Make sure you've connected your device through a USB cable to be able to enable it to be discovered on the network. Once you see your device tick the <strong>Connect via network</strong> box and wait for it to connect to the network (as indicated by the globe icon. Disconnect the USB cable and it should show up in Visual Studio for Mac as a connected device!</p>
+<p><em><strong>Update:<br />
+</strong>As pointed out to me on Twitter by Pierce Boggan (Microsoft): It even works on Visual Studio for Windows which makes it even more awesome than it already is :)</em></p>
+<p><em><strong>Update 2:<br />
+</strong>Now with added <a href="https://developer.xamarin.com/guides/ios/deployment,_testing,_and_metrics/wireless-deployment/" target="_blank" rel="noopener noreferrer">documentation</a>!</em></p>

@@ -1,0 +1,103 @@
+---
+layout: post
+status: publish
+published: true
+title: Embedding a YouTube feed in Xamarin.Forms
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 632
+wordpress_url: https://www.thewissen.io/?p=632
+date: '2017-06-20 21:09:38 +0200'
+date_gmt: '2017-06-20 19:09:38 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- ui
+---
+<p><!-- wp:paragraph --></p>
+<p>When building an app for a customer that has an active YouTube channel you might get the requirement to embed their YouTube channel into the app. This is actually simpler then you might think. Since YouTube is a Google product you can bet your life's savings on the fact that there's an API for it.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:more --><br />
+<!--more--><br />
+<!-- /wp:more --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Creating a new Xamarin Forms project</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>For this article, I'm assuming that you're familiar with what Xamarin Forms is and how it works. So without further ado let's jump into Visual Studio. Start off by creating an empty Xamarin Forms solution. I chose the <strong>Portable Class Library</strong> variety for this project. Give it a fancy name and hit <strong>Create</strong>. I named mine <em>YouTubeEmbed</em> which isn't all that original but it does the trick. Your solution explorer window should look something like this when you're done.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"align":"center","level":3} --></p>
+<h3 class="has-text-align-center">
+<figure><a href="/images/posts/solutionexplorer.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-639 size-full" src="/images/posts/solutionexplorer.png" alt="The solution explorer after creating a blank Xamarin Forms app." width="366" height="145"></a></figure>
+</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Getting your API keys</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Most API's won't simply let you pull in their data. The YouTube API is no different. To retrieve data you will need to register an API key which you need to pass in with every request. That way YouTube knows that you're calling their API as a validated user. To get such an API key you can go to your Developer Console and register it. First, we need to<strong> Create a new project</strong>&nbsp;in the API console which we can do where it says <strong>My project</strong> in the top-left corner. When that is said and done we can search for the <strong>YouTube Data API</strong>, which is the one we're going to be needing for this project.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":642,"sizeSlug":"large"} --></p>
+<figure class="wp-block-image size-large"><img src="/images/posts/apis.png" alt="" class="wp-image-642"/></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>&nbsp;After you've enabled the <strong>YouTube Data API v3</strong> you will see a API key in the <strong>Credentials</strong> section. This is the key we'll be using in this sample. I removed it from the screenshot since you need to make your own key :) Copy it over to your Xamarin app.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":643,"linkDestination":"custom"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter"><a href="/images/posts/enableapi.png" target="_blank" rel="noopener noreferrer"><img src="/images/posts/enableapi.png" alt="Enable the YouTube API" class="wp-image-643"/></a></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:image {"align":"center","id":644,"linkDestination":"custom"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter"><a href="/images/posts/apikeuy.png" target="_blank" rel="noopener noreferrer"><img src="/images/posts/apikeuy.png" alt="Getting your API key" class="wp-image-644"/></a></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Calling the API and retrieving the data</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Since the YouTube API is REST-based we need a URL to call and retrieve our data. That URL is <a rel="noopener noreferrer" href="https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.videos.list" target="_blank">documented</a> pretty well and for the scope of this post it looks like this when we put it into a constant in our project.<script src="https://gist.github.com/sthewissen/bee8e071f06a97b2b6b3e1f31da8e536.js"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>When we call that URL with a valid API key and a valid channel ID we get the following data from it &nbsp;(shortened for clarity). As you can see this isn't all that much. Basically the only usable thing in here is the <strong>videoId</strong>. You might have seen similar ID values in the address bar of your browser when viewing a YouTube video. So why don't we see a lot of useful info here? Well, that's because the &nbsp;YouTube API forces you to retrieve video details on a per-video basis.<script src="https://gist.github.com/sthewissen/5deaee2e9844c88ce5e23dee3ce3dfde.js"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>So how does this look in code? First we spin up an HttpClient instance and call the URL mentioned above. After deserializing the response into a basic DTO object we retrieve all the VideoID variables from the result and get the details for each item using the <strong>GetVideoDetailsAsync</strong> method.<script src="https://gist.github.com/sthewissen/a82c72aa8fdf8b8c3cc4f736a7961e8e.js"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Getting the details for each video</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>So how do we get the details for each video in our list? If we had to create an HTTP request for each video we would probably blow up the YouTube API. Luckily we don't need to make an API call for each video we want to check. YouTube lets you provide a comma-separated list of video IDs and gives you a list of detailed information for each video in return. That means we can get the information we need from one additional API call. You can call the detailed API in similar fashion to the API call above.<script src="https://gist.github.com/sthewissen/54deb063b276daa4ef127af2362f610e.js"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Showing it all in the app</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>With the beauty of data-binding and MVVM in Xamarin Forms it is super simple to show a list of videos in our app. The XAML code below shows the thumbnail, video title, amount of views and publishing date in a format similar to the YouTube app.<script src="https://gist.github.com/sthewissen/93708d73f32e856b824b97bccaedeb90.js"></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>With those few lines of code we get something that looks like this:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<div style="clear: both;">
+<figure><a href="/images/posts/iossim.png" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-654 size-semi-large" src="/images/posts/iossim-320x570.png" alt="Our very own YouTube app!" width="320" height="570"></a></figure>
+<p>&nbsp; &nbsp; &nbsp;<br />
+<figure><a href="/images/posts/droidtube.png" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-661 size-semi-large" src="/images/posts/droidtube-342x570.png" alt="An Android version of our awesome YouTube app!" width="342" height="570"></a></figure>
+</div>
+<p><!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Give me the source!</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>If you want to look at the source for this to see how it all fits together you can find it up on <a href="https://github.com/sthewissen/YouTubeEmbed" target="_blank" rel="noopener noreferrer">Github</a>. You can use it as a starting point for your own implementation. Time to get coding!</p>
+<p><!-- /wp:paragraph --></p>

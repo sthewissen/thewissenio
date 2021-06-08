@@ -1,0 +1,147 @@
+---
+layout: post
+status: publish
+published: true
+title: Create a kickass banking app using a BasePage in Xamarin
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 1359
+wordpress_url: https://www.thewissen.io/?p=1359
+date: '2019-07-02 13:51:05 +0200'
+date_gmt: '2019-07-02 11:51:05 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- xamarin.forms
+- ui
+---
+<p><!-- wp:paragraph --></p>
+<p>Have you ever had a scenario where using the built-in navigation bar and other UI elements simply didn't cut it? Perhaps it's been suggested to you by a designer that the default elements are just ugly. Simply roll your own and start using a base page!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:more --><br />
+<!--more--><br />
+<!-- /wp:more --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>About this post</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>You may have seen or read about <a rel="noreferrer noopener" aria-label="#XamarinUIJuly (opens in a new tab)" href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23XamarinUIJuly&amp;src=typd" target="_blank">#XamarinUIJuly</a> on <a href="https://www.thewissen.io/introducing-xamarin-ui-july/">my blog</a> already. It's a series of blogposts where every day of July a Xamarin community member posts a blog about Xamarin and UI. This is my blogpost in the series! Click the shiny badge below to view the entire schedule containing the posts up until now.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1377,"sizeSlug":"medium","linkDestination":"custom"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-medium"><a href="https://www.thewissen.io/introducing-xamarin-ui-july#schedule" target="_blank" rel="noreferrer noopener"><img src="/images/posts/xamuijuly-1-250x105.png" alt="" class="wp-image-1377"/></a><br />
+<figcaption>Click it! You know you want to!</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>This post combines one of my favorite activities, creating good-looking UI, with a technique we're using in our apps today. We have a lot of designers coming up with the craziest ideas where having to implement them using the native controls just isn't feasible. This is why we started exploring the topic of creating a base page from which all pages in the app inherit. It allows us to have a unified style across each page while still allowing us to have a lot of customisability.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>A look at what we're creating</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>In my travels around the internet, I recently came across this app redesign for ABN AMRO. This is a bank here in The Netherlands and the redesign was done by <a rel="noreferrer noopener" aria-label="Ruben ter Hoeve (opens in a new tab)" href="https://dribbble.com/shots/6612733-Daily-UI-ABN-AMRO-redesign" target="_blank">Ruben ter Hoeve</a>, who decided to re-imagine the existing app. This is not an official design in any way, but I liked it quite a bit and I think it can be a good case for the base page concept. So let's get cracking!</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1365} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter"><img src="/images/posts/dribbble_dailyui_abn_amro_redesign.png" alt="" class="wp-image-1365"/></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Explaining the basics of a base page</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Since we're rolling our own base page we can make it as complex as we like. Let's start with a basic setup first though and build on that. We start by creating a XAML page in which we will build the UI framework of the app. In this sample, the part that we're interested in abstracting into a base page would be the navigation bar.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1367,"sizeSlug":"full"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img src="/images/posts/image-1.png" alt="" class="wp-image-1367"/></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph --></p>
+<p>This navigation bar already has a few areas that we can deconstruct:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>A hamburger menu.</li>
+<li>A company logo, cleverly overlayed onto the content.</li>
+<li>A title, visible on subsequent screens.</li>
+<li>A left-side content area.</li>
+<li>A right-side content area.</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>Blocking this out in XAML we end up with a structure similar to the one below. Both the left and right-side content area consist of a horizontally oriented <code>StackLayout</code>. The logo is an image that we can position the way we need it to be by applying some simple layout constraints. The hamburger menu is a fixed button on the base page so it will show on each and every page.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/6d0d7c07858cc9c5ca8b18827d1eaf95.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Making it all dynamic</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Now that we have our base page set up we need to figure out a way to influence some of the controls within it from a subpage. Earlier, we created 3 areas that are dependent on the page we are showing: the main content area and the left/right navigation bar areas. You might've noticed that I gave all of these an <code>x:Name</code> attribute so we can use them from code-behind. By adding a few properties to the base page we can make these areas available to all pages inheriting from our base page.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/c5cdc5f25efacaa8f12efab2af4d9d57.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:paragraph --></p>
+<p>So what's happening here? We set up 3 properties, all of which are pointing towards the <code>Children</code> collection of the dynamic areas we've named in our XAML file. What this means is that each page inheriting from our base page now has access to these areas through this property effectively enabling all your subpages to provide custom implementations of them.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>How does this look in code? The sample below should illustrate how we can use these properties on our subpages to provide content.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/1892f17f9f3c392ff9fc4f5b0957c410.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>How to show the logo... or not?</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>One of the things I've mentioned already is that the logo is there on one page and gone on the next. Let's look at that for a few minutes, since it's not the hardest thing to pull off. The simplest solution is to create a property on <code>BasePage</code> to hide the logo and show the title label instead. By making it a bindable property we can even bind it to show/hide the logo at runtime. </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --><br />
+<script src="https://gist.github.com/sthewissen/ef912df35eb1d56389ba88a61d302dd5.js"></script><br />
+<!-- /wp:html --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>The end result</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Most of the rest of the app consists of basic <code>Grid</code> and <code>StackLayout</code> controls. By using an icon font we can get close to the icons used in the design, but the font I chose didn't contain exact matches for everything. It does a good job regardless.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":1383,"sizeSlug":"full"} --></p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img src="/images/posts/combined.jpg" alt="" class="wp-image-1383"/><br />
+<figcaption>The end result.</figcaption>
+</figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Conclusion</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Obviously, the base page method also has a few drawbacks. Handling when to show a back button on a page or a close button on a modal is something that you will need to implement manually. These are challenges that are fairly easy to overcome, but they do make this setup a bit more complicated at first.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>On the flip side, you do have more control over everything that happens in your app. If you have a designer on the team he or she will be forever grateful for being able to go completely wild with the design without you limiting his/her possibilities by only using native controls.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Source code for this post <a href="https://github.com/sthewissen/KickassUI.Banking">can be found on Github</a>. The following tools were used to create this app:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>MFractor &ndash; Awesome productivity tooling &ndash; <a rel="noreferrer noopener" aria-label="https://www.mfractor.com (opens in a new tab)" href="https://www.mfractor.com" target="_blank">https://www.mfractor.com</a><a href="https://github.com/luberda-molinet/FFImageLoading"></a></li>
+<li>LiveXAML &ndash; Live simulator updates for your XAML code &ndash;&nbsp;<a href="http://www.livexaml.com/">http://www.</a><a rel="noreferrer noopener" aria-label="l (opens in a new tab)" href="http://www.livexaml.com/" target="_blank">l</a><a href="http://www.livexaml.com/">ivexaml.com</a><a rel="noreferrer noopener" aria-label="https://github.com/martijn00/LottieXamarin (opens in a new tab)" href="https://github.com/martijn00/LottieXamarin" target="_blank"></a></li>
+<li>Xamarin Essentials - Common cross-platform APIs -&nbsp;<a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://docs.microsoft.com/en-us/xamarin/essentials/" target="_blank">https://docs.microsoft.com/en-us/xamarin/essentials/</a></li>
+<li>PancakeView - View supporting lots of fancy UI things - <a rel="noreferrer noopener" aria-label="https://github.com/sthewissen/Xamarin.Forms.PancakeView (opens in a new tab)" href="https://github.com/sthewissen/Xamarin.Forms.PancakeView" target="_blank">https://github.com/sthewissen/Xamarin.Forms.PancakeView</a></li>
+<li>FreshMVVM - MVVM framework - <a rel="noreferrer noopener" aria-label="https://github.com/rid00z/FreshMvvm (opens in a new tab)" href="https://github.com/rid00z/FreshMvvm" target="_blank">https://github.com/rid00z/FreshMvvm</a> </li>
+</ul>
+<p><!-- /wp:list --></p>

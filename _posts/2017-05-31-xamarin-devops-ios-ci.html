@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: 'Xamarin and DevOps: Setting up your iOS CI'
+author:
+  display_name: Steven
+  login: Steven
+  email: dvolvenl@gmail.com
+  url: https://www.thewissen.io
+author_login: Steven
+author_email: dvolvenl@gmail.com
+author_url: https://www.thewissen.io
+wordpress_id: 466
+wordpress_url: http://www.dvolve.org/?p=466
+date: '2017-05-31 11:36:35 +0200'
+date_gmt: '2017-05-31 09:36:35 +0200'
+categories:
+- Code
+tags:
+- xamarin
+- ios
+- azure devops
+---
+<p>Congratulations, you've made it to the third&nbsp;post in this&nbsp;series on getting started with DevOps in a Xamarin project. Last time we created a Continuous Integration pipeline for Android so&nbsp;this time it's iOS' turn! A lot of things will look familiar if you followed along with the previous post but for the sake of &nbsp;completeness I will include it here.</p>
+<p><!--more--></p>
+<h3>Other articles in this series</h3>
+<p>Make sure to&nbsp;check out some of the other articles in this series!</p>
+<ol>
+<li><a href="https://www.thewissen.io/xamarin-devops-build-agent/">The build agent</a></li>
+<li><a href="https://www.thewissen.io/xamarin-devops-android-ci/">Setting up your Android CI</a></li>
+<li>Setting up your iOS CI (this post)</li>
+</ol>
+<h3>How to set&nbsp;up the Xamarin iOS build</h3>
+<p>To set up our Xamarin iOS build we use the available template in VSTS&nbsp;because it contains all the necessary build steps to create an IPA file which is Apple's equivalent of the APK file in Android. Time to use that template and create our build definition!</p>
+<p><a href="/images/posts/iostemplate.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter wp-image-551 size-large" src="/images/posts/iostemplate-1024x396.png" alt="Applying the Xamarin iOS template to our build definition" width="1024" height="396" /></a></p>
+<p>The tasks displayed below will be the ones you'll end up with&nbsp;and once again some of them are greyed out (disabled). Leave them in or remove them by right clicking and selecting <strong>Remove Selected Task(s)</strong>.</p>
+<p><a href="/images/posts/removestepsios.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-553" src="/images/posts/removestepsios-1024x342.png" alt="Removing any unneccesary tasks" width="1024" height="342" /></a></p>
+<p>Select the <strong>Build Xamarin.iOS</strong> solution step and scroll down to the <strong>Signing &amp; Provisioning</strong> section on the right side. This is where you put your P12 signing key, the password of your signing key and a provisioning profile containing e.g. your test devices. Don't know where to get these? Xamarin has <a href="https://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/" target="_blank" rel="noopener noreferrer">a tutorial</a> on this! After selecting&nbsp;your key and profile you can put in a variable for the password. Since we don't want to have that in our build definition in plain text we put in&nbsp;<strong>$(P12Password)</strong> and set this at a later point.</p>
+<p><a href="/images/posts/signing.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-555" src="/images/posts/signing-1024x365.png" alt="Signing and provisioning in iOS" width="1024" height="365" /></a></p>
+<p>Oddly enough, at the time of this writing the Xamarin.iOS template has no <strong>NuGet Restore</strong> step in its process so we can add that and put that before the Build task. Another step we need is a cleanup step&nbsp;to ensure that we always have the correct version of our IPA on our build server. To do so&nbsp;we add a <strong>Delete files task</strong> to cleanup the previous IPA&nbsp;files before our build.</p>
+<p><a href="/images/posts/cleanuptask.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-556" src="/images/posts/cleanuptask-1024x424.png" alt="Adding a delete task" width="1024" height="424" /></a></p>
+<p>In the configuration for this task we need to set the <strong>Source Folder</strong> to our iOS projects root. We need to make sure that any previous IPA or dSYM files are removed before our build starts and we can do this by putting <em><strong>**/*.ipa</strong></em> and <em><strong>**/*.dSYM</strong></em> into the <strong>Contents</strong> field.</p>
+<p><a href="/images/posts/cleanupsettings.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-557" src="/images/posts/cleanupsettings-1024x443.png" alt="Setting up the delete files task" width="1024" height="443" /></a></p>
+<h3>Adding a variable&nbsp;and finishing the configuration</h3>
+<p>We added a variable in the Build step of our definition and still need to define it. Switch to the&nbsp;<strong>Variable</strong> tab and add a variable named P12Password. Click the lock icon to ensure that it's a secure variable. This ensures that no one can read the password you put in here.</p>
+<p><a href="/images/posts/addvariable.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-558" src="/images/posts/addvariable-1024x294.png" alt="Adding a password variable" width="1024" height="294" /></a></p>
+<p>The build is now set up properly&nbsp;however it will not automatically trigger when you're committing code. We need to set a trigger for that which is appropriately done in the&nbsp;<strong>Triggers</strong> tab. Enable&nbsp;<strong>Continuous Integration</strong> and set your <strong>Branch Filters</strong> and <strong>Path Filters</strong> appropriately.&nbsp;These filters define which branch to monitor for changes and tell VSTS to trigger a build as soon as changes&nbsp;to these remote branches happen. An alternative to&nbsp;Branch Filters are Path Filters which let you specify one or more&nbsp;specific paths in your project hierarchy to monitor. You can use both of these functions in conjunction with one another.</p>
+<p><a href="/images/posts/triggerios.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-560" src="/images/posts/triggerios-1024x377.png" alt="Enabling Continuous Integration for our build definition" width="1024" height="377" /></a></p>
+<p>We need to do one more thing&nbsp;and that is set our Build Host. But we have already come&nbsp;to the conclusion in a previous post that the Hosted build host can't build our iOS apps&nbsp;because it's a Windows machine after all. So in our&nbsp;<strong>Options</strong> tab we set our&nbsp;<strong>Default agent queue</strong> to&nbsp;<strong>Default</strong> which&nbsp;makes the build definition use our own build host.</p>
+<p><a href="/images/posts/buildhost.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-large wp-image-561" src="/images/posts/buildhost-1024x302.png" alt="Selecting the build host" width="1024" height="302" /></a></p>
+<h3>Conclusion</h3>
+<p>And there you have it. A&nbsp;Xamarin iOS automated build pipeline created in VSTS. Save your changes, queue a build or better yet perform a commit to see that all the triggers are firing as they should. And if all goes well your build will&nbsp;have nice green checkmarks next to all of its steps as shown below.</p>
+<p><a href="/images/posts/jobstatus2.png" target="_blank" rel="noopener noreferrer"><img class="img-responsive aligncenter size-full wp-image-603" src="/images/posts/jobstatus2.png" alt="Success!" width="429" height="334" /></a></p>
