@@ -6,7 +6,7 @@ description:  Xamarin, .NET development and more...
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://thewissen.io" # the base hostname & protocol for your site, e.g. http://example.com
 blog-theme: light # By default, Atega theme uses a 'light' color scheme, to change the color scheme to dark use 'dark' value (_includes/color-scheme)
-
+locale: en
 
 #-------------------------------
 # Author Settings
