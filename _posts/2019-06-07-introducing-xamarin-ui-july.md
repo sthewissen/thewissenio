@@ -10,106 +10,45 @@ tags:
 - ui
 ---
 
-
-
-
 Fellow community member [Luis Matos](https://luismts.com) has recently held a Xamarin Month initiative. During the entire month of February, someone from the community / Xamarin team posted a blog about Xamarin-related topics. I would love to give the concept a shot as well!
-
-
-
 
  
 
-
-
-
-
-
-
 ### So how does this work?
-
-
-
 
 Much like an advent calendar, a new blog post about a specific topic is posted every day by one of you, the Xamarin community. Each of the wonderful contributors posts it on their own blog after which it will become available in the calendar below. That way, you'll have a surprise blog post to look forward to every single day! Blog posts will be written in English and will be about a single topic.
 
-
-
-
 ### Sounds good, but what's the topic?
-
-
-
 
 Crafting a UI is an essential part of building an app. In recent updates, Xamarin has added more and more awesome features like Visual and Shell, and additional controls like `CollectionView` to enable developers to create better-looking apps. Since it also rhymes quite nicely with July, why not focus on UI in Xamarin? 
 
-
-
-
-
 Not very creative? Don't worry, this topic is still fairly broad. If you have a hard time finding inspiration some possible topics could include, but are not limited to:
 
-
-
 *   Animations in Xamarin
-
 *   Getting started with Shell
-
 *   Creating a custom Visual
-
 *   Pulling off some advanced UI using CollectionView
-
 *   Tooling to use (icon font generation, LiveXAML, MFractor etc.)
-
 *   Recreating an existing UI with Xamarin
-
 *   Building a cool custom control
-
 *   Etc.
-
-
 
 I'm sure you can come up with something interesting ;)
 
-
-
-
 ### Sign me up, how do I join?
-
-
-
 
 We need 31 writers to write a blog post each day. If you're very inspired you're allowed to write multiple blogs though! If you want to reserve a slot follow the steps below:
 
 
-
-
-
-
-
-
 1.  **Reserve a slot** on Twitter (using the hashtags #Xamarin and [#](https://twitter.com/search?f=tweets&q=%23xamarinmonth&src=typd)**[XamarinUIJuly](https://twitter.com/search?f=tweets&q=%23xamarinuijuly&src=typd)**).
-
 2.  **Think of a topic** related to UI in Xamarin and send it to me on [Twitter](https://twitter.com/devnl).
-
 3.  **Write your blog post**, in English.  
 
-
 4.  **Add a link** to your blog post that links**&nbsp;back to here**, so that your readers can find the complete Xamarin UI July series.
-
 5.  **Publish your blog post on the specified date** (according to the calendar below).
-
 6.  **Post the link** to your blog post **on Twitter** with the hashtags #Xamarin #**XamarinUIJuly**  
 
-
-
-
 Below are all the slots and the people who have requested it. Once the calendar is full it will be a matter of waiting to see the first post appear! Requests will be handled in the order that they came in.
-
-
-
-
-
 
 <table class="wp-block-table aligncenter">
 <tbody>
@@ -296,12 +235,5 @@ contribution﻿**</td>
 </tbody>
 </table>
 
-
-
-
-
-
-
 I'm talking to some other community members about doing something special on the 1st of August. What that is I won't divulge just yet. You'll have to wait. I will be doing a blog post myself as well, but that depends on which slots are still available in a while. I hope you'll join me in creating some cool content for the community and let's say another big thank you to Luis Matos for the initial idea!
-
 

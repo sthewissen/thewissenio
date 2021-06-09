@@ -9,84 +9,31 @@ tags:
 - appcenter
 ---
 
-
-
-
 In October of 2014 Xamarin announced one of their new flagship products: Xamarin Insights, a real-time monitoring system that enables you to identify, report, and track issues that are impacting users. Now the time has come to say our goodbyes.
-
-
-
 
  
 
-
-
-
-
-
-
 ### It had to be coming at some point...
-
-
-
 
 This one has been a long time coming. From [the announcement of the move over to HockeyApp](https://www.hockeyapp.net/blog/2016/03/31/welcome-xamarin-insights-users.html) in 2016 (which in my opinion never really took off from an Insights perspective) to then being integrated into the new [App Center](https://www.thewissen.io/crash-reporting-analytics-xamarin/) it was quite inevitable that one day Insights would be closing its doors for good. That day has now been officially announced as **March 31st**.
 
-
-
-
-
-
-
 [![Reports in Xamarin Insights](/images/posts/InsightsReports-1024x683.png)](/images/posts/InsightsReports-1024x683.png)
-
-
-
 
 At the time of its release I dove head first into Insights. It was a great solution to be able to spot errors in the app before users even reported them. By the time the user spotted it a fix was most likely already in place. The *Audience *feature also had a lot of use for me because it gave you a great overview of where my users came from, what devices they were using and which OS versions they were running on those devices. Xamarin Insights definitely looked the part as well and its looks still hold up today, more than 3 years later.
 
-
-
-
-
-
-
 [![A stacktrace in Xamarin Insights](/images/posts/Insights-Stacktrace-1024x520.png)](/images/posts/Insights-Stacktrace-1024x520.png)
-
-
-
 
 ### So where do we go from here?
 
-
-
-
 A lot of functionality present in Xamarin Insights has been ported over to Visual Studio App Center. However one of the most used features has not, causing a lot of issues for users that want to make the change. Insights supported the reporting of caught exceptions which enabled you to gracefully inform the user after an error occurred. App Center currently only supports unhandled exceptions meaning your app has to crash hard for the exception to be registered.
-
-
-
-
 
 In a recent announcement Xamarin says that this feature will be added before they officially retire Xamarin Insights. That is definitely something to look out for! Here's hoping it works as great as it did in Insights.
 
-
-
-
 <!-- wp:image {"align":"center","id":1121,"linkDestination":"custom","className":"is-style-default"} -->
-
 
 [![The Users feature in Xamarin Insights](/images/posts/Xamarin-Identify-1024x509.png)](/images/posts/Xamarin-Identify-1024x509.png)
 
-
-
-
 **Update:** I was asked about the source for this post. A few days ago it was communicated to all Insights users in an e-mail containing the following text:
-
-
-
-
-
-
 
 
 > Hi Steven,
@@ -129,10 +76,4 @@ In a recent announcement Xamarin says that this feature will be added before the
 > The Visual Studio App Center Team
 > 
 > 
-
-
-
-
-
-
 
