@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: Using Effects in Xamarin Forms
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 954
 wordpress_url: https://www.thewissen.io/?p=954
 date: '2017-09-11 11:47:07 +0200'
@@ -40,9 +30,9 @@ tags:
 <li><code>Element</code>&nbsp;&ndash; the Xamarin.Forms control that's being rendered.</li>
 </ul>
 <p>When inheriting from <code>PlatformEffect</code> you also gain access to two methods for you to override: <code>OnAttached</code> and <code>OnDetached</code>. You can use <code>OnAttached</code> to apply your effect and <code>OnDetached</code> to clean up your effect. Now let's create our effect shall we?</p>
-<p>On iOS we implement it as follows:<br />
+<p>On iOS we implement it as follows:
 <script src="https://gist.github.com/sthewissen/d3c66d134c58f1d2fbd7593f1fb78e80.js"></script></p>
-<p>On Android our effect code looks like this:<br />
+<p>On Android our effect code looks like this:
 <script src="https://gist.github.com/sthewissen/ffbae3716f7222201dd2057b8a629579.js"></script></p>
 <p>As you can see there are 2 <code>assembly</code> attributes decorating our effect.</p>
 <p><script src="https://gist.github.com/sthewissen/b94ac3687910166fc567519e53a7da45.js"></script></p>

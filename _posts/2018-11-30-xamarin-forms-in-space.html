@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: Xamarin.Forms in Space!
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 1226
 wordpress_url: https://www.thewissen.io/?p=1226
 date: '2018-11-30 16:45:47 +0100'
@@ -22,19 +12,15 @@ tags:
 - xamarin.forms
 - ui
 ---
-<p><!-- wp:paragraph --></p>
+
 <p>As you may have seen from reading other content on this blog I dabble in the world of cryptocurrency. To help me on my position sizing I figured I'd create a little calculator app. Obviously, if you know me, that has to look sexy. So I decided to go on a journey into space using Xamarin.Forms!</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:more --><br />
-<!--more--><br />
+
+<p><!-- wp:more -->
+<!--more-->
 <!-- /wp:more --></p>
 <p><!-- wp:heading {"level":3} --></p>
 <h3>What we'll be creating today</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>Let's take a quick look at what we're going to be covering today. The nitty-gritty calculations aren't necessarily part of this post. I'm a UI guy, so that's the more important part of this post we'll be focussing on. The following parts comprise the interface you see in the moving GIF below:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:list --></p>
 <ul>
 <li>Gradient background on the content page.</li>
 <li>A randomly generated set of stars that rotates independently.</li>
@@ -47,76 +33,41 @@ tags:
 <div class="wp-block-image">
 <figure class="aligncenter"><img src="/images/posts/ezgif.com-video-to-gif-1.gif" alt="Creating an awesome looking little app using Xamarin.Forms" class="wp-image-1230"/></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:heading {"level":3} --></p>
+
 <h3>Adding a gradient background</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>There are a lot of different ways to create this. You could just use an image or maybe something like SkiaSharp to render this gradient. In this case I'm using the native drawing tools by implementing a custom renderer (which is a common concept in Xamarin.Forms) for a custom class deriving from <code>ContentPage</code>. The first thing to add is 2 properties for both the start and the end color of the gradient to our custom page which will be used to control its appearance. The code for the custom renderers can be found on the Github page accompanying this post.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/e227a871b9264c57fd391df993e74105.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/e227a871b9264c57fd391df993e74105.js"></script>
 <h3>Random stars in the galaxy</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>To create a random set of stars I start with a simple image of a star. This is nothing more than a white circle with a small semi-transparent border.&nbsp;When the page loads I spin up a few instances of this image and add some randomizations to it in both size and their respective X and Y coordinates. The end result is a field of stars randomly scattered across the screen in different sizes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/30d18bb39cd69c6062ccbea6550a31d9.js"></script><br />
+<script src="https://gist.github.com/sthewissen/30d18bb39cd69c6062ccbea6550a31d9.js"></script>
 <!-- /wp:html --></p>
 <p><!-- wp:paragraph {"align":"left"} --></p>
 <p style="text-align:left">To give the illusion of a star system I generate them in 5 batches of 20 stars at a time, each batch being contained within a single <code>Grid</code> component. I then rotate these Grid components infinitely at random speeds. By setting its pivot point to the center of the screen all these Grids rotate along the same path. This creates 5 sets of stars that move independently of one another which gives the illusion of a very dynamic galaxy :)</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/e6061edf29e2574f1552718251d490d4.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/e6061edf29e2574f1552718251d490d4.js"></script>
 <h3>A card view to display results</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>If you've been following some of these UI related posts you'll probably have seen this one before. In my previous post, where I made&nbsp;<a href="https://www.thewissen.io/creating-a-parallax-carousel-in-xamarin-forms/" target="_blank" rel="noreferrer noopener">an awesome looking parallax carousel</a>, I&nbsp;use&nbsp;the same control I will be using here. It consists of a custom&nbsp;<code>ContentView</code>&nbsp;called&nbsp;<code>RoundedContentView</code>&nbsp;which implements most of what we need, in this case, rounded corners.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":3} --></p>
+
 <h3>A good looking moon rotating indefinitely</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>By now you should know that having good graphical assets is one of the key pillars of creating a cool looking app. I found the image of the moon I ended up using on the internet and it perfectly fit the style I was looking for. The rotation effect is nothing special. Since I needed some infinite rotation on multiple places I decided to make a method in my <code>GradientContentPage</code> to handle this rotation. An extension method on <code>VisualElement</code> would've been an alternative an probably cleaner option.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/e0a9e52c9ecdb0ee15e03c998f779964.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/e0a9e52c9ecdb0ee15e03c998f779964.js"></script>
 <h3>Entry animations on all the screens!</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>You can't quite see it in the gif above, because it's a later addition I did, but when the screens are first loaded the individual elements are animated onto the screen. The GIF below shows an example of some of the elements that move into screen when the screen is first presented.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"id":1242,"align":"center"} --></p>
 <div class="wp-block-image">
 <figure class="aligncenter"><img src="/images/posts/ezgif.com-video-to-gif-2.gif" alt="" class="wp-image-1242"/></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>So how do we go about doing this? The first, most important thing to realize is that it's a good practice to initially position your elements at the final position they need to be in <span style="text-decoration: underline;"><strong>after</strong></span> the animation has completed. Because of this, the first step we need to take is move them out of the way before the screen becomes visible. To do so, I use the <code>TranslateTo</code> extension method in the constructor of the page and move all of the elements 1000 units away from their initial position.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>When all of the elements are outside of the bounds of the screen, we can start animating them back in as soon as the view appears. To do so, I override the <code>OnAppearing</code> method and use the <code>TranslateTo</code> method to animate them back onto the screen. If you look closely, you will see that all of these elements have a different animation duration. This gives the effect of all the elements sliding onto the screen one after another. To ensure that all of the animations start at the same time they're wrapped in a <code>Task.WhenAll</code> method, which only continues with the execution of our other code after all of the animations have finished.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/2d5bf6e27c732b1e8cc20d31ab5943b9.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/2d5bf6e27c732b1e8cc20d31ab5943b9.js"></script>
 <h3>Code &amp; tools</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>You can find the code here:&nbsp;<a href="https://github.com/sthewissen/KickassUI.InSpace">https://github.com/sthewissen/KickassUI.InSpace</a>. If there's something in there that you think can be done better in a different way or found a bug; feel free to submit a PR. I'm always looking to learn :)</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>The following tools were used to create this app:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:list --></p>
 <ul>
 <li>LiveXAML &ndash; Live simulator updates for your XAML code &ndash;&nbsp;<a href="http://www.livexaml.com/" target="_blank" rel="noreferrer noopener">http://www.livexaml.com</a></li>
 </ul>

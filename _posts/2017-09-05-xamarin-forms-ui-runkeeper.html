@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: 'Creating a good-looking Xamarin Forms UI: Runkeeper'
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 855
 wordpress_url: https://www.thewissen.io/?p=855
 date: '2017-09-05 11:34:52 +0200'
@@ -23,7 +13,7 @@ tags:
 - ui
 ---
 <p>My previous post about creating a fancy Xamarin Forms UI was a whole lot of fun to do and I got some awesome feedback so it's time for another. Since running is one of my hobbies I see a whole lot of this app up close. It's both as simple in design as it is functional which makes it a great case for this; <strong>Runkeeper</strong>!</p>
-<p><!--more--><br />
+<p><!--more-->
 This is a rather long post, so here's an index for you to quickly jump to where you want to be.</p>
 <ol>
 <li><a href="#link1">Marrying Xamarin Forms UI and Runkeeper</a></li>
@@ -49,21 +39,21 @@ This is a rather long post, so here's an index for you to quickly jump to where 
 <li>It sets a custom font for the tab bar titles.</li>
 <li>The tab bar titles are shifted up a few pixels to match the Runkeeper look.</li>
 </ul>
-<p><script src="https://gist.github.com/sthewissen/87b648dc9b23cc7fc9ff5e8308f20ce5.js"></script><br />
+<p><script src="https://gist.github.com/sthewissen/87b648dc9b23cc7fc9ff5e8308f20ce5.js"></script>
 A second custom renderer takes care of some navigation bar related things:</p>
 <ul>
 <li>When you have multiple toolbar items iOS puts them all on the right hand side of the bar. The custom renderer takes one of them and moves it to the left.</li>
 <li>Set the custom font for the header.</li>
 <li>Set a light statusbar to complement the blue navigation bar.</li>
 </ul>
-<p><script src="https://gist.github.com/sthewissen/2fca76a02c27430a011f41096e535c76.js"></script><br />
+<p><script src="https://gist.github.com/sthewissen/2fca76a02c27430a011f41096e535c76.js"></script>
 The Runkeeper logo is only present on the <em>Start</em> tab and the <em>Start</em> tab also has&nbsp;a navigation bar with a different height when compared to all the other tabs. To get this behaviour I created a custom class inheriting from <code>ContentPage</code>. This is what our <em>Start</em> page will inherit from and is only there so we can target that page specifically in another custom renderer. In this renderer we do the following things:</p>
 <ul>
 <li>Add a <code>UIImageView</code> with our logo to the <code>TitleView</code> of <code>UINavigationItem</code>.</li>
 <li>Change the <code>Frame</code> for the existing <code>UINavigationBar</code>.</li>
 <li>Shift the title and icons up a bit because changing the height throws these off-center.</li>
 </ul>
-<p><script src="https://gist.github.com/sthewissen/40c59e81e4c2622aabbe5785ff76deb2.js"></script><br />
+<p><script src="https://gist.github.com/sthewissen/40c59e81e4c2622aabbe5785ff76deb2.js"></script>
 <a name="link3"></a></p>
 <h3>The Me screen on iOS</h3>
 <p>The Runkeeper app obviously has some more screens besides the <em>Start</em> screen. That's why I also took a shot at the <em>Me</em> screen which also has some interesting parts to it. My tinkering eventually resulted in the following:</p>
@@ -105,11 +95,11 @@ The Runkeeper logo is only present on the <em>Start</em> tab and the <em>Start</
 <p><a name="link6"></a></p>
 <h3>How much time does it take?</h3>
 <p>An argument for native development could be that it takes you more time to create something like this in a Xamarin Forms UI but this only took me about a morning to pull off. It's all a matter of experience and once you figure out how to do something you can re-use that piece of code in future apps. A custom renderer created to perform a specific task is easily re-usable across any future app you create.</p>
-<p>I still firmly believe that the most amount of time is spent in actually designing (placement of elements, colors, which fonts to use, iconography) the app. Whether you're creating the UI in Xamarin Forms or natively this is time you're going to have to spend anyway. Actually implementing the UI is not considerably faster or slower either way in my opinion.<br />
+<p>I still firmly believe that the most amount of time is spent in actually designing (placement of elements, colors, which fonts to use, iconography) the app. Whether you're creating the UI in Xamarin Forms or natively this is time you're going to have to spend anyway. Actually implementing the UI is not considerably faster or slower either way in my opinion.
 <a name="link7"></a></p>
 <h3>Speeding up the process</h3>
 <p>There are things you can do to speed up your Xamarin Forms UI tinkering process. When you're constantly adjusting margins and paddings to nudge elements into place compiling and deploying takes a lot of time. There are tools out there like <a href="http://gorillaplayer.com">GorillaPlayer</a>, <a href="https://www.xamarin.com/live" target="_blank" rel="noopener noreferrer">Xamarin Live Player</a> or <a href="http://www.livexaml.com/" target="_blank" rel="noopener noreferrer">LiveXAML</a>&nbsp;that greatly simplify this workflow.</p>
-<p>For this post I tried LiveXAML and it does exactly what it says on the box. All you need to do is install <a href="https://marketplace.visualstudio.com/items?itemName=ionoy.XamarinFormsLive-18843" target="_blank" rel="noopener noreferrer">the extension</a>&nbsp;in Visual Studio and install <a href="https://www.nuget.org/packages/LiveXAML" target="_blank" rel="noopener noreferrer">the NuGet package</a> in your project.&nbsp;Whenever you save any XAML file, it automatically updates the running application. This is ideal to quickly tinker with things like paddings/margins and colors. However when you change things in C# code such as adding a custom renderer you will need to rebuild the app and redeploy to see your changes.<br />
+<p>For this post I tried LiveXAML and it does exactly what it says on the box. All you need to do is install <a href="https://marketplace.visualstudio.com/items?itemName=ionoy.XamarinFormsLive-18843" target="_blank" rel="noopener noreferrer">the extension</a>&nbsp;in Visual Studio and install <a href="https://www.nuget.org/packages/LiveXAML" target="_blank" rel="noopener noreferrer">the NuGet package</a> in your project.&nbsp;Whenever you save any XAML file, it automatically updates the running application. This is ideal to quickly tinker with things like paddings/margins and colors. However when you change things in C# code such as adding a custom renderer you will need to rebuild the app and redeploy to see your changes.
 <a name="link8"></a></p>
 <h3>Conclusion</h3>
 <p>This was a really fun app to recreate and how spot on the result is kind of amazes me. The app uses a lot of default elements to create a really simple yet effective layout and that's where Xamarin Forms definitely shines. Another thing where Xamarin.Forms shines is its community of very useful tools and controls. Something like the <code>CarouselView</code> in this post is really simple to use and the fact that someone already went through the effort to create it for others to use is awesome.</p>

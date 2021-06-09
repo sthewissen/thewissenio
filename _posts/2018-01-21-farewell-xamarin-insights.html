@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: A farewell to our beloved Xamarin Insights?
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 1118
 wordpress_url: https://www.thewissen.io/?p=1118
 date: '2018-01-21 10:49:57 +0100'
@@ -21,48 +11,41 @@ tags:
 - xamarin
 - appcenter
 ---
-<p><!-- wp:paragraph --></p>
+
 <p>In October of 2014 Xamarin announced one of their new flagship products: Xamarin Insights, a real-time monitoring system that enables you to identify, report, and track issues that are impacting users. Now the time has come to say our goodbyes.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:more --><br />
-<!--more--><br />
+
+<p><!-- wp:more -->
+<!--more-->
 <!-- /wp:more --></p>
 <p><!-- wp:heading {"level":3} --></p>
 <h3>It had to be coming at some point...</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>This one has been a long time coming. From <a href="https://www.hockeyapp.net/blog/2016/03/31/welcome-xamarin-insights-users.html" target="_blank" rel="noopener noreferrer">the announcement of the move over to HockeyApp</a> in 2016 (which in my opinion never really took off from an Insights perspective) to then being integrated into the new <a href="https://www.thewissen.io/crash-reporting-analytics-xamarin/" target="_blank" rel="noopener noreferrer">App Center</a> it was quite inevitable that one day Insights would be closing its doors for good. That day has now been officially announced as <strong>March 31st</strong>.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center","id":1122,"linkDestination":"custom"} --></p>
 <div class="wp-block-image">
 <figure class="aligncenter"><a href="/images/posts/InsightsReports-1024x683.png" target="_blank" rel="noopener noreferrer"><img src="/images/posts/InsightsReports-1024x683.png" alt="Reports in Xamarin Insights" class="wp-image-1122"/></a></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>At the time of its release I dove head first into Insights. It was a great solution to be able to spot errors in the app before users even reported them. By the time the user spotted it a fix was most likely already in place. The <em>Audience&nbsp;</em>feature also had a lot of use for me because it gave you a great overview of where my users came from, what devices they were using and which OS versions they were running on those devices.&nbsp;Xamarin Insights definitely looked the part as well and its looks still hold up today, more than 3 years later.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center","id":1123,"linkDestination":"custom"} --></p>
 <div class="wp-block-image">
 <figure class="aligncenter"><a href="/images/posts/Insights-Stacktrace-1024x520.png" target="_blank" rel="noopener noreferrer"><img src="/images/posts/Insights-Stacktrace-1024x520.png" alt="A stacktrace in Xamarin Insights" class="wp-image-1123"/></a></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:heading {"level":3} --></p>
+
 <h3>So where do we go from here?</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>A lot of functionality present in Xamarin Insights has been ported over to Visual Studio App Center. However one of the most used features has not, causing a lot of issues for users that want to make the change. Insights supported the reporting of caught exceptions which enabled you to gracefully inform the user after an error occurred. App Center currently only supports unhandled exceptions meaning your app has to crash hard for the exception to be registered.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>In a recent announcement Xamarin says that this feature will be added before they officially retire Xamarin Insights. That is definitely something to look out for! Here's hoping it works as great as it did in Insights.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center","id":1121,"linkDestination":"custom","className":"is-style-default"} --></p>
 <div class="wp-block-image is-style-default">
 <figure class="aligncenter"><a href="/images/posts/Xamarin-Identify-1024x509.png" target="_blank" rel="noopener noreferrer"><img src="/images/posts/Xamarin-Identify-1024x509.png" alt="The Users feature in Xamarin Insights" class="wp-image-1121"/></a></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+
 <p><strong>Update: </strong>I was asked about the source for this post. A few days ago it was communicated to all Insights users in an e-mail containing the following text:</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:html --></p>
 <blockquote><p>Hi Steven,</p>
 <p>In March, 2016, we announced that Xamarin Insights&nbsp;would be merged into HockeyApp. Since that time, we have integrated HockeyApp's services and codebase into&nbsp;Visual Studio App Center, generally available as of&nbsp;November 15, 2017.</p>

@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: Packaging your legacy dlls with NuGet
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 379
 wordpress_url: http://www.dvolve.org/?p=379
 date: '2016-08-08 21:25:12 +0200'
@@ -34,7 +24,7 @@ tags:
 <h3>Step 4: Publishing to Visual Studio Team Services</h3>
 <p>If you haven't created a NuGet feed yet in your VSTS installation, go ahead and do so now. It's as simple as going to the Package tab from within a Team Project and clicking New Feed. Fill in a name, a description and set some permissions, hit Create and presto! Your feed is&nbsp;created.</p>
 <p><a href="/images/posts/create-new-feed.png"><img class="img-responsive aligncenter size-medium wp-image-398" src="/images/posts/create-new-feed-360x301.png" alt="create-new-feed" width="360" height="301" /></a></p>
-<p>When that is done you can start connecting to it. Luckily there's a button to do just that within this same tab! Hit the connect button and set the tool&nbsp;to NuGet 3.3+. A shiny button will appear where you can download a NuGet.exe packaged with some credential providers that will let you connect to your VSTS instance.<br />
+<p>When that is done you can start connecting to it. Luckily there's a button to do just that within this same tab! Hit the connect button and set the tool&nbsp;to NuGet 3.3+. A shiny button will appear where you can download a NuGet.exe packaged with some credential providers that will let you connect to your VSTS instance.
  <a href="/images/posts/credential-provider.png"><img class="img-responsive aligncenter wp-image-394 size-medium" src="/images/posts/credential-provider-360x266.png" alt="credential-provider" width="360" height="266" /></a></p>
 <p>After downloading the necessary stuff, extract the files and run the following command using the NuGet.exe from the download:</p>
 <p><code>nuget.exe push -Source {NuGet package source URL} -ApiKey VSTS {your_package}.nupkg</code></p>

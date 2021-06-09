@@ -1,16 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: 'A quick explainer: recent NuGet packages'
-author:
-  display_name: Steven
-  login: Steven
-  email: dvolvenl@gmail.com
-  url: https://www.thewissen.io
-author_login: Steven
-author_email: dvolvenl@gmail.com
-author_url: https://www.thewissen.io
 wordpress_id: 1308
 wordpress_url: https://www.thewissen.io/?p=1308
 date: '2019-05-21 16:50:43 +0200'
@@ -23,85 +13,53 @@ tags:
 - ui
 - plugins
 ---
-<p><!-- wp:paragraph --></p>
+
 <p>Recently I've been pushing out a few NuGet packages with components that I use in my every day Xamarin work. This blog post is meant to give you a little overview of these packages and how they can help you in your daily mobile development flow.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:more --><br />
-<!--more--><br />
+
+<p><!-- wp:more -->
+<!--more-->
 <!-- /wp:more --></p>
 <p><!-- wp:heading {"level":3} --></p>
 <h3>PancakeView</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>Modern design tends to work a lot with borders, rounded corners, gradients, and shadows. Within Xamarin.Forms there's not really a control available that supplies all of these things and lets you combine them to your heart's content. The <code>Frame</code> control comes close but wasn't quite cutting it for me. That's why I created the <code>PancakeView</code>!</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter"><img src="https://github.com/sthewissen/Xamarin.Forms.PancakeView/raw/master/images/pancake.gif" alt=""/><br />
-<figcaption>The sample app for PancakeView.</figcaption>
-</figure>
-</div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+<figure class="aligncenter"><img src="https://github.com/sthewissen/Xamarin.Forms.PancakeView/raw/master/images/pancake.gif" alt=""/>
+*The sample app for PancakeView.*
+
 <p>And why is it called a&nbsp;<code>PancakeView</code>&nbsp;you ask? Well, pancakes are also round, have shadows and have a glorious gradient color. What better fit can you think of?</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>The project can be <a rel="noreferrer noopener" aria-label="found on Github (opens in a new tab)" href="https://github.com/sthewissen/Xamarin.Forms.PancakeView" target="_blank">found on Github</a> and <a rel="noreferrer noopener" aria-label="NuGet (opens in a new tab)" href="https://www.nuget.org/packages/Xamarin.Forms.PancakeView" target="_blank">NuGet</a>. After installing the NuGet you need to tell your XAML page where it can find the PancakeView, which is done by adding the following attribute to the ContentPage:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/ff002d64b25b6b8c40471cb913ad596b.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:paragraph --></p>
+<script src="https://gist.github.com/sthewissen/ff002d64b25b6b8c40471cb913ad596b.js"></script>
 <p>Next up, just smack a PancakeView onto that page and you're all set, simple as baking real pancakes!</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/ee46b8f234ee05f67938a9a356ae191d.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/ee46b8f234ee05f67938a9a356ae191d.js"></script>
 <h3>DebugRainbows</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>This package aims to solve a problem a lot of UI tinkerers like myself face; how is that element positioned? Currently, the easiest way to figure out how a UI element is positioned in Xamarin.Forms is by setting its background color. Luckily, DebugRainbows does exactly that by the flip of a switch! After flipping the switch, the package will assign a random background color to each UI element, allowing you to get a better idea of how the layout is composed.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter"><img src="https://raw.githubusercontent.com/sthewissen/Xamarin.Forms.DebugRainbows/master/images/sample.png" alt=""/><br />
-<figcaption>A sample app with DebugRainbows disabled and enabled.<br></figcaption>
-</figure>
-</div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+<figure class="aligncenter"><img src="https://raw.githubusercontent.com/sthewissen/Xamarin.Forms.DebugRainbows/master/images/sample.png" alt=""/>
+*A sample app with DebugRainbows disabled and enabled.<br>*
+
 <p>It's also <a rel="noreferrer noopener" aria-label="available on Github (opens in a new tab)" href="https://github.com/sthewissen/Xamarin.Forms.DebugRainbows" target="_blank">available on Github</a> and <a href="https://www.nuget.org/packages/Xamarin.Forms.DebugRainbows" target="_blank" rel="noreferrer noopener" aria-label="NuGet (opens in a new tab)">NuGet</a> and pretty easy to use. Install the package and add the following attached property and namespace declaration to your <code>ContentPage</code>:</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/c822bc6e25a27b685feeb347286754da.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:heading {"level":3} --></p>
+<script src="https://gist.github.com/sthewissen/c822bc6e25a27b685feeb347286754da.js"></script>
 <h3>EasyLoading</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>At some point in your app's lifetime, you will need to load data from an external source. This is usually accompanied by implementing some sort of visual loading mechanism to inform the user of the fact that he/she needs to wait. In Xamarin.Forms there's an <code>ActivityIndicator</code> but these days new loading paradigms are the new norm. By adding things like a skeleton loader or a full-screen loading overlay with animations we can make our app a less static/boring experience.</p>
-<p><!-- /wp:paragraph --></p>
+
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
 <figure class="aligncenter"><img src="https://raw.githubusercontent.com/sthewissen/Xamarin.Forms.EasyLoading/master/images/sample.gif" alt=""/></figure>
 </div>
-<p><!-- /wp:image --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>This package introduces a LoadingLayout bindable property where we can define a loading template for every layout on a page. By binding to a boolean indicating if we're loading we can create a completely custom loading experience. All of the relevant code is contained within the elements it logically applies to.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>This package is <a rel="noreferrer noopener" aria-label="on Github (opens in a new tab)" href="https://github.com/sthewissen/Xamarin.Forms.EasyLoading" target="_blank">on Github</a> and <a rel="noreferrer noopener" aria-label="NuGet (opens in a new tab)" href="https://www.nuget.org/packages/Xamarin.Forms.EasyLoading" target="_blank">NuGet</a>. After installing it you can add a loading template to any layout element.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:html --><br />
-<script src="https://gist.github.com/sthewissen/1bda7b9f97c30752a369acdf43ab82dd.js"></script><br />
-<!-- /wp:html --></p>
-<p><!-- wp:paragraph --></p>
+<script src="https://gist.github.com/sthewissen/1bda7b9f97c30752a369acdf43ab82dd.js"></script>
 <p>If you want to create a loader for a list of items you can use the <code>RepeatCount</code> bindable property to repeat the template multiple times. This allows you to create e.g. a skeleton loader with multiple skeleton items being repeated vertically.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading {"level":3} --></p>
+
 <h3>Pull requests welcome!</h3>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
 <p>If any of these packages has sparked your interest or if you have ideas of your own I welcome PRs! I'm sure they can be extended with additional awesome features I haven't thought of yet. Go ahead, check out their Githubs and raise an issue or PR!</p>
-<p><!-- /wp:paragraph --></p>
+

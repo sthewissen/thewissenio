@@ -54,8 +54,6 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
 [class^="col-"] {
   flex: auto;
 }
-
-
 @for $i from 0 through $columns {
   .col-#{$i} {
     width: percentage( $i / $columns );
@@ -73,8 +71,6 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
     margin-right: percentage( $i / $columns );
   }
 }
-
-
 @each $key, $val in $mq {
 
   // DESKTOP
@@ -98,8 +94,6 @@ $mq: ( $mobile:$columns, $tablet:$columns, $desktop:$columns );
       }
     }
   }
-
-
   // TABLET
   @media(max-width: $tablet) {
 
