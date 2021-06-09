@@ -6,7 +6,8 @@
   background: $syntax-highlighting-background;
 
   .highlighter-rouge & {
-    background: #eef;
+    background: #fff;
+    margin-bottom: 30px;
   }
 
   .c     { color: #998; font-style: italic } // Comment

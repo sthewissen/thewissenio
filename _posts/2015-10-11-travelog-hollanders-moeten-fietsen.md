@@ -7,13 +7,15 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/bangkok4.jpg'
 ---
 
 Wil je in Bangkok eens wat anders zien moet je een fietstoer pakken is ons gezegd. Die raad hebben we dan ook opgevolgd door om 7 uur in de morgen klaar te staan voor een 5 uur durende tour met een fiets zonder versnelling en piepende remmen. Op z'n zachtst gezegd even wennen.
 
 Rustig is het hier nergens, dus je skills worden wel een beetje op de proef gesteld. Door nauwe steegjes waarvan je soms denkt dat je dwars door iemands woonkamer heen fietst en een reeks bochtige weggetjes fietsen we midden door een slachthuis waar locals in hun verse vleesbehoeften voorzien. Koeiepoten met de hoef er nog aan, levers en andere organen; you name it, het ligt er. Ondanks dat was het er wel schoon, dus dat scheelt in het kokhalsgehalte. Na een stukje ferryboot fietsen we verder door Thon Buri, waar we na het bezoeken van een 16 meter hoge zittende Buddha (te bewonderen op [Ben's blog](http://www.bendegens.nl)) op een longtail boot stappen. Dit vreemde, lange, smalle bootje van een meter of 10 wordt aangedreven door een motor die regelrecht uit een vrachtwagen getrokken lijkt waarna er een schroef op een aandrijfas op aangesloten is. Het ding heeft in ieder geval genoeg pks om eens goed door te knallen.
 
-[caption id="" align="aligncenter" width="400"][![Lekker longtailen...](/images/posts/IMG_3497.jpg "Lekker longtailen...")](/images/posts/IMG_3497.jpg) Lekker longtailen...[/caption]
+![Lekker longtailen...](/images/posts/IMG_3497.jpg)
+*Lekker longtailen...*
 
 Met de longtailboot komen we in een beduidend groener deel van Bangkok met veel kanalen waar we over fietspaden rijden die "at random" in de rimboe aangelegd lijken. Middenin diezelfde rimboe ligt echter een floating market waar men spulletjes verkoopt in en aan het water. Men heeft met name allerhande eten in de aanbieding, gemaakt op een (houten) bootje in een grote pan met olie en een vuurtje eronder. Zoete aardappel, vis met komkommer en pittige saus geserveerd op bladeren van weet ik veel welke plant, gebakken banaan, banaan/kokos pannekoeken, de lijst met heerlijk eten is eindeloos. Het smaakt allemaal geweldig en ik eet in Nederland nieteens vis. En van al deze bovenstaande gerechten krijg je hier al een goede 1 persoons portie voor 20 Baht per stuk. Dat is zo'n 50 eurocent.
 

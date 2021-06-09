@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/bali2.jpg'
 ---
 
 Ruim een jaar geleden tikte ik een serie blogs over ons reisje naar Thailand en nu is het zover; deel 1 uit een nieuwe serie met als onderwerp Bali!

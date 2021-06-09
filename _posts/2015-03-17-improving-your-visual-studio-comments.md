@@ -6,6 +6,7 @@ categories:
 - Code
 tags:
 - visual studio
+image: '/images/headers/lego.jpg'
 ---
 
 In my adventures in the Xamarin mobile world I particularly liked the fact how their Xamarin Studio IDE visually handles TODO comments. Basically, all it does is make the TODO part bold. I know that it's a small thing to worry about, but I value the comments in my code and am a sucker for creating some more clarity within them. In my search for a similar (or better) experience in Visual Studio I came across the **CommentsPlus** extension. Could this be the one?

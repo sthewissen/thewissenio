@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - snppts
+image: '/images/headers/scissors.jpg'
 ---
 
 After a few months of development we are proud to announce a new service for everyone interested in Xamarin and Xamarin Forms specifically! 

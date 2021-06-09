@@ -7,6 +7,7 @@ categories:
 tags:
 - nuget
 - ".net"
+image: '/images/headers/packages.jpg'
 ---
 
 When developing applications you inevitably encounter a piece of legacy code. In our case this code was put into DLL files that were being used by quite a lot projects. However, when you want to move towards automated builds using e.g. Visual Studio Team Services (which we will be using in this example) it will not have access to wherever you have these DLLs stored. The build is being made in the cloud after all. So how do you go about packaging your legacy DLLs into NuGet packages and hosting them in your own corporate feed?
@@ -33,9 +34,11 @@ Once you've completed your `.nuspec` file you can start building the package. T
 
 If you haven't created a NuGet feed yet in your VSTS installation, go ahead and do so now. It's as simple as going to the Package tab from within a Team Project and clicking New Feed. Fill in a name, a description and set some permissions, hit Create and presto! Your feed is created.
 
-[![create-new-feed](/images/posts/create-new-feed-360x301.png)](/images/posts/create-new-feed.png)
+![create-new-feed](/images/posts/create-new-feed.png)
 
-When that is done you can start connecting to it. Luckily there's a button to do just that within this same tab! Hit the connect button and set the tool to NuGet 3.3+. A shiny button will appear where you can download a NuGet.exe packaged with some credential providers that will let you connect to your VSTS instance. [![credential-provider](/images/posts/credential-provider-360x266.png)](/images/posts/credential-provider.png)
+When that is done you can start connecting to it. Luckily there's a button to do just that within this same tab! Hit the connect button and set the tool to NuGet 3.3+. A shiny button will appear where you can download a NuGet.exe packaged with some credential providers that will let you connect to your VSTS instance.
+
+![credential-provider](/images/posts/credential-provider.png)
 
 After downloading the necessary stuff, extract the files and run the following command using the NuGet.exe from the download:
 
@@ -51,4 +54,4 @@ The final step is integrating this new package in your builds. Ensure that you'v
 
 Once you've checked in the newly created config file you can edit your build definition. Add or edit your NuGet package restore step and point the **Path to NuGet.config** variable to the config file you've just checked in. Save your build definition and you should be good to go!
 
-[![build-definitions](/images/posts/build-definitions-360x185.png)](/images/posts/build-definitions.png)
+![build-definitions](/images/posts/build-definitions.png)

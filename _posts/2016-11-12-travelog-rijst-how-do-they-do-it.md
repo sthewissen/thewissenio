@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/bali10.jpg'
 ---
 
 Rijst. We eten het allemaal wel eens, maar hoe gaat het van een zompig veld naar een mooie rijstkorrel? How do they do it?

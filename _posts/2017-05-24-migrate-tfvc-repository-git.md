@@ -6,6 +6,7 @@ categories:
 - Code
 tags:
 - azure devops
+image: '/images/headers/lego-1.jpg'
 ---
 
 When using Visual Studio Team Services (VSTS) you have the choice to create a repository using Team Foundation Version Control (TFVC) or Git. Up until recently there wasn't really a simple option to migrate from one to the other. Our company is slowly transitioning to Git and now there's a new migration option! 
@@ -22,15 +23,15 @@ In our case we had approximately 140 repositories that were TFVC based since the
 
 With those ground rules layed out we can start migrating our repos. Navigate to your TFVC repository and click on its name in the top left corner.
 
-[![Select your TFVC repository](/images/posts/repos-260x321.png)](/images/posts/repos.png)
+![Select your TFVC repository](/images/posts/repos.png?style=halfsize)
 
 Pick **Import repository** from the menu and you should see the popup below. Here we can select what the type of our **Source** repository is. More then likely you will pick ***TFVC*** here because going from Git to TFVC isn't something a lot of people will be doing. It is possible though! Next up we type the **Path** to the folder or branch we want to migrate and check the box if we want to migrate our history. This slider can range between 1 day and 180 days. It's up to you! Lastly we give our new Git repository a nice name and press **Import** to start the process.
 
-[![Time to migrate to Git!](/images/posts/migrate-534x570.png)](/images/posts/migrate.png)
+![Time to migrate to Git!](/images/posts/migrate.png?style=halfsize)
 
 While VSTS starts processing your request you can either go grab a well-earned cup of coffee or just wait out the migration. It shouldn't take too long if your repository isn't that large. Your code gets put inside a **master** branch in the new Git-based repository and you can carry on coding using Git!
 
-[![Migrating your project now!](/images/posts/busymigrating-360x237.png)](/images/posts/busymigrating.png)
+![Migrating your project now!](/images/posts/busymigrating.png?style=halfsize)
 
 ### Cleanup and a history lesson
 

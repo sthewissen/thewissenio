@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/manta.jpg'
 ---
 
 Een snorkeltripje naar het dichtbij gelegen eiland Nusa Lembongan, dat leek ons wel wat. Althans, na de vrouw ervan overtuigd te hebben dat kwallen en haaien hier waarschijnlijk niet zitten.

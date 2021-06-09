@@ -8,7 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - snppts
-image: '/images/headers/scissors.jpg'
+image: '/images/headers/scissors-1.jpg'
 ---
 As you probably know I'm one of the co-founders of [the Snppts platform](https://www.thewissen.io/out-now-snppts-for-xamarin-forms/) together with my bestie Gerald Versluis. This month of November is all about getting more content into the platform and what better way to do it than with a Community Challenge!
 

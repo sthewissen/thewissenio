@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/bali11.jpg'
 ---
 
 Op Bali bevinden zich een aantal vulkanen en het landschap is er erg bergachtig. Het leek ons een goed plan om boven op een berg gedropt te worden en met de fiets door de binnenlanden af te dalen.

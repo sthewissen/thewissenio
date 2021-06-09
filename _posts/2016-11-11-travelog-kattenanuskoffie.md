@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/bali8.jpg'
 ---
 
 Op het moment van schrijven is het alweer ruim vrijdag, maar onze donderdag had ook nog wel wat moois te bieden...

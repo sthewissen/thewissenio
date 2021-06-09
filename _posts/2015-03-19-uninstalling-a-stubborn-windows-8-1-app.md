@@ -6,6 +6,7 @@ categories:
 - Code
 tags:
 - ".net"
+image: '/images/headers/subway.jpg'
 ---
 
 Today we came across the issue that one of our customers' IT specialists received a strange message while trying to install a new build of one of our apps.
@@ -24,6 +25,6 @@ To help locating an app in the huge list of installed apps you can filter said l
 
 Now that you've identified the app you want to remove it's time to say your goodbyes. Type `Remove-AppxPackage` with the full package name that you found in the previous step. As a sample I used `Remove-AppxPackage Microsoft.ZuneMusic_2.6.672.0_x64__8wekyb3d8bbwe –confirm`, because well... Who needs something Zune related?
 
-[![zuneapp](/images/posts/zuneapp1.jpg)](/images/posts/zuneapp1.jpg)
+![zuneapp](/images/posts/zuneapp1.jpg)
 
 Adding the confirm parameter means that you will be given a confirmation message to check if you're 100% sure you want to uninstall the app. Hitting the `Y` button will uninstall it and you can continue re-installing the newer version.

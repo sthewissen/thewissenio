@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/phuket2.jpg'
 ---
 
 Daar zitten we dan na een binnenlandse vlucht van Chiang Mai (het noorden) naar Phuket (het zuiden) van een goeie twee uur. Klaar om aan het strandgedeelte van de vakantie te beginnen. Helaas zonder onze reisgenoten Ben, Asha en Luuk, waar we met Marco Borsato's "Afscheid nemen bestaat niet" op de achtergrond in een goede janksessie vaarwel tegen gezegd hebben (ik overdrijf wellicht iets).
@@ -15,6 +16,12 @@ Nu we in Phuket zijn aanbeland moeten we echter ons eigen plan gaan vormen en da
 
 Boven aangekomen staat een ding vast: het uitzicht is in ieder geval de moeite waard en als we ook nog eens gezegend worden door een monnik is het feest compleet.
 
-[caption width="400" align="aligncenter"][![De Big Buddha!](/images/posts/IMG_3569.jpg "De Big Buddha!")](/images/posts/IMG_3569.jpg) De Big Buddha![/caption]We knallen door naar Wat Chalon; de belangrijkste tempel van Phuket en de laatste tempel die we zullen bezoeken deze reis. Als je kijkt naar de hoeveelheid details in de versieringen vraag je je af hoeveel tijd zoiets gekost moet hebben. Na alle tempels gezien te hebben gaan we verder naar het Karon Viewpoint. Prachtige vergezichten langs de westkust van Phuket met zijn groene heuvels, azuurblauwe zee en witte stranden. Heerlijk. Vooral omdat het langzaam erg warm wordt.
+![De Big Buddha!](/images/posts/IMG_3569.jpg)
+*De Big Buddha!*
 
-[caption width="1024" id="attachment_248" align="aligncenter"][![image](/images/posts/image-1024x361.jpg)](/images/posts/image.jpg) Uitzicht vanaf Karon Viewpoint.[/caption]We gaan terug naar het hotel en maken ons klaar om het strand te bezoeken. Daar aangekomen blijkt dat het water niet zo koud is, maar het is toch lekker. Na een goed uur te dobberen en tegen wat heftige golven inbeuken schreeuwt een Russische vrouw tegen ons dat ze een "zmeya" gezien heeft. De vrouw (met tubetop aan die ze niet zou moeten dragen en meer buik dan wat anders in haar bikinibroekje) weet niet hoe rap ze het strand op moet. Omdat we toch al een uur in het water hangen gaan we ook maar eens voorzichtig het strand op. Daar verzekerd ze ons nogmaals wild gebarend dat er een zmeya in het water zit. Alsof ik weet wat dat is. We gaan liggen en kijken toe hoe de vrouw een crowd verzamelt met haar gebazel. Als de zmeya zorgvuldig het strand opgewerkt is ben ik ook wel wat benieuwd dus neem ik een kijkje. Daar aangekomen zie ik een klein zwart/geel waterslangetje van misschien een centimeter dik en dertig centimeter lang. De vrouw kijkt me aan en bevestigd het nog maar eens met zo'n blik van "zonne grote zmeya jonge!". Aansteller.
+We knallen door naar Wat Chalon; de belangrijkste tempel van Phuket en de laatste tempel die we zullen bezoeken deze reis. Als je kijkt naar de hoeveelheid details in de versieringen vraag je je af hoeveel tijd zoiets gekost moet hebben. Na alle tempels gezien te hebben gaan we verder naar het Karon Viewpoint. Prachtige vergezichten langs de westkust van Phuket met zijn groene heuvels, azuurblauwe zee en witte stranden. Heerlijk. Vooral omdat het langzaam erg warm wordt.
+
+![Uitzicht vanaf Karon Viewpoint.](/images/posts/image.jpg)
+*Uitzicht vanaf Karon Viewpoint.*
+
+We gaan terug naar het hotel en maken ons klaar om het strand te bezoeken. Daar aangekomen blijkt dat het water niet zo koud is, maar het is toch lekker. Na een goed uur te dobberen en tegen wat heftige golven inbeuken schreeuwt een Russische vrouw tegen ons dat ze een "zmeya" gezien heeft. De vrouw (met tubetop aan die ze niet zou moeten dragen en meer buik dan wat anders in haar bikinibroekje) weet niet hoe rap ze het strand op moet. Omdat we toch al een uur in het water hangen gaan we ook maar eens voorzichtig het strand op. Daar verzekerd ze ons nogmaals wild gebarend dat er een zmeya in het water zit. Alsof ik weet wat dat is. We gaan liggen en kijken toe hoe de vrouw een crowd verzamelt met haar gebazel. Als de zmeya zorgvuldig het strand opgewerkt is ben ik ook wel wat benieuwd dus neem ik een kijkje. Daar aangekomen zie ik een klein zwart/geel waterslangetje van misschien een centimeter dik en dertig centimeter lang. De vrouw kijkt me aan en bevestigd het nog maar eens met zo'n blik van "zonne grote zmeya jonge!". Aansteller.

@@ -7,6 +7,7 @@ categories:
 tags:
 - travelog
 - dutch 🇳🇱
+image: '/images/headers/thailand-03-copy.jpg'
 ---
 
 Nog een paar dagen en het is zover. Dan beginnen we voor het eerst in 2,5 jaar weer aan het fenomeen vakantie. En nog verdiend ook nog. Waar het de vorige keer in Zuid-Afrika al indrukwekkend was, gaan we het deze keer eens over een andere boeg gooien. Met een rugzak vol spullen het vliegtuig in naar Thailand en over een tijdje weer terug. Alles ertussenin gaat zoals het gaat en schijnbaar is dat feit dusdanig inspirerend dat ik daadwerkelijk deze blogpost aan het tikken ben.

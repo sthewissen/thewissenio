@@ -7,6 +7,7 @@ categories:
 tags:
 - xamarin
 - xamarin.forms
+image: '/images/headers/phonebooths.jpg'
 ---
 
 One of the recent additions to the Xamarin family of products is the Xamarin Test Recorder. What this nifty little tool does is allow you to record your UI tests while you're navigating through your app and export them into either your codebase or the Xamarin Test Cloud. If you're not familiar with what the Test Cloud is it's basically a warehouse full of devices in Denmark that you can get computing time on to test your app. Let's face it, no one has 2000+ physical devices to test on so this offering paired with an easy to use recorder app can help definitely help you out when you want to put an app in the AppStore. Currently the Test Recorder is still in preview on the Mac so you probably should use it with caution, but let's be brave and take it for a spin shall we?
@@ -15,11 +16,11 @@ One of the recent additions to the Xamarin family of products is the Xamarin Tes
 
 The first thing you'll notice when you try to install the [Xamarin Test Recorder](https://www.xamarin.com/test-cloud/recorder) is that there are two versions of it. The Mac version will let you record tests for iOS and Android whereas the Windows version only allows you to record for Android. There is no version for Windows Phone and there probably never will be because let's face it, that platform is dead. After you've installed the Recorder you will open up to a screen similar to the one below (which is the Mac version obviously). There's not a whole lot more of a UI to learn so this introduction will be quite short (but sweet).
 
-[![testrecorder](/images/posts/testrecorder-1024x679.png)](/images/posts/testrecorder.png)
+![testrecorder](/images/posts/testrecorder.png)
 
 You start off by selecting a device that you want to use to record the test on. This can be a simulator or an actual physical device. Next up is selecting which app you would want to record from. You can pick one from the list or use the **Open...** option to pick an app file on your file system to run. The test recorder will start the app on your device or boot a simulator and you're ready to go. After your app has booted you can hit record and get going. I recorded a quick session of the login screen of one my apps below.
 
-[![boodschappielogin](/images/posts/boodschappielogin-1024x679.png)](/images/posts/boodschappielogin.png)
+![boodschappielogin](/images/posts/boodschappielogin.png)
 
 ### Start recording!
 
