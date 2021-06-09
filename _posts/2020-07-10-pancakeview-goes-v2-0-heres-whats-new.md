@@ -4,7 +4,7 @@ title: PancakeView goes v2.0! Here's what's new.
 date: '2020-07-10 16:00:00 +0200'
 categories: Code
 tags: xamarin xamarin.forms nuget plugins
-image: 'images/headers/pancakes_smile.jpeg'
+image: '/images/headers/pancakes_smile.jpeg'
 ---
 It's been in the making for quite a while and the road to getting to the end result has been quite a struggle. However, it's finally time to release version 2.0 of PancakeView!
 ### What's new?

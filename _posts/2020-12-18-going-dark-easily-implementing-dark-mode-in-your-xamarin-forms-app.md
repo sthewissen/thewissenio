@@ -3,7 +3,7 @@ layout: post
 title: Going dark; easily implementing dark mode in your Xamarin.Forms app
 date: '2020-12-18 13:22:00 +0100'
 categories: Code
-image: 'images/headers/darkmode.jpeg'
+image: '/images/headers/darkmode.jpeg'
 tags: xamarin xamarin.forms ui
 ---
 Dark mode; it's all the rage in apps these days. Its main goal seems to be saving our eyes from burning out when reading things in a dark environment, but is that true?

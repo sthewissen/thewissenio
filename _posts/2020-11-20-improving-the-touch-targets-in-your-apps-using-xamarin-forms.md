@@ -2,7 +2,7 @@
 layout: post
 title: Improving the touch targets in your apps using Xamarin.Forms
 date: '2020-11-20 17:17:04 +0100'
-image: 'images/headers/target.jpeg'
+image: '/images/headers/target.jpeg'
 categories: Code
 tags: xamarin xamarin.forms ui
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: How to provide negative numeric input on Xamarin.Forms iOS
 date: '2020-10-06 16:06:52 +0200'
-image: 'images/headers/keyboard.jpeg'
+image: '/images/headers/keyboard.jpeg'
 categories: Code
 tags: xamarin xamarin.forms ui
 ---

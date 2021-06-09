@@ -2,7 +2,7 @@
 layout: post
 title: Styling the Android bottom tabs animation behavior and font
 date: '2021-01-12 19:12:00 +0100'
-image: 'images/headers/tabs.jpeg'
+image: '/images/headers/tabs.jpeg'
 categories: Code Short
 tags: xamarin xamarin.forms ui
 ---
