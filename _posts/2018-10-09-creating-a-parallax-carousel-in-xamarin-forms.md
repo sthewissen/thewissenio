@@ -8,11 +8,10 @@ tags:
 - xamarin
 - xamarin.forms
 - ui
+image: '/images/headers/carousel.jpg'
 ---
 
 A while ago I wrote [a small tutorial](https://www.thewissen.io/simple-good-looking-app-tutorial/) on creating a simple carousel for your Xamarin.Forms app. That post also showed off a cool parallax effect on a carousel. I've always wanted to come back to that effect, let's get this show on the road!
-
- 
 
 ### What we will be creating
 
@@ -24,11 +23,7 @@ Let's first take a look at what we want to replicate. I found this awesome carou
 
 These are the most important parts of this. The rest of it is mainly labeling, a rounded button and other stuff that is pretty much available out-of-the-box. So, let's get cracking!
 
-
-> This post might be a bit heavy on code since it might be a bit tricky to understand how the effect works. If you don't care for the explanation scroll down, download the code and take a look at it :)
-> 
-> 
-
+This post might be a bit heavy on code since it might be a bit tricky to understand how the effect works. If you don't care for the explanation scroll down, download the code and take a look at it :)
 
 ![](https://us.v-cdn.net/5019960/uploads/editor/mx/undp362d3fmk.gif)
 
@@ -44,15 +39,19 @@ These two events are essential for this whole thing to work. Especially the `Scr
 ### Background color crossfading
 
 Each item in the carousel has a primary color (purple, yellow and blue in this sample) which is also shown in the "Wish List" button styling. This is the final color that is shown when an item is selected in the carousel. The first thing we need to add is a view model which will hold all of our items. We use the `CarouselItem` view model for that, which also contains a few `Color` properties that will help us visualize the item.
+
 <script src="https://gist.github.com/sthewissen/a7f2273605f83123083426c89759eedf.js"></script>
 
 Our main data source is a list of these `CarouselItem` objects, each of which represents a slide in our carousel. In the next code sample, we create some dummy data and set up the background colors for them.
+
 <script src="https://gist.github.com/sthewissen/eeeff1ec9cdaf3b29dc1309bd695cf32.js"></script>
 
-Earlier on I mentioned that the `Scrolled` event gives us a percentage scrolled between 0-100% and a direction for each time we scroll. To create the gradient effect, we simply generate a list of a 100 colors between each slide's primary colors. To do so, we can use the following helper method:
+Earlier on I mentioned that the `Scrolled` event gives us a percentage scrolled between 0-100% and a direction for each time we scroll. To create the gradient effect, we simply generate a list of a 100 colors between each slide's primary colors. To do so, we can use the following helper method:
+
 <script src="https://gist.github.com/sthewissen/28c8f49be01c6dc416cab29baea88874.js"></script>
 
 This gives us a list of all the colors between the first and last slide's primary colors, which should be enough for each of the possible scroll positions. Now all we need to do is add some logic to our `Scrolled` event to set the background color of our page to the correct color in the list.
+
 <script src="https://gist.github.com/sthewissen/8fe3e205846ae9280b2f23b6f6d8f2b4.js"></script>
 
 When implementing this we also need to take into account the scenario where users are at the first or last item in the carousel. We don't have any overflow colors in our array, so if we're at the last or first carousel item we simply lock it to the first or last color.
@@ -60,6 +59,7 @@ When implementing this we also need to take into account the scenario where user
 ### A gradient card view
 
 This is a fairly straightforward part. I created a custom `ContentView` called `RoundedContentView` which implements most of what we need; a shadow, rounded corners and a gradient background. I will spare you from having to wade through the custom renderers for each platform, they can be found in the source code on Github :)
+
 <script src="https://gist.github.com/sthewissen/025b3e9ec5ea06da227796a1ed28b097.js"></script>
 
 ### The parallax effect
@@ -67,12 +67,15 @@ This is a fairly straightforward part. I created a custom `ContentView` called `
 This is the fun part! The meat of this post! The thing you probably came here for! Well, let me honestly tell you that it's not incredibly hard to pull off, but it might be a bit tricky to understand all the moving parts.
 
 The first thing we need to do is perform some changes to our view model. We start by creating a wrapper object, which contains our list of items. The wrapper object also contains the current scroll position of the entire carousel, which we will be using later on in our calculations. Each `CarouselItem` has its own `Position` property as well, which we will use to set its parallax offset.
+
 <script src="https://gist.github.com/sthewissen/45c71fbccda54fb0d480ac8a12629063.js"></script>
 
 To populate the positioning properties with values we once again turn our attention to the `Scrolled` and `PositionSelected` events. Whenever a carousel item is selected, we reset the current slide position to 0, meaning all the UI elements are at their base positions. When we're scrolling we need to do some calculations to determine what side we're scrolling towards and calculate an offset for the UI items we want to apply a parallax effect to.
+
 <script src="https://gist.github.com/sthewissen/fc243f933e6db56b164eae42b3ddd089.js"></script>
 
 This completes most of the plumbing we need, so next up we need to create an instance of the `Wrapper` object, add items to it and set it as the `BindingContext` of the page. By doing so we can now use its properties in data bindings. Because each individual slide has a `Position` property containing the parallax offset we can bind that property to the `TranslationX` property of the view elements. This translation property is used to move the view element on the horizontal axis, which makes it very suitable for use in our parallax effect!
+
 <script src="https://gist.github.com/sthewissen/79373d55849185e8d7af53fa6dfce51c.js"></script>
 
 As you can see, each element that we want to add the parallax effect to has its `TranslationX` property bound to the `Position` property. This means any changes to that property are directly propagated to the UI where elements are being moved around while we scroll. It's a fairly simple idea, but it might be a bit hard to comprehend all the moving parts. I hope this post manages to clarify that :)

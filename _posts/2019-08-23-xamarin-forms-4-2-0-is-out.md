@@ -7,11 +7,10 @@ categories:
 tags:
 - xamarin
 - xamarin.forms
+image: '/images/headers/mountains.jpg'
 ---
 
 A new version of Xamarin.Forms has hit NuGet feeds around the globe. Let's take a quick peek at what has changed under the hood!
-
- 
 
 ### Improvements to Shell
 
@@ -36,4 +35,3 @@ As you probably know, Xamarin.Forms is an abstraction layer on top of the native
 *Thumb color can now be set :)*
 
 For a full list of all the changes, check out [the release notes](https://docs.microsoft.com/nl-nl/xamarin/xamarin-forms/release-notes/4.2/4.2.0).
-

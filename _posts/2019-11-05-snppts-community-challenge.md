@@ -8,11 +8,9 @@ tags:
 - xamarin
 - xamarin.forms
 - snppts
+image: '/images/headers/scissors.jpg'
 ---
-
 As you probably know I'm one of the co-founders of [the Snppts platform](https://www.thewissen.io/out-now-snppts-for-xamarin-forms/) together with my bestie Gerald Versluis. This month of November is all about getting more content into the platform and what better way to do it than with a Community Challenge!
-
- 
 
 ### What is Snppts again?
 
@@ -27,12 +25,9 @@ We have teamed up with the lovely people over at Microsoft to bring you our firs
 
 Here’s how it works:
 
-*   Complete ONE of the following:
-    
-    *   [Contribute](https://snppts.dev/how-to-contribute) a new, original UI snippet to our repo.
-    *   Submit a valid PR to improve the [Snppts platform.](https://github.com/snpptsdev/snppts)
-    
-*   The deadline for this challenge is **November 17th, 23:59 Pacific**.
+* Complete ONE of the following:    
+    * [Contribute](https://snppts.dev/how-to-contribute) a new, original UI snippet to our repo.
+    * Submit a valid PR to improve the [Snppts platform.](https://github.com/snpptsdev/snppts)    
+* The deadline for this challenge is **November 17th, 23:59 Pacific**.
 
 Everyone who participates can apply for some swag! A form for swag will be sent after your challenge submission is confirmed. There are no limits to the number of submissions you can contribute. We look forward to seeing your submissions!
-
