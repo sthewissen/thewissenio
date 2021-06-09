@@ -10,7 +10,7 @@ tags:
 image: '/images/headers/bali8.jpg'
 ---
 
-Op het moment van schrijven is het alweer ruim vrijdag, maar onze donderdag had ook nog wel wat moois te bieden...
+Op het moment van schrijven is het alweer ruim vrijdag, maar onze donderdag had ook nog wel wat moois te bieden. Laten we eens kijken wat er dit keer gebeurd is, shall we?
 
 ### Iemand koffie?
 
