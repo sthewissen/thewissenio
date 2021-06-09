@@ -8,6 +8,7 @@ tags:
 - azure
 - azure functions
 - cryptocurrency
+image: '/images/headers/tools.jpg'
 ---
 
 In [part 1 of this tutorial series](https://www.thewissen.io/building-cryptocurrency-trading-bot-using-azure-part-1/) we built a trading bot using an Azure Function. In this 2nd part we will create a simple mobile app to keep track of what our bot is doing. Since it's still a robot we also want to control it a bit simply to prevent our robot overlords from taking over.
@@ -24,7 +25,7 @@ The topic of creating a mobile app is not within the scope of this post although
 
 To create the mobile companion app to the bot I use Xamarin Forms. This is a really simple framework to create cross-platform native apps and suits this project quite well. It's also what I'm used to using for my app development and if you expected anything else you haven't been reading this blog ;) This is the mobile app I came up with for this post:
 
-[![Mobile companion app for the trade bot](/images/posts/app-1024x888.jpg)](/images/posts/app.jpg)
+[![Mobile companion app for the trade bot](/images/posts/app.jpg)](/images/posts/app.jpg)
 
 Like I said before I will not be going over how to create a Xamarin app in detail in this post. There are more than enough resources on that available on the web. You're free to create the mobile app as  you see fit. The interesting part here is how we can leverage Azure Functions to retrieve data from our bot and send commands to it.
 

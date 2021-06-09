@@ -8,6 +8,7 @@ tags:
 - azure
 - azure functions
 - azure devops
+image: '/images/headers/lightning.jpg'
 ---
 
 I recently started exploring the wonderful world of Azure Functions and while they are a great tool to move towards a cloud-based architecture I started to wonder... How should I be deploying Azure Functions using my existing VSTS setup? 

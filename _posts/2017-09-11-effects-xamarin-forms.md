@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - ui
+image: '/images/headers/effects.jpg'
 ---
 
 Developers can use Effects in Xamarin Forms to customize native controls and add some styling of their own. But why not simply use a custom renderer to achieve the same thing? While that is certainly possible there are some benefits to Effects.
@@ -58,8 +59,6 @@ Obviously this leaves a lot to be desired and it serves solely as a sample of ho
 *   Setting keyboard types on an entry
 *   Setting auto-correct settings on an entry
 *   Etc.
-
- 
 
 ### Sharing is caring
 

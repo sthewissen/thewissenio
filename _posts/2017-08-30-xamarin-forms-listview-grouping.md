@@ -7,6 +7,7 @@ categories:
 tags:
 - xamarin
 - xamarin.forms
+image: '/images/headers/cardcatalog-1.jpg'
 ---
 
 When creating a Xamarin Forms application there's almost no getting around using a `ListView` component at some point. When you have a lot of items to display you might even consider adding `ListView` grouping. But how does that work?
@@ -29,7 +30,7 @@ What this does is group by the first letter of each item using the LINQ `group` 
 
 And there we have it. A simple grouping of items based on the first letter of their name with just a few lines of C# code and a bit of XAML interface code. The screenshot below shows this code in action in our upcoming [Have I Been Pwned](https://haveibeenpwned.com) app.
 
-[![ListView grouping in HIBP](/images/posts/hibp-320x570.png)](/images/posts/hibp.png)
+![ListView grouping in HIBP](/images/posts/hibp.png?style=halfsize)
 
 ### Adding a jump list and styling it
 

@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - ui
+image: '/images/headers/crayons.jpg'
 ---
 
 I love tinkering with UI. There, I said it. Even though I'm a developer first and foremost I cannot help the fact that any mobile app UI I create has to look fancy. However most of my development work takes place in Xamarin Forms. Can those two worlds be combined?
@@ -17,11 +18,7 @@ I love tinkering with UI. There, I said it. Even though I'm a developer first an
 To quickly answer the question in the previous paragraph: hell yeah. I recently came across [this post by Adam Pedley](https://xamarinhelp.com/creating-instagram-ui-xamarin-forms/) which talks about Xamarin Forms and the misconceptions that exist around creating a kickass UI with it. I couldn't have phrased it any better myself and his Instagram sample proves his point. This paragraph basically says it all:
 
 > Xamarin Forms continues to be dragged down by old viewpoints, that it is unfit for popular, polished, and/or large scale applications. And that it could not possibly compare to a native implementation. Xamarin Forms apps are native applications, and have the full capabilities of one, the only difference is that you may need to implement CustomRenderers or platform specific code, to achieve things that Xamarin Forms has not yet, or can not yet implement, in a cross platform manner.
-> 
-> 
-> 
-> - Adam Pedley
-> 
+<cite>Adam Pedley</cite>
 
 Adam's post and an older series called "[Xamarin Forms in Anger](https://github.com/awolf/Xamarin-Forms-InAnger)" by Adam Wolf got me inspired to contribute my 2 cents to the cause. In this post and possible future posts I will be dissecting some of the most popular apps' UI and trying to recreate (part of) it using Xamarin Forms. The source code for these project will be made available on [my Github page](https://github.com/sthewissen). Please note that these will not be entirely pixel perfect functional recreations but are meant to demonstrate that the UI concept is possible in Xamarin.Forms. If you thinker with these a bit more you'll definitely be able to make them pixel perfect. So let's get started with **Twitter**!
 
@@ -32,36 +29,24 @@ This is the first screen you see when you open the Twitter app; your very own fe
 <script src="https://gist.github.com/sthewissen/1762c747cd2756c01a4e53ffaf1cfbcc.js"></script>
 
 To get the rounded corners on the images and the circular profile images I used [FFImageLoading](https://github.com/luberda-molinet/FFImageLoading) and its tranformations. I have yet to figure out how to get it to crop the way the Twitter app does though. You will probably need to write a custom transformation for that if you want to keep using FFImageLoading. Feel free to create a PR for it if you know how to do it though! Other than that I'd say I came pretty close.
-<table class="aligncenter imagetable" cellpadding="10">
-<tbody>
-<tr>
-<td>[![Actual Twitter app](/images/posts/IMG_6781-320x570.jpg)](/images/posts/IMG_6781.jpg)</td>
-<td>[![Xamarin Forms version of Twitter](/images/posts/Simulator-Screen-Shot-22-Aug-2017-15.43.00-320x570.png)](/images/posts/Simulator-Screen-Shot-22-Aug-2017-15.43.00.png)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><small>The official Twitter iOS app</small></td>
-<td style="text-align: center;"><small>A quick Xamarin Forms clone</small></td>
-</tr>
-</tbody>
-</table>
+
+![Actual Twitter app](/images/posts/IMG_6781.jpg?style=halfsize)
+*Actual Twitter app*
+
+![Xamarin Forms version of Twitter](/images/posts/Simulator-Screen-Shot-22-Aug-2017-15.43.00.png?style=halfsize)
+*Xamarin Forms version of Twitter*
 
 ### And what about Android?
 
 Let me start by stating that I am no Android styling wizard. Coming from an iOS world I've always had more affinity with styling iOS apps than Android apps. It's what I always start with when prototyping my apps just because it feels natural to me. The amount of XML files involved in the Android styling process usually only succeeds in confusing me. Nevertheless the Android version of the app also needs some love to get up to par with its iOS counterpart so here's what I did.
 
 ***Disclaimer:** Some of these tweaks might have been possible in an easier fashion. Feel free to PR the code to educate me :)*
-<table class="aligncenter imagetable" cellpadding="10">
-<tbody>
-<tr>
-<td>[![The Android Twitter app](/images/posts/Screenshot_20170822-113151-321x570.png)](/images/posts/Screenshot_20170822-113151.png)</td>
-<td>[![Xamarin Forms Twitter main page](/images/posts/Screenshot_20170824-130943-321x570.png)](/images/posts/Screenshot_20170824-130943.png)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><small>The official Twitter Android app</small></td>
-<td style="text-align: center;"><small>The Xamarin Forms Android clone</small></td>
-</tr>
-</tbody>
-</table>
+
+![The Android Twitter app](/images/posts/Screenshot_20170822-113151.png?style=halfsize)
+*The Android Twitter app*
+
+![Xamarin Forms Twitter main page](/images/posts/Screenshot_20170824-130943.png?style=halfsize)
+*Xamarin Forms Twitter main page*
 
 To get the selected tab to show up colored I used [James Montemagno's tutorial](http://motzcod.es/post/157544468267/xamarin-forms-android-selected-and-unselected-tab-colors) and his custom renderer to get this going. I defined my colors in an xml file and added that to my `Resources` folder. To remove the titles you can simply set them to an empty string when defining your tabs. Since we also remove them on iOS this is the easiest solution.
 
@@ -78,26 +63,18 @@ The only thing I couldn't figure out is how to remove the drop shadow effect tha
 ### The menu
 
 Most of the menu is pretty straightforward. The users profile item makes an appearance again as well as some other buttons represented by custom icons. In my sample I used the FontAwesome font to quickly create these buttons. Obviously with the right icons it would look almost spot on. Most of these items are tappable and navigate to a different screen which you can easily achieve with a `TapGestureRecognizer`. Also there are some differences in how some items are presented which can pretty much all be solved using the `OnPlatform` tag.
-<table class="aligncenter imagetable" cellpadding="10">
-<tbody>
-<tr>
-<td> [![The menu in the Twitter iOS app](/images/posts/file-320x570.png)](/images/posts/file.png)</td>
-<td>[![Menu in the Xamarin Forms iOS app](/images/posts/Simulator-Screen-Shot-24-Aug-2017-12.01.33-320x570.png)](/images/posts/Simulator-Screen-Shot-24-Aug-2017-12.01.33.png)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><small>The menu in the official Twitter iOS app</small></td>
-<td style="text-align: center;"><small>The Xamarin Forms iOS clone</small></td>
-</tr>
-<tr>
-<td>[![The Twitter Android menu](/images/posts/Screenshot_20170824-111537-321x570.png)](/images/posts/Screenshot_20170824-111537.png)</td>
-<td>[![Xamarin Forms Android menu](/images/posts/Screenshot_20170824-114638-321x570.png)](/images/posts/Screenshot_20170824-114638.png)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><small>The menu in the official Twitter Android app</small></td>
-<td style="text-align: center;"><small>The Xamarin Forms Android clone</small></td>
-</tr>
-</tbody>
-</table>
+
+![The menu in the Twitter iOS app](/images/posts/file.png?style=halfsize)
+*The menu in the Twitter iOS app*
+
+![Menu in the Xamarin Forms iOS app](/images/posts/Simulator-Screen-Shot-24-Aug-2017-12.01.33.png?style=halfsize)
+*Menu in the Xamarin Forms iOS app*
+
+![The Twitter Android menu](/images/posts/Screenshot_20170824-111537.png?style=halfsize)
+*The Twitter Android menu*
+
+![Xamarin Forms Android menu](/images/posts/Screenshot_20170824-114638.png?style=halfsize)
+*Xamarin Forms Android menu*
 
 ### In closing...
 

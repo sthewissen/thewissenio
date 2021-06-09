@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - ui
+image: '/images/headers/muse.jpg'
 ---
 
 It seems like people really like this kind of content, so I decided to keep it up for now. This is the third instalment in this series already and this time we're going to be taking a look at the **Spotify** UI!
@@ -16,9 +17,9 @@ It seems like people really like this kind of content, so I decided to keep it u
 
 In case  you missed it here are the links to the previous posts in this series:
 
-1.  [Creating a good-looking Xamarin Forms UI: Twitter](https://www.thewissen.io/xamarin-forms-ui-twitter/)
-2.  [Creating a good-looking Xamarin Forms UI: Runkeeper](https://www.thewissen.io/xamarin-forms-ui-runkeeper/)
-3.  Creating a good-looking Xamarin Forms UI: Spotify (this post)
+1. [Creating a good-looking Xamarin Forms UI: Twitter](/xamarin-forms-ui-twitter/)
+2. [Creating a good-looking Xamarin Forms UI: Runkeeper](/xamarin-forms-ui-runkeeper/)
+3. Creating a good-looking Xamarin Forms UI: Spotify (this post)
 
 ### Crafting the Spotify UI in Xamarin Forms (iOS)
 

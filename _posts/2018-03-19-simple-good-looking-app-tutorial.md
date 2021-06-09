@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - ui
+image: '/images/headers/walk.jpg'
 ---
 
 A lot of apps currently in stores have some sort of walkthrough or tutorial screen that walks you through the basic functionality of an app. Let's see what kind of things go into making one of those shall we?
@@ -24,7 +25,7 @@ I gave myself half an hour to create a simple tutorial for a fictional food rela
 *   Put it all into a carousel view to tie all the screens together
 *   Add a small incentive for the user to make him understand how to proceed (Swipe to continue)
 
-[![A simple tutorial screen](/images/posts/simpletutorial.jpg "A simple tutorial screen")](/images/posts/simpletutorial.jpg)
+[![A simple tutorial screen](/images/posts/simpletutorial.jpg)](/images/posts/simpletutorial.jpg)
 
 So as you might expect the code is not quite complex ([full source code](https://github.com/sthewissen/KickassUI.FancyTutorial)):
 
@@ -49,7 +50,7 @@ You've seen how to create a simple looking tutorial, but why even bother There m
 
 If there's one thing that we know for sure in the world of mobile apps it's that a user can uninstall your carefully crafted app within a second. That's why you need to make a good first impression. The tutorial screen is the place to start. Be clear about what your app can do for the user and your chances of survival instantly increase.
 
-Because the tutorial screen tells the user how to use your app it is also the place where you can highlight the features that separate this app from the rest of the pack.<strong style="font-size: 1rem;"> **It's also a great place to quickly explain the features that are a bit harder to figure out. Completing a tutorial instantly gives your users a sense of accomplishment.
+Because the tutorial screen tells the user how to use your app it is also the place where you can highlight the features that separate this app from the rest of the pack. It's also a great place to quickly explain the features that are a bit harder to figure out. Completing a tutorial instantly gives your users a sense of accomplishment.
 
 ![I have the power!](https://media.giphy.com/media/tu4q9gqjNocP6/giphy.gif)
 
@@ -60,4 +61,3 @@ With privacy laws getting stricter there's a lot of things in your phone that an
 ### Conclusion
 
 Though the tutorial screen might not seem like much it has a pretty important job to do. You might be the kind of guy that instantly skips it and doesn't pay any attention to it, but not all of your users are created equal. Creating a good tutorial screen is definitely worth your time and effort to get as much users as possible on board.
-</strong>

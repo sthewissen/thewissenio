@@ -7,6 +7,7 @@ categories:
 tags:
 - azure
 - azure functions
+image: '/images/headers/clouds.jpg'
 ---
 
 I've blogged about Azure Functions before and have speaken highly of it as well. While diving deeper into them there are definitely some drawbacks to be found though. How about doing a binding redirect?
@@ -21,12 +22,11 @@ So let's talk a bit about the solutions you have here. The easiest solution is t
 
 ### So what can you do?
 
-> **Disclaimer:** The solution below applies to the full .NET framework version of Azure Functions (v1). There is a Azure Functions v2 available that is .NET Standard compliant but there is **no solution** for this problem for the v2 version of Azure Functions. The handler mentioned in the manual binding redirect solution below is never called and discussions about this topic have gone on for quite some time on the [Azure Functions Github](https://github.com/Azure/Azure-Functions). A tentative solution date is given as [May 2018](https://github.com/Azure/azure-functions-host/wiki/Assembly-Resolution-in-Azure-Functions#what-the-challenges-when-running-on-azure-functions) but I wouldn't hold my breath for that.
-> 
+**Disclaimer:** The solution below applies to the full .NET framework version of Azure Functions (v1). There is a Azure Functions v2 available that is .NET Standard compliant but there is **no solution** for this problem for the v2 version of Azure Functions. The handler mentioned in the manual binding redirect solution below is never called and discussions about this topic have gone on for quite some time on the [Azure Functions Github](https://github.com/Azure/Azure-Functions). A tentative solution date is given as [May 2018](https://github.com/Azure/azure-functions-host/wiki/Assembly-Resolution-in-Azure-Functions#what-the-challenges-when-running-on-azure-functions) but I wouldn't hold my breath for that.
 
 This solution was initially created by [Codopia](https://codopia.wordpress.com/2017/07/21/how-to-fix-the-assembly-binding-redirect-problem-in-azure-functions/) which has helped me to eventually get this thing running. I'm sharing it here because there is not enough documentation on the issue provided by the Azure Functions team and this solution needs to be known more.
 
-Start off by creating a few helper classes that we will need to get this to work. The first class is called *AssemblyBindingRedirectHelper* which is where all the magic happens. This class adds a custom handler to the assembly resolving event that gets triggered from our appdomain. This enables us to load the assembly with the version of our choosing. As soon as a piece of code in that assembly is called this event is triggered. We will define an app setting that contains which binding redirects we want to perform later.
+Start off by creating a few helper classes that we will need to get this to work. The first class is called `AssemblyBindingRedirectHelper` which is where all the magic happens. This class adds a custom handler to the assembly resolving event that gets triggered from our appdomain. This enables us to load the assembly with the version of our choosing. As soon as a piece of code in that assembly is called this event is triggered. We will define an app setting that contains which binding redirects we want to perform later.
 
 <script src="https://gist.github.com/sthewissen/fc000387f26f4475e3a856e55ab74289.js"></script>
 
@@ -40,11 +40,11 @@ This class then needs to be called before our function runs. Since functions are
 
 ### Defining an app setting containing your binding redirect
 
-The last thing we need to do to tie this all together is to add a setting that defines the binding redirect. We can define this as a JSON string containing one or multiple redirects. To test this locally you can add this setting to your **local.settings.json** file. Make sure that you escape all the quotes because we're putting JSON into a JSON file here :)
+The last thing we need to do to tie this all together is to add a setting that defines the binding redirect. We can define this as a JSON string containing one or multiple redirects. To test this locally you can add this setting to your `local.settings.json` file. Make sure that you escape all the quotes because we're putting JSON into a JSON file here :)
 
 <script src="https://gist.github.com/sthewissen/f842b48ce21447efd5984fd3fb7b155b.js"></script>
 
-To run this live on Azure we need to add the app setting in the Azure Portal. Navigate to your Functions application and hit the **Application settings** button. Add an entry called **BindingRedirects** and add the same value that was added to the local settings file. However, do make sure that you do not escape the quotes in this one. Since this is not stored as JSON the backslash characters used to escape the string do more damage than they do good.
+To run this live on Azure we need to add the app setting in the Azure Portal. Navigate to your Functions application and hit the **Application settings** button. Add an entry called `BindingRedirects` and add the same value that was added to the local settings file. However, do make sure that you do not escape the quotes in this one. Since this is not stored as JSON the backslash characters used to escape the string do more damage than they do good.
 
 [![](/images/posts/azure.jpg)](/images/posts/azure.jpg)
 

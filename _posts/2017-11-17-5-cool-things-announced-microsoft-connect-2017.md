@@ -8,6 +8,7 @@ tags:
 - xamarin
 - xamarin.forms
 - azure devops
+image: '/images/headers/newyork.jpg'
 ---
 
 Microsoft Connect 2017 has come and gone and a lot of new awesome stuff was announced across the board. I'm partial to mobile development using Xamarin and the whole Devops process using VSTS, so here’s 5 things from the mobile/devops space that I thought were pretty cool! 
@@ -40,7 +41,7 @@ Every time I see it this tool gets better and better. For now though I’m still
 
 This is one of [the big ones](https://developer.xamarin.com/guides/cross-platform/dotnet-embedding/). In the near future we will be able to create a component using Xamarin and use that from Objective-C or Java code. You can even build the UI using Xamarin! The sample James showed detailed creating a custom component in Xamarin and integrating that in the Objective-C-based Kickstarter mobile app.
 
-[![.NET Embedding explained](/images/posts/C_p26e9WAAAsG-J-1024x577.jpg)](/images/posts/C_p26e9WAAAsG-J.jpg)
+[![.NET Embedding explained](/images/posts/C_p26e9WAAAsG-J.jpg)](/images/posts/C_p26e9WAAAsG-J.jpg)
 
 Xamarin announced a tool called the [Embeddinator-4000](https://github.com/mono/Embeddinator-4000) earlier this year which is a big part of making this whole process possible. However as much as I think that this is awesome on a technical level I'm still unsure if I'll ever use it.
 
@@ -77,4 +78,3 @@ Additionally you can check forcreated work items to determine if a release is bu
 Ok, I couldn't stop at just 5 items. I'm sorry. So here's one more bonus item to end this post with: Xamarin.Forms 2.5 is released. Besides the aforementioned .NET Embedding this release covers a few additional big things. One of these is layout compression and fast renderers. This feature enables you to optimise your layout for performance. Layout compression allows you to specify unnecessary nesting and allows Xamarin.Forms to opt-out of creating that layout view which in turn decreases the amount of layout passes needed to create the layout on the screen.
 
 Another new feature in Xamarin.Forms 2.5 is the XAML Standard which is now in preview. The Xamarin.Forms team is working together with the Windows team on defining a single XAML standard that enables XAML files that support it to be interchangeable. This means you can share your UI assets with any other XAML Standard compliant platform which gives you even more code-reuse!
-
