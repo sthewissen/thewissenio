@@ -23,8 +23,8 @@ Scientists' opinions [are still divided on most of those claims](https://www.wir
 
 One could be tempted to think that implementing dark mode is as simple as essentially flipping our color scheme. However, there's more to it than that. We might be using certain colors that vibe really well with a light background. By just flipping colors these could become hard to read on a darker background.
 
-![](images/posts/image-62.png?style=centerme)
-![One does not simply flip colors to get dark mode](images/posts/image-61.png?style=centerme)
+![](images/posts/image-62.png)
+![One does not simply flip colors to get dark mode](images/posts/image-61.png)
 *Not every color vibes well with a dark background.*
 
 I personally think that designing a good dark mode style is equally as hard as creating a regular design. However, there are some pointers we can adhere to when setting up our color scheme.
@@ -37,7 +37,7 @@ Contrary to what we might think, pure white text on a pure black background will
 
 The sample given above already nicely illustrates this. The very saturated red on a dark background creates a very unclear picture. By desaturating our primary colors we will achieve a better effect.
 
-![Dark mode tip: decrease your saturation.](images/posts/image-63.png?style=centerme)
+![Dark mode tip: decrease your saturation.](images/posts/image-63.png)
 *More saturation makes text stand out on a dark background.*
 
 **Meet the accessibility standards when it comes to contrast**

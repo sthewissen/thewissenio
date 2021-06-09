@@ -24,12 +24,12 @@ As you probably know by now, Xamarin.Forms is an abstraction layer on top of var
 
 As you can tell from this list your best bet to provide adequate numeric input is probably the `Numeric` option. Let's take a look at how that looks across both iOS and Android:
 
-![](/images/posts/keyboards.jpeg?style=centerme)
+![](/images/posts/keyboards.jpeg)
 *Left: iOS keyboard, Right: Android keyboard.*
 
 But what if we require the input of negative numbers? We might have a small issue here, as the iOS version does not provide that option by default. I've even noticed that the Android keyboard can differ per manufacturer. Eek!
 
-![](https://media.giphy.com/media/Tk76voGUJyzh8Fg7zG/giphy.gif?style=centerme)
+![](https://media.giphy.com/media/Tk76voGUJyzh8Fg7zG/giphy.gif)
 
 ### Fixing the keyboard problem
 

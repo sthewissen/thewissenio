@@ -21,7 +21,7 @@ Gradient support is something that is coming to Xamarin.Forms, so improving the 
 
 Making the properties on `GradientStop` bindable allows you to create complex coloring animations like hue shifting gradients, which are awesome! The old `GradientAngle` property only allowed for 360 gradient rotation around a central point. By adding both a start and endpoint you can pretty much create any orientation for your gradient.
 
-![Gradients in the PancakeView sample app.](images/posts/image-59.png?style=centerme)
+![Gradients in the PancakeView sample app.](images/posts/image-59.png)
 
 #### Border & shadow API changes
 
@@ -41,7 +41,7 @@ Or use the markup extension that was also added:
 
 Building macOS apps with Xamarin.Forms is not the biggest thing since sliced bread. Supporting macOS is a fairly simple conversion process when you already have the iOS version lined up though. So why not add it?
 
-![PancakeView for macOS!](images/posts/pancake_macos-1.gif?style=centerme)
+![PancakeView for macOS!](images/posts/pancake_macos-1.gif)
 
 #### SourceLink support
 

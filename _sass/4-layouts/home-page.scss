@@ -39,6 +39,11 @@
 .article__content {
   padding: 25px;
   background: $background-color-alt;
+
+  & img {
+    display:block;
+    margin: 0 auto;
+  }
 }
 
 .article__title {
@@ -124,6 +129,10 @@
 img[src$="centerme"] {
   display:block;
   margin: 0 auto;
+}
+
+img[src$="halfsize"] {
+  width: 50%;
 }
 
 video[src$="centerme"] {

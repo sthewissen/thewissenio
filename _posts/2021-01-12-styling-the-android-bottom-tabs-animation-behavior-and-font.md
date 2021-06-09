@@ -15,7 +15,7 @@ Making your apps look similar on all platforms is what most people are trying to
 
 When first getting the bottom tabs on Android you will notice that selecting a tab comes with a fancy animation where it scales the active item. Also, there seems to be no API available on Xamarin.Forms to change the text size. So how can we do this? Let's explore!
 
-![The active tab is bigger than the other... Not cool!](/images/posts/tabs_1.png?style=centerme)
+![The active tab is bigger than the other... Not cool!](/images/posts/tabs_1.png)
 *The active tab is bigger than the other... Not cool!*
 
 A lot of the visual things in Android are controlled by resources. These can typically be found inside our app's Resources folder. If you look in there for an app you're working on, you can probably find things like colors, styles, etc. A different type of resource, however, is the so-called **dimensions**. These [indicate the size of an element](https://developer.android.com/guide/topics/resources/more-resources#Dimension) on the Android platform. We can leverage this system to our advantage to style our tab bar.
@@ -26,7 +26,7 @@ The first thing we need to do is create a new XML files (if it doesn't exist alr
 
 <script src="https://gist.github.com/sthewissen/44ecc8f066fa1cc60fb53c510dfaa639.js"></script>
 
-![Uniform Android tabs, huzzah!](/images/posts/tabs_2.png?style=centerme)
+![Uniform Android tabs, huzzah!](/images/posts/tabs_2.png)
 *Uniform Android tabs, huzzah!*
 
 And there we go, uniform Android bottom tabs! So the next challenge I had was to change the font to a custom font. However, because there's nothing available out-of-the-box to do so, we will need to resort to a custom renderer. Here's the one I've used for it:
@@ -35,7 +35,7 @@ And there we go, uniform Android bottom tabs! So the next challenge I had was to
 
 What it does is grab a reference to the `BottomNavigationView` and subsequently, loop through its items setting the font of the text labels to an existing custom font. Ensure this font file exists in the Android project's `assets` folder and is marked as an `AndroidAsset` in its `Build Action`.
 
-![Custom font enabled!](/images/posts/tabs_3.png?style=centerme)
+![Custom font enabled!](/images/posts/tabs_3.png)
 *Custom font enabled!*
 
 ### Conclusion

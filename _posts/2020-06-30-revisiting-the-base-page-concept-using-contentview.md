@@ -21,7 +21,7 @@ My original post was based on talks given by [Glenn Versweyveld](https://twitter
 
 To get this show on the road we will need a sample to build off of. I've found [this fairly simple design on Dribbble](https://dribbble.com/shots/8622369-Mobile-app-Vegan-meal) which would be suited just fine for the concept we are trying to explore here. It has a custom tab bar at the bottom and a simple app frame in the form of a navigation bar at the top. We can even use some fancy new Xamarin.Forms controls like `CarouselView` and `CollectionView`. This will be fun!
 
-![The design we will try to implement using an AppFrame.](images/posts/6bbd6b6b1d89de016cef5d997562c06c.png?style=centerme)
+![The design we will try to implement using an AppFrame.](images/posts/6bbd6b6b1d89de016cef5d997562c06c.png)
 *The design we will try to implement using an AppFrame.*
 
 Mobile app design by Outcrowd as published on Dribbble.
@@ -30,7 +30,7 @@ Mobile app design by Outcrowd as published on Dribbble.
 
 This post will heavily feature the use of `ContentView`(s). If you don't know about these, you can read up on them [in the Microsoft Docs](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/contentview). When I first started tinkering around with this concept I was kind of confused by how `ContentView` actually works. It did exactly the opposite of what I expected. Allow me to explain how it works using the graphic below.
 
-![A concept of ContentView.](/images/posts/image-47.png?style=centerme)
+![A concept of ContentView.](/images/posts/image-47.png)
 *A concept of ContentView.*
 
 A concept showing all the moving parts of ContentView.

@@ -23,7 +23,7 @@ These methods can all run asynchronously, so we can either await them or drop th
 
 As I've mentioned, combining these different extension methods can already be a powerful tool. The sample below shows a card in an app being slightly animated in 3D space. Obviously the effect is somewhat exaggerated for the video but you can get some really nice subtle floating movement into your cards if you want to highlight a specific one for example.
 
-<figure><video autoplay controls loop src="/images/posts/card.mp4?style=centerme"></video></figure>
+<figure><video autoplay controls loop src="/images/posts/card.mp4"></video></figure>
 
 The code for it is relatively simple. It's a matter of chaining the rotations on the different axes together and playing them at the same time. In this sample the entire thing is rotated 40 degrees on each axis in the timespan of a minute (60000 milliseconds). After that it stops, which is kind of stupid, so what do we do if we want to loop our animations?
   
@@ -39,7 +39,7 @@ When creating a custom animation there are a few parameters our new found love, 
 
 Let's break this down real quick. The animation itself scales an image up from 1x to 2x in size. The first parameter in the `Commit` method is the owner of the animation, which we set to the page. It runs over the course of 2000 milliseconds and once it's done instantly resets the scale of the image back to 1. The last parameter indicates that we want to loop this animation indefinitely, which looks like this:
 
-<figure><video autoplay controls loop src="/images/posts/scale.mp4?style=centerme"></video></figure>
+<figure><video autoplay controls loop src="/images/posts/scale.mp4"></video></figure>
 
 At this point, you might be wondering; That all looks pretty straightforward. So please do tell me, how is this more complex than those simple animations we saw earlier?
 
@@ -55,7 +55,7 @@ If you’ve ever used an Apple product and offended it you will know that UI ele
 
 In this sample we create an empty parent animation which will act as the container for all our child animations. We then add our child animations to it, all of which translate the element back and forth. The first two parameters of the Add method represent the relative placement of that child animation in the parent animation using a value from 0 to 1. In the sample above they follow a linear pattern, but we can also use these timings to overlap animations. This is how it looks:
 
-<figure><video autoplay controls loop src="/images/posts/shake.mp4?style=centerme"></video></figure>
+<figure><video autoplay controls loop src="/images/posts/shake.mp4"></video></figure>
 
 #### Sample: Bouncing Apple icons
 
@@ -65,12 +65,12 @@ Because Apple does love its bouncy things, whenever an app needs your attention 
 
 This sample does a simple translate animation but adds a bounce easing to the end of it. Easing functions specify the speed at which an animation progresses through the different points within the animation. These can be visualized in a graph. The graph below shows the difference between a linear easing (the default) and a bounce easing:
 
-![Easing visualized in a graph.](/images/posts/image-56-700x220.png?style=centerme)
+![Easing visualized in a graph.](/images/posts/image-56-700x220.png)
 *Easing visualized in a graph.*
 
 Based on the timing of the child animations we can see that the animation we coded only takes up half the time of the entire thing. This is done to create some waiting time between bounces because the animation itself is looped indefinitely. It ends up looking like this:
 
-<figure><video autoplay controls loop src="/images/posts/bounce.mp4?style=centerme"></video></figure>
+<figure><video autoplay controls loop src="/images/posts/bounce.mp4"></video></figure>
 
 ### Down the animation rabbit hole
 
@@ -86,7 +86,7 @@ We all love a mood light that slowly shifts colors in the background. Why not tr
 
 Using something like this as a background with some subtle color shifting can really make an otherwise static app come to life. And seriously, who doesn't need a nice looking gradient in their life?
 
-<figure><video autoplay controls loop src="/images/posts/gradient.mp4?style=centerme"></video></figure>
+<figure><video autoplay controls loop src="/images/posts/gradient.mp4"></video></figure>
 
 ### Conclusion
 

@@ -19,7 +19,7 @@ Our goal as a developer should be to have our users complete their goals as ofte
 
 Let's take a look at the example below. We've created a button and given it an icon and a tap command. The button might size itself to the text we've put into it, meaning it actually has quite a small surface. By adding `Padding` to the button, we can greatly increase the touch target, while keeping our look exactly the same. Do note, that while the same visual effect can be achieved using `Margin`, this margin will not typically be part of the touch target.
 
-![Touch targets](images/posts/image-60.png?style=centerme)
+![Touch targets](images/posts/image-60.png)
 *Opt for padding over margin.*
 
 Making our design breathe and not cramming all our elements together is a good practice anyway, so using our interactive elements to create that additional space is a great way to do it. By limiting the number of elements on the screen we can allow our key touch targets to be larger and spaced apart further, making them easier to tap.
