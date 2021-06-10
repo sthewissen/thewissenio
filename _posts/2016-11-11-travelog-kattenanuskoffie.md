@@ -2,11 +2,8 @@
 layout: post
 title: 'Travelog: Kattenanuskoffie!'
 date: '2016-11-11 11:09:08 +0100'
-categories:
-- Travel
-tags:
-- travelog
-- dutch 🇳🇱
+categories: Travel
+tags: travelog dutch 🇳🇱
 image: '/images/headers/bali8.jpg'
 ---
 

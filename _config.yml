@@ -7,12 +7,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://thewissen.io" # the base hostname & protocol for your site, e.g. http://example.com
 blog-theme: light # By default, Atega theme uses a 'light' color scheme, to change the color scheme to dark use 'dark' value (_includes/color-scheme)
 locale: en
+image_base: '/images/front.jpg'
 
 #-------------------------------
 # Author Settings
 author:
   name: Steven Thewissen
-  image: '/images/front.jpeg'
+  image: '/images/front.jpg'
 
 
 #-------------------------------
