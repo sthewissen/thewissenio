@@ -1,5 +1,5 @@
   
-name: Daily Build
+name: Hourly Build
 
 on:
   schedule:
