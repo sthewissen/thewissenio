@@ -15,7 +15,7 @@ I came across the issue of my Android icons not looking very fly when I was work
 
 ## The story behind adaptive icons
 
-Adaptive icons were introduced in Android 8.0 (Oreo, or API Level 26) already. So I might've been living with a horrible icon for a while now. Their use as a new icon format is to cater to the different shape varieties that device manufacturers like to include in their Android version. Some devices prefer round icons, whereas others might favor a rounded rectangle type design. Adaptive icons solve these discrepancies by creating a layering system, where the actual subject of your icon sits on a different layer that gets overlayed on top of a round or square icon surface.
+[Adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) were introduced in Android 8.0 (Oreo, or API Level 26) already. So I might've been living with a horrible icon for a while now. Their use as a new icon format is to cater to the different shape varieties that device manufacturers like to include in their Android version. Some devices prefer round icons, whereas others might favor a rounded rectangle type design. Adaptive icons solve these discrepancies by creating a layering system, where the actual subject of your icon sits on a different layer that gets overlayed on top of a round or square icon surface.
 
 ## Getting our icon to play nice
 
