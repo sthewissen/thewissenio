@@ -45,6 +45,7 @@ First, we need to provide a _Name_ for our application. Then we need to select t
 *We will need the Application (client) ID later.*
 
 It's important to take note of the generated **Application (client) ID** because we need it later. You can find it in the _Overview_ tab of the application registration we just created. Lastly, we need to make sure that our redirects are set up correctly. Go to the _Authentication_ tab and click the **Add platform** button to add both an iOS and an Android app. For these, we need to fill in our app identifier and in the case of Android, we also need to provide a **signature hash**. Luckily, the command to generate one is right there! Run that command in your Android SDK Command Prompt and you should be good to go! Keep that signature hash handy, because we're going to need it. Also, don't forget to hit **Save**!
+
 ![Creating two new redirect URI entries for iOS and Android.](/images/posts/image-49.png)
 *Creating two new redirect URI entries for iOS and Android.*
 
