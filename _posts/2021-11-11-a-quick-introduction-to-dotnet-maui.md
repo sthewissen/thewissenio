@@ -1,8 +1,8 @@
 ---
 layout: post
-title: An introduction to .NET MAUI
-date: '2021-11-11 18:38:00 +0000'
-image: '/images/headers/resurface.jpg'
+title: A quick introduction to .NET MAUI
+date: '2021-11-11 15:38:00 +0000'
+image: '/images/headers/maui.jpg'
 categories: Code
 tags: xamarin xamarin.forms maui
 ---
