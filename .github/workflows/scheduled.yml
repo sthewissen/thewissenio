@@ -1,9 +1,6 @@
   
 name: Hourly Build
 
-on:
-  schedule:
-   - cron: '0 * * * *'
 jobs:
   curl:
     runs-on: ubuntu-latest
