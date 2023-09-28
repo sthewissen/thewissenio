@@ -26,7 +26,23 @@ The first thing we will do is add that icon to our app. It needs to reside in th
 ![To mip or to map?](/images/posts/mipmap.jpg)
 *To mip or to map?*
 
-Next up, we will create a folder (if it doesn't already exist) named `mipmap-anydpi-v26` within our `Resources` folder. In this folder, we create two empty XML files named `ic_launcher.xml` and `ic_launcher_round.xml`. These will contain our icon definitions for the various scenarios. 
+Next up, we will create a folder (if it doesn't already exist) named `mipmap-anydpi-v26` within our `Resources` folder. In this folder, we create two empty XML files named `ic_launcher.xml` and `ic_launcher_round.xml`. These will contain our icon definitions for the various scenarios.
+
+```yaml
+name: CD Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "**.md"
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.yml'
+  pull_request:
+    branches: [ "main" ]
+```
 
 Put the following into both of these files:
 
