@@ -1,52 +1,134 @@
 ---
 layout: post
-title: Building a .NET MAUI CD pipeline in GitHub Actions
+title: Building a .NET MAUI CD pipeline in GitHub Actions (Part I)
 date: '2023-09-28 18:45:00 +0000'
 image: '/images/headers/pipeline.jpg'
 categories: Code
-tags: .net maui, maui, cd, continuous delivery, github actions
+tags: maui continuous-delivery github-actions
 ---
 
-In this post I look to cover building a GitHub Actions pipeline that can build your .NET MAUI application for both Android and iOS and get it all the way to the Google Play Store and Apple AppStore for testing. To do so, we'll be using nested workflows for both of these different platforms, which are called from a root workflow. Let's break it down!
+In this first post I look to cover building a GitHub Actions pipeline that can build your .NET MAUI application for both Android and iOS and get it all the way to the Google Play Store and Apple AppStore for testing. To do so, we'll be using nested workflows for both of these different platforms, which are called from a root workflow. This post will cover the overarching workflow while next installments will cover the iOS and Android side of things. Let's break it down!
 
 ## The parent workflow
 
-One of the common pet peeves with Xamarin.Forms is the need to copy a lot of similar resources across multiple projects. If, for example, you have a specific image you want to use in your app, you must include it in all the separate platform projects, and preferably provide it in all the different device resolutions you’d like your app to support. Other types of resources, such as fonts and app icons suffer from a similar issue.
+Each GitHub Actions workflow starts with the definition of when it should be executed. This section outlines the conditions that trigger your workflow. In this case you can trigger this workflow manually through the GitHub Actions UI. Whenever there's a push to the main branch, the workflow kicks in, unless the changes only affect certain files. It also responds to pull requests targeting the main branch.
 
-The new single project feature in .NET MAUI unifies all these resources into a shared head project that can target every supported platform. The .NET MAUI build tasks will then make sure that these resources end up in the right location when compiling down to the platform-specific artifacts. The single project approach will also improve experiences such as editing the app manifest and managing NuGet packages. The image below shows a mockup of what the single project experience could look like in Visual Studio. The same project that also contains your other shared logic will also contain the shared resources.
+```yaml
+name: CD Build
 
-![The new Single Project experience in Visual Studio.](/images/posts/singleproject.jpg)
-*The new Single Project experience in Visual Studio.*
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "**.md"
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.yml'
+  pull_request:
+    branches: [ "main" ]
+```
 
-# The iOS workflow
+The following part defines essential environment variables for your workflow. These variables hold configuration information for your workflow:
 
-A lot of publicly maintained libraries will need to be ported over to .NET MAUI by their creators. .NET Standard libraries without any Xamarin.Forms types will likely work without any updates. Other libraries will need to adopt the new interfaces and types, and recompile as .NET 6 compatible NuGets. Some of these have already started this process by releasing early alpha/beta versions of their libraries. If you’ve ever developed a Xamarin application in the past, you’ve most likely also used Xamarin.Essentials and/or the Xamarin Community Toolkit. 
+- **BUILD_VERSION:** Specifies the app version as '1.0'.
+- **DOTNET_VERSION:** Sets the .NET version to '7.0.x'.
+- **XCODE_VERSION:** Defines the Xcode version for our build as '14.3'.
+- **DOTNET_VERSION_TARGETS:** Used as input for MSBuild to take the right target.
+- **CSPROJ_TO_BUILD:** Specifies the path to your project file.
+- **PROJECT_FOLDER:** Defines the folder name for your project.
 
-Essentials now ships as part of .NET MAUI and resides in the Microsoft.Maui.Essentials namespace. 
+```yaml
+env:
+  BUILD_VERSION: '2.0'
+  DOTNET_VERSION: 7.0.x
+  XCODE_VERSION: 14.3
+  DOTNET_VERSION_TARGETS: net7.0
+  CSPROJ_TO_BUILD: PATH_TO_PROJECT_FILE
+  PROJECT_FOLDER: PROJECT_FOLDER_NAME
+```
 
-Just like Xamarin.Forms is evolving into .NET MAUI, the Xamarin Community Toolkit is evolving as well and will be known as the .NET MAUI Community Toolkit moving forward. It will still be the fully open-source, community supported library that it is today, but it is merging with the Windows Community Toolkit which allows for more efficient code sharing and combining engineering efforts across both toolkits. The Xamarin Community Toolkit will also receive service updates on the same public schedule as Xamarin.Forms.
+Due to limitations in the nested workflows infrastructure, we cannot access environment variables from a nested workflow. The solution around that is to create a separate job that takes those environment variables and creates outputs for them. These outputs can then be passed down into the subsequent Android and iOS builds to be used there.
 
-Check out the .NET MAUI Community Toolkit at: https://github.com/CommunityToolkit/Maui
+```yaml
+{% raw %}
+jobs:
+  vars:
+    runs-on: ubuntu-22.04
+    outputs:      
+      buildVersion: ${{ env.BUILD_VERSION }}
+      dotnetVersion: ${{ env.DOTNET_VERSION }}
+      xcodeVersion: ${{ env.XCODE_VERSION }}
+      dotnetVersionTargets: ${{ env.DOTNET_VERSION_TARGETS }}
+      csprojToBuild: ${{ env.CSPROJ_TO_BUILD }}
+      projectFolder: ${{ env.PROJECT_FOLDER }}
+    steps:
+      - run: echo "Exposing env vars, because they can't be passed to nested workflows."
+{% endraw %}
+```
 
-# The Android workflow
+## Calling the iOS workflow
 
-While Microsoft does not recommend porting your existing production apps to .NET MAUI right now, providing an upgrade path once .NET MAUI releases has always been a priority. Due to the existing similarities between Xamarin.Forms and .NET MAUI the migration process can be straightforward. The .NET Upgrade Assistant is a tool that currently exists to help you upgrade from .NET Framework to .NET 5. With the help of an extension on top of the .NET Upgrade Assistant, you are able to automate migrating your Xamarin.Forms projects to a .NET MAUI SDK style project while also performing some well-known namespace changes in your code. It does so by comparing your project files to what they need to be to be compatible with .NET MAUI. The .NET Upgrade Assistant then suggests the steps to take to automatically upgrade and convert your projects. It will also map specific project properties and attributes to their new versions, while stripping out obsoleted ones. By using extensive logging as shown below you will be able to know all the steps the tool has taken to upgrade your project. This will also help you debug potential issues during your migration.
+This section defines an iOS-specific subjob. It depends on the the aforementioned 'vars' job. It specifies the necessary inputs, secrets, and configurations for building iOS applications.
 
-![Informational output from the .NET Upgrade Assistant for .NET MAUI.](/images/posts/upgradeassistant.jpg)
-*Informational output from the .NET Upgrade Assistant for .NET MAUI.*
+```yaml
+{% raw %}
+build-ios:   
+    needs: vars 
+    uses: ./.github/workflows/cd-ios.yml
+    with:
+      dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
+      dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
+      xcode-version: ${{ needs.vars.outputs.xcodeVersion }}
+      project-file: ${{ needs.vars.outputs.csprojToBuild }}
+      project-folder: ${{ needs.vars.outputs.projectFolder }}
+      build-config: 'Release'
+      build-version: ${{ needs.vars.outputs.buildVersion }}
+    secrets:
+      p12-cert: ${{ secrets.CERTIFICATES_P12 }}
+      p12-cert-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+      appstore-issuer: ${{ secrets.APPSTORE_ISSUER_ID }}
+{% endraw %}
+```
 
-During the early days of .NET MAUI, there might not be adequate support for some of your NuGet packages yet. The .NET Upgrade Assistant works with analyzers to go through and validate whether these packages can be safely removed or upgraded to a different version.
+This subjob depends on the `vars` job and uses an external workflow definition from the `cd-ios.yml` YAML file, which will be covered in a future blog post. It passes a set of input variables and secrets required for building an iOS application, including version information, file paths, and security credentials. This separation of concerns helps maintain a clean and modular workflow configuration.
 
-While it is not 100% able to upgrade your project, it does take away a lot of the tedious renaming and repeating steps. As a developer you will have to upgrade all your dependencies accordingly and manually register any of your compatibility services and renderers. However, Microsoft has stated that they will try to minimize the effort this takes as much as possible. Additional documentation on the exact process will be made available closer to release.
+The most interesting part here is the reference to the P12 certificate used for signing. This certificate can be set up in the Apple Developer Portal and needs to be added as a secret to the GitHub project. However, GitHub Secrets doesn't accept files. This means we have to somehow get this file in there as a string. Luckily we can use the following command-line command for that!
 
-Check out the .NET Upgrade Assistant at: https://dotnet.microsoft.com/platform/upgrade-assistant
+```bash
+base64 CertificateFile.p12 | pbcopy
+```
 
-## Conclusion
+Paste the output of the above command into a secret called `CERTIFICATES_P12` and the password into `CERTIFICATES_P12_PASSWORD` into the GitHub Actions Secrets in the GitHub settings. If you want to directly publish your app to the AppStore Connect Portal from the GitHub Action you will also need to find your Issuer ID and paste that into a `APPSTORE_ISSUER_ID` secret. You can find this information [here](https://appstoreconnect.apple.com/access/api) when logged into your Developer Account (the Issuer ID will be different for each Developer Account you are a part of) and your Team Agent has enabled this functionality.
 
-Developers who have worked with Xamarin.Forms in the past will find a lot of things in .NET MAUI to be familiar. The underlying changes to infrastructure, broader platform scope and overall unification into .NET 6 also make it appealing to people new to the platform. Centralizing a lot more resources and code into the shared library using single project greatly simplifies solution management. Additional performance improvements through using handlers gives the seasoned Xamarin developer something to explore. 
+## Calling the Android workflow
 
-While the version of .NET MAUI in .NET 6 is highly anticipated, it is also only the first version of the platform. I personally expect a lot of additional features coming soon, and best of all; the entire platform is open source. That means you and everyone else in the .NET ecosystem can contribute to improve and enhance the platform. I’m certainly curious to see what the future holds!
+This section defines an Android-specific subjob. It depends on the the aforementioned 'vars' job. It specifies the necessary inputs, secrets, and configurations for building Android applications.
 
-If you want to try out .NET MAUI for yourself, you can check out the GitHub repository and the Microsoft Docs, which are already providing content on getting started.
+```yaml
+{% raw %}
+  build-android:
+    needs: vars
+    uses: ./.github/workflows/cd-android.yml
+    with:
+      dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
+      dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
+      project-file: ${{ needs.vars.outputs.csprojToBuild }}
+      project-folder: ${{ needs.vars.outputs.projectFolder }}
+      build-config: 'Release'
+      build-version: ${{ needs.vars.outputs.buildVersion }}
+    secrets:
+      keystore: ${{ secrets.PLAY_KEYSTORE }}
+      keystore-alias: ${{ secrets.PLAY_KEYSTORE_ALIAS }}
+      keystore-password: ${{ secrets.PLAY_KEYSTORE_PASS }}
+      playstore-service-account: ${{ secrets.PLAYSTORE_SERVICE_ACC }}
+{% endraw %}
+```
 
-_This post was originally part of an article written for CODE Magazine's [Focus issue on .NET 6.0](https://www.codemag.com/Magazine/Issue/dotnet6). This article was written based on the available Preview builds at the time. Current previews might have changed things compared to the article._
+Most interesting here are the `PLAY_KEYSTORE` and it's `PLAY_KEYSTORE_ALIAS` and `PLAY_KEYSTORE_PASS` secrets. The same applies as before when it comes to the actual keystore file not being compatible with a GitHub secret. In this case, we once again encode it as Base64, but in a way that we can re-construct it later in our pipeline. To do so, we use the following command-line command:
+
+```bash
+openssl base64 < MYKEYSTORE.jks | tr -d '\n' | tee MYKEYSTORE_BASE64.txt
+```
+
+This will output a file that has your keystore as a base64 string in it. Copy this into the `PLAY_KEYSTORE` secret and provide the alias and password you created when the keystore was originally set up. That concludes setting up the overarching pipeline definition. In the next post we will dive deeper into the nitty-gritty details of setting up the iOS pipeline.

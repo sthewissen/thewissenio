@@ -36,6 +36,22 @@
     background-color: #e5f5f2;
     border-radius: 0.7rem;
   }
+
+  & pre code {
+    color: auto;
+    font-size: 12px;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    background-color: #fff;
+    padding: 0;
+    line-height: 20px;
+  }
+
+  & pre {
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
+    border-radius: 6px;
+    line-height: 20px;
+  }
 }
 
 .image-box {
