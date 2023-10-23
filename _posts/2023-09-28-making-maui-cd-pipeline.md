@@ -88,6 +88,8 @@ build-ios:
       p12-cert: ${{ secrets.CERTIFICATES_P12 }}
       p12-cert-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
       appstore-issuer: ${{ secrets.APPSTORE_ISSUER_ID }}
+      appstore-keyid: ${{ secrets.APPSTORE_KEY_ID }}
+      appstore-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
 {% endraw %}
 ```
 
@@ -132,3 +134,9 @@ openssl base64 < MYKEYSTORE.jks | tr -d '\n' | tee MYKEYSTORE_BASE64.txt
 ```
 
 This will output a file that has your keystore as a base64 string in it. Copy this into the `PLAY_KEYSTORE` secret and provide the alias and password you created when the keystore was originally set up. That concludes setting up the overarching pipeline definition. In the next post we will dive deeper into the nitty-gritty details of setting up the iOS pipeline.
+
+
+## More in this series
+
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part I)](https://thewissen.io/making-maui-cd-pipeline/) (this post)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part II)](https://thewissen.io/making-maui-cd-pipeline-part2/)
