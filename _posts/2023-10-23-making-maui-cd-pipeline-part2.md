@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a .NET MAUI CD pipeline in GitHub Actions (Part II)
+title: Building a .NET MAUI CD pipeline in GitHub Actions (Part II - iOS)
 date: '2023-10-23 11:45:42 +0000'
 image: '/images/headers/pipeline2.jpg'
 categories: Code
@@ -167,5 +167,6 @@ And that's it! In this article I tried to provid an in-depth look at the GitHub 
 
 ## More in this series
 
-- [Building a .NET MAUI CD pipeline in GitHub Actions (Part I)](https://thewissen.io/making-maui-cd-pipeline/)
-- [Building a .NET MAUI CD pipeline in GitHub Actions (Part II)](https://thewissen.io/making-maui-cd-pipeline-part2/) (this post)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part I - Main)](https://thewissen.io/making-maui-cd-pipeline/)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part II - iOS)](https://thewissen.io/making-maui-cd-pipeline-part2/) (this post)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part III - Android)](https://thewissen.io/making-maui-cd-pipeline-part3/)

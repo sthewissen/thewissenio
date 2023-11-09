@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a .NET MAUI CD pipeline in GitHub Actions (Part I)
+title: Building a .NET MAUI CD pipeline in GitHub Actions (Part I - Main)
 date: '2023-09-28 18:45:00 +0000'
 image: '/images/headers/pipeline.jpg'
 categories: Code
@@ -138,5 +138,6 @@ This will output a file that has your keystore as a base64 string in it. Copy th
 
 ## More in this series
 
-- [Building a .NET MAUI CD pipeline in GitHub Actions (Part I)](https://thewissen.io/making-maui-cd-pipeline/) (this post)
-- [Building a .NET MAUI CD pipeline in GitHub Actions (Part II)](https://thewissen.io/making-maui-cd-pipeline-part2/)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part I - Main)](https://thewissen.io/making-maui-cd-pipeline/) (this post)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part II - iOS)](https://thewissen.io/making-maui-cd-pipeline-part2/)
+- [Building a .NET MAUI CD pipeline in GitHub Actions (Part III - Android)](https://thewissen.io/making-maui-cd-pipeline-part3/)
