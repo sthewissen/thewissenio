@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DebugRainbows for .NET MAUI
+title: DebugRainbows for .NET MAUI now available!
 date: '2024-03-27 13:37:48 +0000'
 image: '/images/headers/debugrainbows.jpg'
 categories: Code
