@@ -22,9 +22,12 @@
             <div class="nav__title">Menu</div>
             <ul class="nav__list list-reset">
               <li class="nav__item">
-                <a href="{{ site.baseurl }}/" class="nav__link">Home</a>
+                <a href="{{ site.baseurl }}/" class="nav__link">writing</a>
               </li>
-              {% for page in site.pages %}
+              <li class="nav__item">
+                <a href="{{ site.baseurl }}/" class="nav__link">talking</a>
+              </li>
+              <!-- {% for page in site.pages %}
                 {% unless page.name == 'tags.html' or page.name == '404.html' %}
                   {% if page.title %}
                   <li class="nav__item">
@@ -32,7 +35,7 @@
                   </li>
                   {% endif %}
                 {% endunless %}
-              {% endfor %}
+              {% endfor %} -->
             </ul>
           </div>
         </nav>

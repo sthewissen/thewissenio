@@ -15,7 +15,6 @@ author:
   name: Steven Thewissen
   image: '/images/front.jpg'
 
-
 #-------------------------------
 # Hero Settings
 hero:
@@ -26,24 +25,11 @@ hero:
   hero__button__link: '/about'
   hero__image: '/images/front.jpg'
 
-
-#-------------------------------
-# Newsletter (_includes/footer-widgets/widget-subscribe.html)
-# mailchimp__title: Subscribe to new posts # Add your Title
-# mailchimp__text: Subscribe to our newsletter and we’ll send you the emails of latest posts. # Add your description.
-# mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
-# mailchimp__button__text: Subscribe # Add your button text
-
-
 #-------------------------------
 # Contact Settings
 contact:
   email: steven@fizolabs.com # Add your email for contant form
   description: If you are interested to talk, just shoot me a message
-
-# NOTE
-# Atega comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
-
 
 #-------------------------------
 # Social Links (Footer)
@@ -57,33 +43,6 @@ social:
 - {icon: "ion-logo-twitch", link: "https://www.twitch.com/steventhewissen"}
 - {icon: "ion-logo-xbox", link: "https://account.xbox.com/profile?gamertag=devnl"}
 - {icon: "ion-md-beer", link: "https://untappd.com/user/devnl"}
-# - {icon: "ion-logo-codepen", link: "https://codepen.io"}
-# - {icon: "ion-logo-vimeo", link: "https://vimeo.com/"}
-
-
-#-------------------------------
-# Comment Section (Disqus)
-# disqus-identifier: pavloosadchyicom # add your shortname for Disqus Comment. For example mr-brown
-
-
-#-------------------------------
-# Gallery Footer Section
-gallery:
-  title: Gallery
-  images:
-    - alt: 'Sunset in the Woods'
-      url: '/images/gallery/1.jpeg'
-    - alt: 'Cathedral Life'
-      url: '/images/gallery/2.jpeg'
-    - alt: 'Portugal'
-      url: '/images/gallery/3.jpeg'
-    - alt: 'This Cow Is On Fire'
-      url: '/images/gallery/4.jpeg'
-    - alt: 'Hollowed Out'
-      url: '/images/gallery/5.jpeg'
-    - alt: 'Raaaaah'
-      url: '/images/gallery/6.jpeg'
-
 
 #-------------------------------
 # Google Analytics

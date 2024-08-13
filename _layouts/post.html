@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% include hero.html %}
+{% include post-hero.html %}
 
 <!-- begin post -->
 <div class="container">
@@ -12,12 +12,16 @@ layout: default
       {{ content }}
     </div>
 
-    {% include share.html %}
-
     {% include post-navigation.html %}
-
-    {% if site.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
 
   </article>
 </div>
 <!-- end post -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col col-12 col-m-12">
+			{% include footer-widgets/widget-recent-posts.html %}
+		</div>
+	</div>
+</div>

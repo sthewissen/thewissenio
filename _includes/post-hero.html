@@ -1,0 +1,21 @@
+<section class="hero hero--post">
+	<div class="container">
+	  	<div class="row">
+			<div class="col col-12">
+				<div class="hero__inner">
+					<div class="article__meta">
+						<span class="article__date">
+							<time datetime="{{ page.date | date_to_xmlschema }}">
+								{{ page.date | date_to_long_string: "ordinal" }}
+							</time>
+						</span>
+					</div>
+					<h1 class="hero__title">{{ page.title }}</h1>
+					<div class="hero__image">
+						<img class="lazy" data-src="{{site.baseurl}}{{page.image}}" alt="{{ page.title }}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

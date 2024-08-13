@@ -15,7 +15,7 @@
             {% if page.id %}
 
             <div class="article__meta">
-              <span class="article__date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time></span>
+              <span class="article__date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string: "ordinal" }}</time></span>
               {% if page.tags.size >= 1 %}
               <div class="article-tags__box">
                 {% for tag in page.tags %}

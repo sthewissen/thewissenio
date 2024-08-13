@@ -5,6 +5,7 @@ date: '2024-03-27 10:37:48 +0000'
 image: '/images/headers/debugrainbows.jpg'
 categories: Code
 tags: maui debugrainbows nuget
+description: After what seems to have been an eternity of me procrastinating, it's finally time for the comeback of a true debugging superhero - DebugRainbows! 🦸‍♂️ In essence it's a fairly simple NuGet package. Maybe one you didn't even know you needed.
 ---
 
 After what seems to have been an eternity of me procrastinating, it's finally time for the comeback of a true debugging superhero - **DebugRainbows**! 🦸‍♂️ In essence it's a fairly simple NuGet package. Maybe one you didn't even know you needed. But if you've ever found yourself wrestling with XAML layouts, scratching your head over elusive UI elements, or resorting to colorful backgrounds just to understand your layout, then read on because DebugRainbows is about to become your new best friend!

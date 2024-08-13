@@ -1,13 +1,15 @@
 // *****************
 // Global Variables
 // *****************
-@import url('https://fonts.googleapis.com/css?family=Inter:400,700|Assistant:400,600,700|Cousine:400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Assistant:400,600,700|Fira+Code:400&display=swap');
+@import url('https://fonts.cdnfonts.com/css/mosk');
 
 // Spaces
 $base-spacing-unit: 15px;
 
 // Border radius
-$global-radius: 3px;
+$global-radius: 4px;
+$global-bottom-border: 4px;
 
 // Transition
 $global-transition: all .35s;
@@ -22,8 +24,12 @@ $base-font-family: 'Assistant', Helvetica Neue, Helvetica, Arial, sans-serif;
 $base-line-height: 34px;
 
 // Headings
-$heading-font-weight: 700;
-$heading-font-family: 'Inter', Helvetica Neue, Helvetica, Arial, sans-serif;
+$subheading-font-weight: 700;
+$heading-font-weight: 800;
+$heading-font-family: 'Mosk', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+$code-font-family: 'Fira Code',ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+$code-font-size: .8rem;
 
 $font-size-h1:  36px;
 $font-size-h2:  28px;

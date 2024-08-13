@@ -1,5 +1,5 @@
 <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
+  <div class="article__inner tiled">
     {% if post.image %}
       <div class="image-wrap">
         <a class="article__image" href="{{post.url | prepend: site.baseurl}}">
@@ -15,15 +15,15 @@
         {% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncate: 125 }}{% endif %}
       </p>
       <div class="article__meta">
-        <a href="{{site.baseurl}}/about/" class="article__author-link">{{site.author.name}}</a>
-        <span class="article__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></span>
-        {% if post.tags.size >= 1 %}
+        <!-- <a href="{{site.baseurl}}/about/" class="article__author-link">{{site.author.name}}</a> -->
+        <span class="article__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string: "ordinal" }}</time></span>
+        <!-- {% if post.tags.size >= 1 %}
         <div class="article-tags__box">
           {% for tag in post.tags %}
             <a href="{{ site.baseurl }}/tag/{{ tag }}" class="article__tag">{{ tag }}</a>
           {% endfor %}
         </div>
-        {% endif %}
+        {% endif %} -->
       </div>
     </div>
   </div>

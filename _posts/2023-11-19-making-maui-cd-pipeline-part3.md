@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a .NET MAUI CD pipeline in GitHub Actions (Part III - Android)
+title: Building a .NET MAUI Android pipeline in GitHub Actions
 date: '2023-11-19 14:48:59 +0000'
 image: '/images/headers/pipeline3.jpg'
 categories: Code

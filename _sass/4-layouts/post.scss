@@ -28,19 +28,22 @@
     margin: 0 auto;
   }
 
-  & code {
-    color: $brand-color;
-    font-family: "Cousine", sans-serif;
-    font-size: .8rem;
+  & p code {
+	border: 1px solid $brand-color-dark;
+	border-bottom-width: $global-bottom-border;
+    color: $brand-color-dark;
+    font-family: $code-font-family;
+    font-size: $code-font-size;
     padding: .5rem .7rem;
-    background-color: #e5f5f2;
-    border-radius: 0.7rem;
+	margin: 0 5px;
+    background-color: $brand-color-light;
+    border-radius: $global-radius;
   }
 
   & pre code {
     color: auto;
     font-size: 12px;
-    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    font-family: $code-font-family;
     background-color: #fff;
     padding: 0;
     line-height: 20px;
@@ -87,7 +90,7 @@
       border: 1px solid $border-color;
       background: $background-color-alt;
       &:hover {
-        color: $white;
+        color: $light;
       }
     }
     &.share__facebook {
@@ -129,28 +132,32 @@
 
   .post__prev, .post__next {
     display: flex;
+	align-items: center;
     width: 48%;
-    padding: 25px;
+    padding: 8px;
     margin-bottom: 30px;
+	margin-top: 40px;
     background: $background-color-alt;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.05);
     transition: transform .2s;
 
     &:hover {
       transform: translateY(-3px);
+	  background: $brand-accent;
     }
 
     .prev__image,
     .next__image {
       position: relative;
       display: block;
-      width: 100px;
-      min-width: 100px;
+      width: 140px;
+      min-width: 140px;
+	  border-radius: $global-radius;
       height: 100px;
       background-color: $background-color;
 
       img {
         position: absolute;
+		border-radius: $global-radius;
         top: 0;
         left: 0;
         width: 100%;
@@ -178,6 +185,9 @@
     .post__nav__title {
       margin-bottom: 0;
       font-size: 18px;
+	  vertical-align: middle;
+	  font-weight: $subheading-font-weight;
+	  letter-spacing: -0.5px;
       line-height: 24px;
 
       a {

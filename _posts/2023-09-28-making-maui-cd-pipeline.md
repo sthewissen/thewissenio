@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a .NET MAUI CD pipeline in GitHub Actions (Part I - Main)
+title: Building a .NET MAUI pipeline in GitHub Actions
 date: '2023-09-28 18:45:00 +0000'
 image: '/images/headers/pipeline.jpg'
 categories: Code

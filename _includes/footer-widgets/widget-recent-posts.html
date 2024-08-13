@@ -1,23 +1,26 @@
-<div class="col col-8 col-d-8 col-t-12">
+<div class="col col-12 col-d-12 col-t-12">
   <div class="widget widget-recent">
     <div class="widget__head">
       <h3 class="widget__title">Recent Posts</h3>
     </div>
-    {% for post in site.posts limit:3 %}
-    <div class="recent-posts">
+    {% for post in site.posts limit:5 %}
+    <a class="recent-posts tiled" href="{{ post.url }}">
       {% if post.image %}
-      <a class="recent-posts__image" href="{{ post.url }}">
-        <img class="lazy" data-src="{{site.baseurl}}{{post.image}}" alt="{{ post.title }}">
-      </a>
+	  <div class="recent-posts__image">
+      <img class="lazy" data-src="{{site.baseurl}}{{post.image}}" alt="{{ post.title }}">
+	  </div>
       {% else %}
       {% endif %}
       <div class="recent-posts__content">
+        <h4 class="recent-posts__title">{{ post.title | strip_html | truncate: 250 }}</h4>
+		<p class="recent-posts__description">
+			{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncate: 250 }}{% endif %}
+		</p>
         <div class="recent-posts__date">
           <time class="timeago" datetime="{{ post.date | date_to_xmlschema }}">{{post.date | date: "%b %-d, %Y"}}</time>
         </div>
-        <h4 class="recent-posts__title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
       </div>
-    </div>
+    </a>
     {% endfor %}
   </div>
 </div>

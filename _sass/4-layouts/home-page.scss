@@ -10,9 +10,10 @@
   }
 }
 
-.article__inner {
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
-}
+// .article__inner {
+//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+// }
+
 .image-wrap {
   padding: 15px 15px 0 15px;
   background: $background-color-alt;
@@ -84,12 +85,12 @@
   .article-tags__box {
     display: flex;
     
-    &::before {
-      content: "/";
-      display: inline-block;
-      margin: 0 5px;
-      color: $text-color-alt;
-    }
+    // &::before {
+    //   content: "/";
+    //   display: inline-block;
+    //   margin: 0 5px;
+    //   color: $text-color-alt;
+    // }
 
     .article__tag {
       color: $brand-color;
@@ -115,12 +116,12 @@
   .article__date {
     color: $text-color-alt;
 
-    &::before {
-      content: "/";
-      display: inline-block;
-      margin: 0 5px;
-      color: $text-color-alt;
-    }
+    // &::before {
+    //   content: "/";
+    //   display: inline-block;
+    //   margin: 0 5px;
+    //   color: $text-color-alt;
+    // }
   }
 }
 
