@@ -1,0 +1,82 @@
+#-------------------------------
+# General Site Settings
+title: Steven Thewissen
+logo: '/images/logo.png' # You can add own logo. For example '/images/logo.png'.
+description:  Xamarin, .NET development and more...
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://thewissen.io" # the base hostname & protocol for your site, e.g. http://example.com
+blog-theme: light # By default, Atega theme uses a 'light' color scheme, to change the color scheme to dark use 'dark' value (_includes/color-scheme)
+locale: en
+avatar: '/images/front.jpg'
+
+#-------------------------------
+# Author Settings
+author:
+  name: Steven Thewissen
+  image: '/images/front.jpg'
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: Hi, I'm <span class="hero__name">Steven Thewissen</span>. Nice to meet you 👋
+  # hero__job: Software engineer
+  hero__description: Pancake aficionado from the Netherlands.
+  hero__button__text: Get to know me!
+  hero__button__link: '/about'
+  hero__image: '/images/front.jpg'
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: steven@fizolabs.com # Add your email for contant form
+  description: If you are interested to talk, just shoot me a message
+
+#-------------------------------
+# Social Links (Footer)
+# Example of adding a new link to the footer - {icon: "ion-logo-facebook", link: "https://facebook.com"}
+# Other icons can be found at https://ionicons.com/v4/
+social:
+- {icon: "ion-logo-twitter", link: "https://twitter.com/devnl"}
+- {icon: "ion-logo-github", link: "https://github.com/sthewissen"}
+- {icon: "ion-logo-youtube", link: "https://www.youtube.com/c/StevenThewissen"}
+- {icon: "ion-logo-linkedin", link: "https://www.linkedin.com/in/steventhewissen"}
+- {icon: "ion-logo-twitch", link: "https://www.twitch.com/steventhewissen"}
+- {icon: "ion-logo-xbox", link: "https://account.xbox.com/profile?gamertag=devnl"}
+- {icon: "ion-md-beer", link: "https://untappd.com/user/devnl"}
+
+#-------------------------------
+# Google Analytics
+google-analytics: UA-60337995-1 # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Build Settings
+markdown: kramdown
+permalink: /:title/
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
+  - jekyll-feed
+
+paginate: 9
+paginate_path: "/page/:num/"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext/
+
+include:
+  - _pages
+
+# Tags
+# tag_page_dir:         tag
+# tag_page_layout:      tag_page
+# tag_permalink_style:  /:title/
+
+sass:
+  sass_dir: _sass
+  style: compressed

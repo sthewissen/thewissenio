@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% include post-hero.html %}
+
+<!-- begin post -->
+<div class="container">
+  <article class="post animate">
+
+    <div class="post__content">
+      {{ content }}
+    </div>
+
+    {% include post-navigation.html %}
+
+  </article>
+</div>
+<!-- end post -->
+
+<div class="container">
+    <div class="row">
+    	<div class="col col-12 col-m-12">
+			{% include footer-widgets/widget-recent-posts.html %}
+		</div>
+	</div>
+</div>
