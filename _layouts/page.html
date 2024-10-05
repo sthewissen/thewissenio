@@ -2,19 +2,16 @@
 layout: default
 ---
 
-{% include lang.html %}
+{% include hero.html %}
 
-<article class="px-1">
-  {% if page.layout == 'page' or page.collection == 'tabs' %}
-    {% assign tab_key = page.title | downcase %}
-    {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
-    <h1 class="dynamic-title">
-      {{ title }}
-    </h1>
-    <div class="content">
+<!-- begin page -->
+<div class="container">
+  <article class="page animate">
+
+    <div class="page__content">
       {{ content }}
     </div>
-  {% else %}
-    {{ content }}
-  {% endif %}
-</article>
+
+  </article>
+</div>
+<!-- end page -->
